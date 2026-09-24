@@ -1,106 +1,33 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>大时代：五线史诗 v0.2.0</title>
-  <link rel="stylesheet" href="assets/styles.css">
-</head>
-<body>
-  <div class="app">
-    <header class="top">
-      <div>
-        <div class="brand">大时代 · 五线史诗</div>
-        <span class="version">v0.2.0 · 审计与扩展版</span>
-      </div>
-      <div class="topright">
-        <span class="year" id="year"></span>
-        <div class="toolbar">
-          <button id="save">保存</button>
-          <button id="load">读取</button>
-          <button id="export">导出</button>
-          <button id="import">导入</button>
-          <button id="newGame">新局</button>
-        </div>
-      </div>
-    </header>
-
-    <div class="grid">
-      <aside class="panel">
-        <h2>国家与制度 <span class="sub">统治中心</span></h2>
-        <select id="nation"></select>
-        <select id="route"></select>
-        <div class="card">
-          <span class="portrait" id="portrait">♛</span>
-          <h3 id="leaderName"></h3>
-          <div id="leaderInfo" class="muted"></div>
-          <div class="tags" id="tags"></div>
-        </div>
-        <div class="card">
-          <h3>国家指标</h3>
-          <div id="stats"></div>
-        </div>
-      </aside>
-
-      <main class="panel main">
-        <h2>历史舞台 <span class="sub">国家、地区、人物与时代</span></h2>
-        <div class="card">
-          <h3>时代锚点</h3>
-          <p id="anchor" class="notice"></p>
-          <p id="advice" class="muted"></p>
-        </div>
-        <div class="card">
-          <h3>地区局势</h3>
-          <div class="regions" id="regions"></div>
-        </div>
-        <div class="card">
-          <h3>五线进程</h3>
-          <div id="goals"></div>
-        </div>
-        <div class="card">
-          <h3>审计面板</h3>
-          <div id="audit" class="muted"></div>
-        </div>
-      </main>
-
-      <aside class="panel">
-        <h2>战略行动 <span class="sub">每年一次</span></h2>
-        <div id="actions"></div>
-        <div class="card">
-          <h3>结构速览</h3>
-          <div id="summary"></div>
-        </div>
-      </aside>
-    </div>
-
-    <div class="bottom">
-      <section class="panel">
-        <h2>历史日志 <span class="sub" id="logCount"></span></h2>
-        <div class="list" id="logs"></div>
-      </section>
-      <section class="panel">
-        <h2>制度与提示</h2>
-        <p class="muted">每年可执行一次行动。事件会在关键年份触发；红色热区会生成危机。资源不足时行动不会消耗回合，避免误操作。</p>
-        <div class="toolbar">
-          <button id="clearSave">清除本地存档</button>
-          <button id="help">玩法说明</button>
-        </div>
-        <p id="status" class="muted"></p>
-      </section>
-    </div>
-  </div>
-
-  <div class="modal" id="modal">
-    <div class="modal-box">
-      <h2 id="eventTitle"></h2>
-      <p id="eventText"></p>
-      <div class="choices" id="choices"></div>
-    </div>
-  </div>
-
-  <div class="toast" id="toast"></div>
-  <input id="file" type="file" accept="application/json" hidden>
-
-  <script type="module" src="js/main.js"></script>
-</body>
-</html>
+import {VERSION,SAVE_KEY,YEARS,METRICS,FACTIONS,REGIONS,anchors,countries,routes,ACTIONS,EVENTS,RANDOM_EVENTS} from './data.js';
+const $=id=>document.getElementById(id); let state;
+const clampNum=(v,min,max)=>Math.max(min,Math.min(max,Number(v)||0));
+function leader(){const p=countries[state.country].leader;state.leader={name:p[0],resolve:p[2],legitimacy:p[6],authority:Math.round((p[1]+p[2]+p[3]+p[6])/4)};}
+function fresh(){const c=countries['大英帝国'];state={version:VERSION,year:YEARS.start,country:'大英帝国',route:'history',stats:{...c.base},faction:Object.fromEntries(FACTIONS.map(f=>[f,20])),regions:REGIONS.map((name,i)=>({name,heat:[24,35,42,28,30,32][i]})),world:{market:50,tension:35,legitimacy:50,technology:45},flags:{},logs:['1830年：新国家在历史分岔口开始执政。'],history:[],used:false,ended:false,event:null,lastRipple:'暂无重大国际余波。'}; apply(routes.history[2]);leader();}
+function clamp(){METRICS.forEach(k=>state.stats[k]=k==='财政'?Math.round(Number(state.stats[k])||0):k==='人口'?clampNum(state.stats[k],0,500):clampNum(state.stats[k],0,100));Object.keys(state.world).forEach(k=>state.world[k]=clampNum(state.world[k],0,100));state.regions.forEach(r=>r.heat=clampNum(r.heat,0,100));}
+function apply(o){Object.entries(o||{}).forEach(([k,v])=>{if(k in state.stats)state.stats[k]+=Number(v)});clamp();}
+function factions(o){Object.entries(o||{}).forEach(([k,v])=>{if(k in state.faction)state.faction[k]=clampNum(state.faction[k]+v,0,100)});}
+function ripple(o={},source='事件'){const scale=clampNum((state.stats.影响+state.stats.威望+state.stats.贸易)/300,.35,1.35);const world={...o};const regional=Number(world.区域||0)*scale;const international=Number(world.国际||0)*scale;const market=Number(world.市场||0)*scale;state.world.tension+=international*.45+regional*.15;state.world.market+=market+international*.12;state.world.legitimacy+=international*.18-regional*.08;state.world.technology+=Number(world.科技||0)*.25;state.regions.forEach((r,i)=>{const variance=1+(((state.year+i*13)%7)-3)/12;r.heat+=regional*variance/Math.max(1,state.regions.length/2);});state.lastRipple=`${source}产生蝴蝶效应：国际 ${Math.round(international)}, 地区 ${Math.round(regional)}, 市场 ${Math.round(market)}；传播系数 ${scale.toFixed(2)}。`;clamp();}
+function log(x){state.logs.unshift(x);state.logs=state.logs.slice(0,100);}
+function route(){return routes[state.route]||routes.history;}
+function era(y){return y<=1850?'工业前夜':y<=1875?'扩张时代':y<=1900?'大国博弈':y<=1918?'总体战时代':y<=1939?'危机年代':'重建时代';}
+function pressure(){const s=state.stats,avg=state.regions.reduce((a,r)=>a+r.heat,0)/state.regions.length;return Math.round(Math.max(0,Math.min(100,(100-s.稳定)*.36+(100-s.威望)*.12+avg*.34+(100-s.社会)*.1+state.world.tension*.08)));}
+function advice(){const hot=[...state.regions].sort((a,b)=>b.heat-a.heat)[0],s=state.stats;if(s.财政<50)return'AI判断：财政储备过低，优先行政改革或开放贸易。';if(pressure()>68)return`AI判断：蝴蝶效应正在放大，${hot.name}与国际局势同时失稳。`;if(s.科技<55)return'AI判断：教育与科研是跨越时代的低风险投资。';return'AI判断：局势可控，但大国行动会以非线性方式传导至全球。';}
+function actions(){let a=[...ACTIONS];if(state.route==='reform')a.push(['parliament','扩大议会',30,'提高制度合法性与社会参与。',{稳定:8,社会:8,威望:7,财政:-20}]);if(state.route==='industry')a.push(['research','国家科研院',45,'集中资源突破技术瓶颈。',{科技:14,产业:7,财政:-45}]);if(state.route==='diplomacy')a.push(['league','建立协约体系',38,'用长期条约降低冲突与贸易风险。',{影响:12,贸易:10,财政:-25,军力:-2}]);if(state.route==='revolution')a.push(['mobilize','社会动员',34,'掀起群众政治参与与文艺动员。',{社会:11,稳定:2,影响:7,财政:-18}]);if(state.route==='sovereignty')a.push(['border','边境整合',42,'强化防线，压缩地方割据。',{军力:9,稳定:6,财政:-26,社会:-3}]);return a;}
+function event(){if(state.year===YEARS.end)return null;let e=EVENTS.find(x=>x.year===state.year&&!state.flags[x.id]);if(e)return e;const hot=[...state.regions].sort((a,b)=>b.heat-a.heat)[0];if(hot&&hot.heat>78&&!state.flags['crisis'+state.year])return{id:'crisis'+state.year,title:'地方危机：'+hot.name,text:'热区正在挑战中央权威，必须立即回应。',choices:[choice('派遣调停团','缓和对立，但行政成本增加。',{稳定:4,社会:5,财政:-20},{改革派:4},{区域:-8,国际:-2}),choice('强制整编','快速恢复秩序，留下长期伤痕。',{稳定:8,社会:-12,军力:4},{军方:6,民众:-8},{区域:12,国际:4})]};return null;}
+function choice(a,b,c,d,e={}){return[a,b,c,d,e];}
+function randomEvent(){const pool=RANDOM_EVENTS.filter(e=>!state.flags[e.id]);if(!pool.length)return null;const total=pool.reduce((a,e)=>a+e.weight,0);let n=Math.random()*total;for(const e of pool){n-=e.weight;if(n<=0)return e;}return pool[0];}
+function metricClass(k,v){if(k==='稳定'||k==='威望')return v<45?'bad':v>75?'good':'warn';return v>75?'good':v<35?'bad':'';}
+function render(){clamp();$('year').textContent=`${state.year}年 · ${era(state.year)}${state.ended?' · 结局':''}`;$('nation').value=state.country;$('route').value=state.route;$('anchor').textContent=anchors[state.year]||`${state.year}年：时代在结构性压力中继续前进。`;$('advice').textContent=advice();$('portrait').textContent=countries[state.country].emoji;$('leaderName').textContent=state.leader.name;$('leaderInfo').textContent=`权威 ${state.leader.authority} · 合法性 ${state.leader.legitimacy} · 决断 ${state.leader.resolve}`;$('tags').innerHTML=countries[state.country].tags.map(x=>`<span>${x}</span>`).join('');$('stats').innerHTML=METRICS.map(k=>{const v=state.stats[k],max=k==='财政'?800:k==='人口'?500:100;return`<div class="stat"><span>${k}</span><div class="bar"><div class="fill ${metricClass(k,v)}" style="width:${Math.min(100,Math.max(0,v/max*100))}%"></div></div><b>${v}</b></div>`}).join('');$('regions').innerHTML=state.regions.map(r=>`<div class="region"><strong>${r.name}</strong><span class="heat">热度 ${Math.round(r.heat)}</span><div class="bar"><div class="fill bad" style="width:${r.heat}%"></div></div></div>`).join('');$('actions').innerHTML=actions().map((a,i)=>`<button class="action" data-action="${i}" ${state.used||state.ended?'disabled':''}><b>${a[1]} · ${a[2]}金</b><small>${a[3]}</small></button>`).join('');$('logs').innerHTML=state.logs.map(x=>`<div class="log">${x}</div>`).join('');$('logCount').textContent=`${state.logs.length}条`;$('summary').innerHTML=`路线：<b>${route()[0]}</b><br>综合压力：<b class="${pressure()>65?'danger':''}">${pressure()}</b><br>国际紧张：${Math.round(state.world.tension)} · 市场：${Math.round(state.world.market)}<br>传播：${state.lastRipple}`;$('goals').innerHTML=[['富强国家',state.stats.经济>=80&&state.stats.产业>=75],['技术突破',state.stats.科技>=85],['社会契约',state.stats.社会>=80&&state.stats.稳定>=65],['世界影响',state.stats.影响>=85&&state.stats.威望>=80],['海陆主导',state.stats.军力>=80&&state.stats.贸易>=70]].map(([n,d])=>`<div class="goal"><span>${n}</span><b class="${d?'done':''}">${d?'已达成':'进行中'}</b></div>`).join('');$('audit').textContent=`版本 ${VERSION} · 事件 ${Object.keys(state.flags).length} · ${state.used?'本回合已行动':'本回合可行动'} · 风险 ${pressure()>65?'高':'中'} · 蝴蝶传播系数 ${(1+(state.stats.影响+state.stats.威望+state.stats.贸易)/300).toFixed(2)}`;}
+function show(e){state.event=e;$('eventTitle').textContent=e.title;$('eventText').textContent=e.text;$('choices').innerHTML='';e.choices.forEach((c,i)=>{const b=document.createElement('button');b.className='choice';b.dataset.choice=i;b.innerHTML=`<b>${c[0]}</b><span>${c[1]}</span>`;$('choices').appendChild(b);});$('modal').classList.add('open');}
+function choose(i){const e=state.event,c=e?.choices[i];if(!c)return;apply(c[2]);factions(c[3]);ripple(c[4],e.title);state.flags[e.id]=1;state.history.push({year:state.year,type:'event',id:e.id});log(`${state.year}年：${e.title} → ${c[0]}。${state.lastRipple}`);state.event=null;$('modal').classList.remove('open');render();}
+function perform(i){if(state.used||state.ended)return;const a=actions()[i];if(!a)return;if(state.stats.财政<a[2]){toast('财政不足，行动未执行。');return;}apply(a[4]);state.used=true;const hot=state.regions.reduce((p,r)=>r.heat>p.heat?r:p,state.regions[0]);hot.heat+=(a[0]==='welfare'||a[0]==='education'||a[0]==='mobilize'?-8:2);ripple({区域:a[0]==='navy'?3:1,市场:a[0]==='trade'?-5:1,国际:a[0]==='navy'?4:0},a[1]);log(`${state.year}年：执行“${a[1]}”。${state.lastRipple}`);render();setTimeout(()=>{const e=event();if(e)show(e);},100);}
+function nextYear(){if(state.ended||state.event)return;if(state.year>=YEARS.end){finish();return;}state.year++;state.used=false;const s=state.stats;s.财政+=Math.max(18,Math.round(24+s.经济*.35-s.军力*.16));s.经济+=Math.round((s.产业-50)/18);s.社会+=Math.round((s.稳定-55)/25);s.稳定-=Math.max(0,Math.round(pressure()/35-1));state.regions.forEach(r=>r.heat+=Math.round((100-s.社会)/35-1));state.world.tension+=Math.max(0,pressure()-55)/18;state.world.market+=(s.贸易-50)/20;clamp();log(`${state.year}年：新的一年开始。国库 ${s.财政}，压力 ${pressure()}。`);render();const fixed=event();if(fixed)setTimeout(()=>show(fixed),120);else if(Math.random()<.28){const r=randomEvent();if(r){state.flags[r.id]=1;setTimeout(()=>show(r),120);}}}
+function ending(){const s=state.stats,w=state.world;if(s.稳定<25)return'国家崩解与革命';if(w.tension>88)return'世界秩序断裂';if(s.军力>=85&&s.影响>=80&&s.稳定>=65)return'大陆霸权';if(s.科技>=85&&s.经济>=80&&s.产业>=75)return'工业文明先驱';if(s.社会>=80&&s.稳定>=70)return'社会契约典范';if(s.财政<0)return'财政破产';return'在风暴中幸存';}
+function finish(){state.ended=true;log(`${YEARS.end}年结局：${ending()}。`);render();toast(`历史落幕：${ending()}`);}
+function save(silent=false){localStorage.setItem(SAVE_KEY,JSON.stringify(state));if(!silent)toast('存档已保存。');$('status').textContent=`最近保存：${new Date().toLocaleString()}`;}
+function load(silent=false){try{const x=JSON.parse(localStorage.getItem(SAVE_KEY));if(!x||!x.stats||!countries[x.country])throw Error();state=x;state.version=VERSION;state.event=null;state.world=state.world||{market:50,tension:35,legitimacy:50,technology:45};state.regions=state.regions?.length?state.regions:REGIONS.map((name,i)=>({name,heat:30+i*2}));state.lastRipple=state.lastRipple||'旧存档未记录国际余波。';leader();render();if(!silent)toast('存档已读取。');return true;}catch(e){if(!silent)toast('没有可用的存档。');return false;}}
+function toast(t){const e=$('toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),2200);}
+function exportSave(){const b=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`svvip-${state.year}.json`;a.click();URL.revokeObjectURL(a.href);}
+function importSave(file){const r=new FileReader();r.onload=()=>{try{const x=JSON.parse(r.result);if(!x.stats||!countries[x.country])throw Error();localStorage.setItem(SAVE_KEY,JSON.stringify(x));load();toast('外部存档导入成功。');}catch(e){toast('导入失败：存档格式无效。')}};r.readAsText(file);}
+function init(){Object.keys(countries).forEach(n=>$('nation').add(new Option(n,n)));Object.entries(routes).forEach(([k,v])=>$('route').add(new Option(v[0],k)));$('nation').onchange=e=>{state.country=e.target.value;state.stats={...countries[state.country].base};state.year=YEARS.start;state.flags={};state.used=false;state.ended=false;state.regions=REGIONS.map((name,i)=>({name,heat:24+i*3}));leader();log(`1830年：切换为${state.country}。`);render();};$('route').onchange=e=>{state.route=e.target.value;apply(route()[2]);log(`选择路线：${route()[0]}。`);render();};$('actions').onclick=e=>{const b=e.target.closest('[data-action]');if(b)perform(+b.dataset.action);};$('choices').onclick=e=>{const b=e.target.closest('[data-choice]');if(b)choose(+b.dataset.choice);};$('save').onclick=save;$('load').onclick=()=>load();$('export').onclick=exportSave;$('import').onclick=()=>$('file').click();$('file').onchange=e=>e.target.files[0]&&importSave(e.target.files[0]);$('nextYear').onclick=nextYear;$('newGame').onclick=()=>{if(confirm('开始新局并覆盖当前进度？')){fresh();render();save(true);toast('新局已开始。')}};$('clearSave').onclick=()=>{localStorage.removeItem(SAVE_KEY);toast('本地存档已清除。')};$('help').onclick=()=>toast('选择国家与路线→每年执行行动→处理事件→观察蝴蝶效应→推进年份。');document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('modal').classList.remove('open');state.event=null;}if(e.key===' '&&!state.event){e.preventDefault();nextYear();}});}
+init();fresh();if(!load(true))render();
