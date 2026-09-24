@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>大时代：五线史诗</title>
+  <title>大时代：五线史诗 v0.1.9</title>
   <style>
     :root {
       --bg: #08121d;
@@ -32,7 +32,17 @@
       border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 16px 22px var(--shadow);
     }
 
+    .brand-wrap {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    }
+
     .brand { font-size: 1.8rem; font-weight: 700; letter-spacing: 1px; color: var(--gold); }
+    .version-tag {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 5px 10px; border-radius: 999px; font-size: .76rem; font-weight: 700;
+      color: var(--gold); border: 1px solid rgba(245,209,122,.45); background: rgba(245,209,122,.08);
+      letter-spacing: .05em;
+    }
 
     .topright { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
     .year {
@@ -161,7 +171,10 @@
 <body>
   <div class="app">
     <header class="top">
-      <div class="brand">大时代 · 五线史诗</div>
+      <div class="brand-wrap">
+        <div class="brand">大时代 · 五线史诗</div>
+        <span class="version-tag" id="gameVersion">v0.1.9</span>
+      </div>
       <div class="topright">
         <div class="year" id="year">1830年 · 工业前夜</div>
         <button class="btn main" id="next">推进一年</button>
@@ -230,6 +243,7 @@
   </div>
 
   <script>
+    const GAME_VERSION = "0.1.9";
     const WORLD = {
       years: { start: 1830, end: 1950 },
       anchors: {
@@ -245,41 +259,19 @@
       regions: ["欧洲", "东亚", "南亚", "中东", "非洲", "美洲"]
     };
 
-    function makeCountryStats(base) {
-      return {
-        ...base,
-        社会: 58,
-        产业: 55,
-        贸易: 52,
-        军需: 60
-      };
+    const ALL_METRICS = ["经济", "军力", "科技", "稳定", "财政", "威望", "人口", "影响", "社会", "产业", "贸易", "军需"];
+
+    function buildCountryStats(base) {
+      return Object.assign({}, base, { 社会: 58, 产业: 55, 贸易: 52, 军需: 60 });
     }
 
     const COUNTRIES = {
-      "大英帝国": {
-        stats: makeCountryStats({ 经济: 75, 军力: 68, 科技: 72, 稳定: 76, 财政: 620, 威望: 78, 人口: 240, 影响: 81 }),
-        tags: ["海权", "工业", "金融"]
-      },
-      "清王朝": {
-        stats: makeCountryStats({ 经济: 58, 军力: 62, 科技: 52, 稳定: 60, 财政: 410, 威望: 64, 人口: 360, 影响: 68 }),
-        tags: ["帝国", "农业", "改革"]
-      },
-      "法兰西": {
-        stats: makeCountryStats({ 经济: 66, 军力: 67, 科技: 69, 稳定: 72, 财政: 540, 威望: 74, 人口: 200, 影响: 73 }),
-        tags: ["革命", "文化", "军政"]
-      },
-      "德意志": {
-        stats: makeCountryStats({ 经济: 61, 军力: 74, 科技: 70, 稳定: 67, 财政: 500, 威望: 71, 人口: 190, 影响: 70 }),
-        tags: ["统一", "军备", "工业"]
-      },
-      "日本": {
-        stats: makeCountryStats({ 经济: 57, 军力: 66, 科技: 63, 稳定: 64, 财政: 430, 威望: 69, 人口: 180, 影响: 62 }),
-        tags: ["转型", "海军", "近代化"]
-      },
-      "美国": {
-        stats: makeCountryStats({ 经济: 64, 军力: 63, 科技: 73, 稳定: 75, 财政: 610, 威望: 72, 人口: 210, 影响: 79 }),
-        tags: ["新大陆", "工业", "扩张"]
-      }
+      "大英帝国": { stats: buildCountryStats({ 经济: 75, 军力: 68, 科技: 72, 稳定: 76, 财政: 620, 威望: 78, 人口: 240, 影响: 81 }), tags: ["海权", "工业", "金融"] },
+      "清王朝": { stats: buildCountryStats({ 经济: 58, 军力: 62, 科技: 52, 稳定: 60, 财政: 410, 威望: 64, 人口: 360, 影响: 68 }), tags: ["帝国", "农业", "改革"] },
+      "法兰西": { stats: buildCountryStats({ 经济: 66, 军力: 67, 科技: 69, 稳定: 72, 财政: 540, 威望: 74, 人口: 200, 影响: 73 }), tags: ["革命", "文化", "军政"] },
+      "德意志": { stats: buildCountryStats({ 经济: 61, 军力: 74, 科技: 70, 稳定: 67, 财政: 500, 威望: 71, 人口: 190, 影响: 70 }), tags: ["统一", "军备", "工业"] },
+      "日本": { stats: buildCountryStats({ 经济: 57, 军力: 66, 科技: 63, 稳定: 64, 财政: 430, 威望: 69, 人口: 180, 影响: 62 }), tags: ["转型", "海军", "近代化"] },
+      "美国": { stats: buildCountryStats({ 经济: 64, 军力: 63, 科技: 73, 稳定: 75, 财政: 610, 威望: 72, 人口: 210, 影响: 79 }), tags: ["新大陆", "工业", "扩张"] }
     };
 
     const ROUTES = {
@@ -565,7 +557,18 @@
     };
 
     const $ = (id) => document.getElementById(id);
-    const CORE_KEYS = ["经济", "军力", "科技", "稳定", "财政", "威望", "人口", "影响", "社会", "产业", "贸易", "军需"];
+
+    function createInitialStats(baseStats) {
+      const normal = {};
+      for (const key of ALL_METRICS) {
+        normal[key] = Number((baseStats && baseStats[key]) || 0);
+      }
+      normal.社会 = normal.社会 || 58;
+      normal.产业 = normal.产业 || 55;
+      normal.贸易 = normal.贸易 || 52;
+      normal.军需 = normal.军需 || 60;
+      return normal;
+    }
 
     function getRouteData() {
       return ROUTES[STATE.route] || ROUTES.history;
@@ -575,26 +578,39 @@
       return COUNTRIES[STATE.country] || COUNTRIES["大英帝国"];
     }
 
+    function applyRouteBonus() {
+      const route = getRouteData();
+      if (!route || !route.bonuses) return;
+      for (const key in route.bonuses) {
+        if (STATE.stats[key] !== undefined) {
+          STATE.stats[key] += route.bonuses[key];
+        }
+      }
+      clampStats();
+    }
+
     function clampStats() {
-      for (const key of CORE_KEYS) {
+      for (const key of ALL_METRICS) {
+        if (STATE.stats[key] === undefined) STATE.stats[key] = 0;
         if (key === "财政") {
           STATE.stats[key] = Math.round(STATE.stats[key]);
+        } else if (key === "人口") {
+          STATE.stats[key] = Math.max(1, Math.round(STATE.stats[key]));
         } else {
           STATE.stats[key] = Math.min(100, Math.max(0, Math.round(STATE.stats[key])));
         }
       }
-      STATE.stats.人口 = Math.max(1, Math.round(STATE.stats.人口));
-      STATE.stats.财政 = Math.round(STATE.stats.财政);
     }
 
     function applyEffect(effect) {
       for (const key in effect) {
+        const value = Number(effect[key]);
         if (key === "财政") {
-          STATE.stats.财政 += Number(effect[key]);
+          STATE.stats.财政 += value;
         } else if (key === "人口") {
-          STATE.stats.人口 += Number(effect[key]);
+          STATE.stats.人口 += value;
         } else {
-          STATE.stats[key] = (STATE.stats[key] || 0) + Number(effect[key]);
+          STATE.stats[key] = (STATE.stats[key] || 0) + value;
         }
       }
       clampStats();
@@ -620,15 +636,14 @@
       return Math.round((s.经济 + s.军力 + s.科技 + s.稳定 + s.影响 + s.威望 + s.贸易 + s.产业) / 8);
     }
 
-    function applyRouteBonus() {
+    function computeWinnerPool() {
       const route = getRouteData();
-      if (!route || !route.bonuses) return;
-      for (const key in route.bonuses) {
-        if (STATE.stats[key] !== undefined) {
-          STATE.stats[key] += route.bonuses[key];
-        }
-      }
-      clampStats();
+      return [
+        { text: "跨越时代", done: STATE.year >= WORLD.years.end },
+        { text: "强国崛起", done: getPowerScore() >= 220 },
+        { text: `稳定度达到 ${route.name.includes("宪政") ? "80" : "60"}`, done: STATE.stats.稳定 >= (route.name.includes("宪政") ? 80 : 60) },
+        { text: `科技或军力达到 ${route.name.includes("工业") ? "85" : "75"}`, done: STATE.stats.科技 >= (route.name.includes("工业") ? 85 : 75) || STATE.stats.军力 >= 75 }
+      ];
     }
 
     function resetGame() {
@@ -638,22 +653,17 @@
       STATE.currentEvent = null;
       STATE.logs = [];
       STATE.actionUsedThisYear = false;
-      STATE.stats = { ...base };
+      STATE.stats = createInitialStats(base);
       applyRouteBonus();
       addLog(`${STATE.country} 于 ${STATE.year} 年起步，路线：${getRouteData().name}。`);
       render();
     }
 
-    function getRouteEventCandidates() {
-      const hits = [];
-      for (const event of REAL_EVENTS) {
-        if (event.year === STATE.year) hits.push(event);
-      }
-      const routeEvents = ROUTE_EVENTS[STATE.route] || [];
-      for (const event of routeEvents) {
-        if (event.year === STATE.year) hits.push(event);
-      }
-      return hits;
+    function getYearEventCandidates() {
+      const pool = [...REAL_EVENTS, ...(ROUTE_EVENTS[STATE.route] || [])];
+      const uniq = new Map();
+      pool.forEach(event => uniq.set(event.id, event));
+      return Array.from(uniq.values()).filter(event => event.year === STATE.year);
     }
 
     function showEventModal(event) {
@@ -679,7 +689,6 @@
       if (!STATE.currentEvent) return;
       const choice = STATE.currentEvent.choices[index];
       if (!choice) return;
-
       applyEffect(choice.effect);
       addLog(`${STATE.year}年：${STATE.currentEvent.title} -> ${choice.name}：${choice.resultText}`);
       closeEventModal();
@@ -687,26 +696,24 @@
     }
 
     function renderStats() {
-      const keys = CORE_KEYS;
-      const list = keys.map(key => {
+      const list = ALL_METRICS.map(key => {
         const val = STATE.stats[key] ?? 0;
         let width = key === "财政" ? Math.min(100, Math.max(5, (val + 500) / 12)) : val;
         if (key === "人口") width = Math.min(100, Math.max(5, val / 4));
+
         let color = "var(--blue)";
         if (key === "军力") color = "var(--red)";
-        if (key === "科技") color = "var(--blue)";
         if (key === "稳定") color = "var(--green)";
         if (key === "财政") color = "var(--gold)";
         if (key === "影响") color = "var(--purple)";
         if (key === "威望") color = "var(--orange)";
         if (key === "产业") color = "var(--green)";
-        if (key === "贸易") color = "var(--blue)";
         if (key === "军需") color = "var(--red)";
         if (key === "社会") color = "var(--orange)";
 
         return `
           <div class="metric">
-            <div class="head"><span>${key}</span><span>${key === "财政" ? val : val}</span></div>
+            <div class="head"><span>${key}</span><span>${val}</span></div>
             <div class="bar"><i style="width:${Math.min(100, width)}%; background:${color};"></i></div>
           </div>
         `;
@@ -768,14 +775,7 @@
     }
 
     function renderGoals() {
-      const route = getRouteData();
-      const goals = [
-        { text: "跨越时代", done: STATE.year >= WORLD.years.end },
-        { text: "强国崛起", done: getPowerScore() >= 220 },
-        { text: `稳定度达到 ${route.name.includes("宪政") ? "80" : "60"}`, done: STATE.stats.稳定 >= (route.name.includes("宪政") ? 80 : 60) },
-        { text: `科技或军力达到 ${route.name.includes("工业") ? "85" : "75"}`, done: STATE.stats.科技 >= (route.name.includes("工业") ? 85 : 75) || STATE.stats.军力 >= 75 }
-      ];
-
+      const goals = computeWinnerPool();
       $("goals").innerHTML = goals.map(goal => `
         <div class="goal">
           <div class="text">${goal.text}</div>
@@ -791,6 +791,8 @@
       renderActions();
       renderLogs();
       renderGoals();
+      $("gameVersion").textContent = `v${GAME_VERSION}`;
+      document.title = `大时代：五线史诗 v${GAME_VERSION}`;
     }
 
     function resolveEnding() {
@@ -872,7 +874,7 @@
       clampStats();
       handleAnnualPressure();
 
-      const events = getRouteEventCandidates();
+      const events = getYearEventCandidates();
       if (events.length) {
         const event = events[0];
         addLog(`${STATE.year}年：${event.title}正在发生。`);
@@ -888,6 +890,7 @@
 
     function saveGame() {
       const data = {
+        version: GAME_VERSION,
         year: STATE.year,
         country: STATE.country,
         route: STATE.route,
@@ -913,7 +916,7 @@
         STATE.route = data.route || "history";
         STATE.ended = !!data.ended;
         STATE.actionUsedThisYear = !!data.actionUsedThisYear;
-        const base = { ...getCountryData().stats, ...(data.stats || {}) };
+        const base = createInitialStats({ ...getCountryData().stats, ...(data.stats || {}) });
         STATE.stats = base;
         STATE.logs = Array.isArray(data.logs) ? data.logs : [];
         clampStats();
@@ -943,7 +946,7 @@
       initSelects();
       const loaded = loadGame();
       if (!loaded) {
-        STATE.stats = { ...getCountryData().stats };
+        STATE.stats = createInitialStats(getCountryData().stats);
         applyRouteBonus();
         addLog(`${STATE.country} 于 ${STATE.year} 年起步，路线：${getRouteData().name}。`);
       }
