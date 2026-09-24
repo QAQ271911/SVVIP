@@ -1,44 +1,1112 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>大时代：五线史诗</title>
-<style>
-:root{--bg:#08121d;--panel:#102131;--card:#172d41;--line:#2b4d69;--text:#edf7ff;--muted:#9eb8cd;--gold:#f5d17a;--blue:#6ebaff;--green:#79e2a6;--red:#ff8888;--orange:#ffba70;--purple:#d3b1ff}*{box-sizing:border-box}body{margin:0;padding:18px;background:radial-gradient(circle at top,#284e72 0,#08121d 40%);color:var(--text);font-family:"Microsoft YaHei","PingFang SC",sans-serif}.app{max-width:1500px;margin:auto;background:#0b1824ed;border:1px solid #ffffff25;border-radius:20px;overflow:hidden;box-shadow:0 24px 60px #0008}.top{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:18px 22px;border-bottom:1px solid var(--line)}.brand{color:var(--gold);font-size:1.3rem;font-weight:bold;letter-spacing:.12em}.topright{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.year{padding:10px 16px;border-radius:20px;background:#1a344b;border:1px solid var(--line);font-weight:bold}.btn,.tab,.choice{cursor:pointer;color:var(--text);background:#ffffff0a;border:1px solid var(--line);border-radius:10px;padding:9px 13px;font-weight:bold}.btn:hover,.tab:hover,.choice:hover{border-color:var(--blue);transform:translateY(-1px)}.btn.main{background:#276a9e}.btn.warn{color:var(--gold)}.btn:disabled{opacity:.45;cursor:not-allowed}.grid{display:grid;grid-template-columns:285px minmax(0,1fr) 350px}.panel{margin:15px;padding:16px;border:1px solid var(--line);border-radius:15px;background:#101e2ccc}.panel h2{font-size:1rem;color:var(--gold);margin:0 0 13px}.sub{font-size:.74rem;color:var(--muted);font-weight:normal;margin-left:6px}.select{width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:#0b1824;color:var(--text);margin-bottom:11px}.timeline{padding:12px;border:1px solid #d2b0ff55;background:#d2b0ff0c;border-radius:12px;margin-bottom:12px}.timeline b{display:block;color:var(--purple);margin-bottom:6px}.timeline small{color:var(--muted);line-height:1.5}.stats,.minis{display:grid;grid-template-columns:1fr 1fr;gap:9px}.stat,.mini,.region,.detail,.goal,.log,.action{border:1px solid var(--line);border-radius:10px;background:#ffffff05;padding:10px}.stat label,.mini label{display:block;color:var(--muted);font-size:.72rem;margin-bottom:6px}.stat strong,.mini strong{font-size:1.08rem}.bars{display:grid;gap:10px;margin-top:14px}.barline{display:grid;grid-template-columns:50px 1fr 28px;gap:7px;align-items:center;color:var(--muted);font-size:.78rem}.bar{height:9px;background:#ffffff12;border-radius:9px;overflow:hidden}.bar i{height:100%;display:block;background:linear-gradient(90deg,var(--green),var(--blue));border-radius:inherit}.notice{margin-top:13px;padding:10px;border-radius:10px;border:1px solid #ffb86f55;background:#ffb86f12;color:var(--orange);font-size:.78rem;line-height:1.5}.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}.tab{font-size:.8rem;color:var(--muted);padding:8px 11px}.tab.active{background:#3279ae;color:#fff}.view{display:none}.view.active{display:block}.regions{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.region{padding:12px}.region h3{font-size:.95rem;margin:0 0 8px}.badge{display:inline-block;color:var(--green);border:1px solid #78e0a555;background:#78e0a512;border-radius:20px;padding:3px 7px;font-size:.7rem}.badge.warn{color:var(--orange);border-color:#ffb86f55;background:#ffb86f12}.region p,.detail{color:var(--muted);font-size:.8rem;line-height:1.6}.meter{height:6px;background:#ffffff12;border-radius:8px;overflow:hidden;margin-top:8px}.meter i{display:block;height:100%;background:var(--blue)}.actions{display:grid;gap:9px}.action{width:100%;text-align:left;color:var(--text);cursor:pointer}.action:hover{border-color:var(--blue)}.action b{display:flex;justify-content:space-between;margin-bottom:5px}.cost{color:var(--gold);font-size:.72rem}.action span{display:block;color:var(--muted);font-size:.75rem;line-height:1.5}.bottom{display:grid;grid-template-columns:1.5fr 1fr;border-top:1px solid var(--line)}.list{display:grid;gap:8px;max-height:270px;overflow:auto}.log,.goal{font-size:.8rem;line-height:1.55;color:var(--muted)}.log{border-left:3px solid var(--blue)}.goal.done{border-color:#78e0a555;color:var(--green)}.goal b{color:var(--text)}.modal{position:fixed;inset:0;background:#000a;display:none;align-items:center;justify-content:center;padding:18px;z-index:4}.modal.show{display:flex}.modalbox{width:min(600px,100%);background:#102335;border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 20px 60px #000}.modalbox h2{color:var(--gold);margin:0 0 8px}.modalbox p{color:var(--muted);line-height:1.7}.choices{display:grid;gap:9px}.choice{text-align:left}.choice small{display:block;color:var(--muted);margin-top:4px;font-weight:normal}.empty{text-align:center;color:var(--muted);padding:20px}@media(max-width:1080px){.grid,.bottom{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}}@media(max-width:580px){body{padding:7px}.panel{margin:9px;padding:12px}.regions,.stats,.minis{grid-template-columns:1fr}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>大时代：五线史诗</title>
+  <style>
+    :root {
+      --bg: #08121d;
+      --panel: #102131;
+      --panel-2: #142d40;
+      --card: #182f45;
+      --line: #2b4d69;
+      --text: #edf7ff;
+      --muted: #9eb8cd;
+      --gold: #f5d17a;
+      --blue: #6ebaff;
+      --green: #79e2a6;
+      --red: #ff8888;
+      --orange: #ffba70;
+      --purple: #d3b1ff;
+      --shadow: rgba(0,0,0,.35);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: "Microsoft YaHei", "PingFang SC", sans-serif; }
+    body { min-height: 100vh; }
+
+    .app {
+      max-width: 1460px;
+      margin: 0 auto;
+      padding: 24px 20px 40px;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 20px;
+      margin-bottom: 18px;
+      background: rgba(16, 33, 49, .96);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 16px 22px var(--shadow);
+    }
+
+    .brand {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--gold);
+    }
+
+    .topright {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .year {
+      font-size: 1.2rem;
+      color: var(--text);
+      opacity: .96;
+      background: rgba(110,186,255,.12);
+      border: 1px solid rgba(110,186,255,.35);
+      border-radius: 10px;
+      padding: 8px 14px;
+    }
+
+    .btn {
+      border: 1px solid transparent;
+      background: linear-gradient(180deg, #21466a, #162f47);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 10px 16px;
+      cursor: pointer;
+      transition: transform .12s ease, opacity .12s ease, border-color .12s ease;
+      font-weight: 700;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn.main {
+      background: linear-gradient(180deg, #8f6a1a, #654a0a);
+      border-color: rgba(245,209,122,.5);
+    }
+    .btn.ghost {
+      background: rgba(255,255,255,.03);
+      border-color: rgba(255,255,255,.15);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1.75fr 1.2fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .panel {
+      background: rgba(16, 33, 49, .96);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 14px 22px var(--shadow);
+      padding: 18px 16px 16px;
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 1.1rem;
+      letter-spacing: .5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sub {
+      font-size: .78rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    select {
+      width: 100%;
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+
+    .timeline {
+      background: rgba(255,255,255,.02);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+
+    .timeline b {
+      display: block;
+      color: var(--gold);
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .timeline .desc {
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: .92rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .metric {
+      background: rgba(255,255,255,.02);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+
+    .metric .head {
+      display: flex;
+      justify-content: space-between;
+      font-size: .82rem;
+      margin-bottom: 8px;
+      color: var(--muted);
+    }
+
+    .bar {
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06); overflow: hidden;
+    }
+
+    .bar > i {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--blue), var(--green));
+    }
+
+    .world-box {
+      display: grid;
+      gap: 12px;
+    }
+
+    .info-card {
+      background: rgba(255,255,255,.02);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+    }
+
+    .info-card h3 {
+      margin: 0 0 8px;
+      font-size: .95rem;
+      color: var(--gold);
+    }
+
+    .info-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: .92rem;
+    }
+
+    .region-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(120px, 1fr));
+      gap: 10px;
+    }
+
+    .region {
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.02);
+      padding: 10px 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 92px;
+      gap: 6px;
+    }
+
+    .region .name {
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    .region .value {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--text);
+    }
+
+    .actions {
+      display: grid;
+      gap: 10px;
+    }
+
+    .action {
+      background: rgba(255,255,255,.02);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: var(--text);
+      text-align: left;
+      padding: 12px;
+      cursor: pointer;
+      transition: border-color .15s ease, transform .12s ease;
+    }
+
+    .action:hover { border-color: rgba(110,186,255,.55); transform: translateY(-1px); }
+    .action:disabled { opacity: .5; cursor: not-allowed; }
+
+    .action-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .cost {
+      color: var(--gold);
+      font-size: .82rem;
+      border: 1px solid rgba(245,209,122,.35);
+      border-radius: 999px;
+      padding: 4px 8px;
+      background: rgba(245,209,122,.08);
+    }
+
+    .action small {
+      display: block;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .bottom {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 18px;
+    }
+
+    .list {
+      max-height: 360px;
+      overflow: auto;
+      display: grid;
+      gap: 10px;
+      padding-right: 4px;
+    }
+
+    .log {
+      border-left: 3px solid var(--blue);
+      background: rgba(255,255,255,.02);
+      border: 1px solid var(--line);
+      border-left-width: 3px;
+      border-radius: 10px;
+      padding: 10px 12px;
+      color: var(--text);
+      line-height: 1.6;
+      font-size: .92rem;
+    }
+
+    .empty {
+      color: var(--muted);
+      display: flex;
+      min-height: 120px;
+      align-items: center;
+      justify-content: center;
+      border: 1px dashed var(--line);
+      border-radius: 12px;
+      background: rgba(255,255,255,.01);
+    }
+
+    .goals {
+      display: grid;
+      gap: 10px;
+    }
+
+    .goal {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 12px;
+      background: rgba(255,255,255,.02);
+    }
+
+    .goal .text {
+      color: var(--text);
+      flex: 1;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 62px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      font-size: .75rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+
+    .chip.done { color: #06140e; background: var(--green); }
+    .chip.todo { color: var(--text); background: rgba(255,255,255,.06); border-color: var(--line); }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(1, 5, 10, .72);
+      backdrop-filter: blur(2px);
+      z-index: 50;
+    }
+
+    .modal.show { display: flex; }
+
+    .modal-box {
+      width: min(720px, calc(100vw - 30px));
+      background: #0d1c2a;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 25px 50px rgba(0,0,0,.45);
+      padding: 20px 18px 18px;
+    }
+
+    .modal-box h2 {
+      margin: 0 0 12px;
+      color: var(--gold);
+      font-size: 1.5rem;
+    }
+
+    .modal-box p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 0 0 16px;
+    }
+
+    .choices {
+      display: grid;
+      gap: 12px;
+    }
+
+    .choice {
+      width: 100%;
+      background: rgba(255,255,255,.02);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: var(--text);
+      text-align: left;
+      padding: 12px;
+      cursor: pointer;
+    }
+
+    .choice b { display: block; margin-bottom: 4px; font-size: 1rem; }
+    .choice small { color: var(--muted); line-height: 1.6; }
+
+    @media (max-width: 1100px) {
+      .grid { grid-template-columns: 1fr; }
+      .bottom { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
-<body><div class="app">
-<header class="top"><div class="brand">大时代 · 五线史诗</div><div class="topright"><div class="year" id="year"></div><button class="btn main" id="next">推进一年</button><button class="btn warn" id="save">保存</button><button class="btn" id="reset">重开</button></div></header>
-<div class="grid"><aside class="panel"><h2>国家概览<span class="sub">数据与路线</span></h2><select id="nation" class="select"></select><div class="timeline"><b id="lineName"></b><select id="lineSelect" class="select"></select><small id="lineDesc"></small></div><div class="stats"><div class="stat"><label>综合国力</label><strong id="power"></strong></div><div class="stat"><label>财政储备</label><strong id="money"></strong></div><div class="stat"><label>人口</label><strong id="people"></strong></div><div class="stat"><label>国际威望</label><strong id="prestige"></strong></div></div><div class="bars"><div class="barline"><span>稳定</span><div class="bar"><i id="stabilityBar"></i></div><b id="stability"></b></div><div class="barline"><span>经济</span><div class="bar"><i id="economyBar"></i></div><b id="economy"></b></div><div class="barline"><span>军力</span><div class="bar"><i id="militaryBar"></i></div><b id="military"></b></div><div class="barline"><span>科技</span><div class="bar"><i id="scienceBar"></i></div><b id="science"></b></div></div><div class="notice" id="notice"></div></aside>
-<main class="panel"><h2>历史舞台<span class="sub">真实节点提供骨架，选择决定分叉</span></h2><div class="tabs"><button class="tab active" data-v="world">世界局势</button><button class="tab" data-v="history">历史锚点</button><button class="tab" data-v="future">路线推演</button><button class="tab" data-v="data">数据评估</button></div><section class="view active" id="world"><div class="regions" id="regions"></div></section><section class="view" id="history"><div class="detail"><b>当前真实节点</b><p id="anchor"></p><b>路线反馈</b><p id="routeFeedback"></p></div></section><section class="view" id="future"><div class="detail"><b>架空线原则</b><p>架空路线不删除真实事件，而是在真实危机、技术窗口和国际竞争上改变应对。每条线都有明确的收益、代价和可抵达的1950年结局。</p></div><div class="minis" style="margin-top:10px"><div class="mini"><label>历史偏离度</label><strong id="divergence"></strong></div><div class="mini"><label>因果一致性</label><strong id="coherence"></strong></div></div></section><section class="view" id="data"><div class="minis"><div class="mini"><label>年度净财政</label><strong id="cashflow"></strong></div><div class="mini"><label>事件数量</label><strong id="eventCount"></strong></div><div class="mini"><label>可达终点</label><strong id="reachability"></strong></div><div class="mini"><label>行动额度</label><strong id="actionState"></strong></div></div><div class="detail" style="margin-top:10px" id="assessment"></div></section></main>
-<aside class="panel"><h2>战略行动<span class="sub">每年可部署一次</span></h2><div class="actions" id="actions"></div></aside></div>
-<div class="bottom"><section class="panel"><h2>历史日志<span class="sub">真实事件与玩家决定</span></h2><div class="list" id="logs"></div></section><section class="panel"><h2>路线目标与成就</h2><div class="list" id="goals"></div></section></div></div>
-<div class="modal" id="modal"><div class="modalbox"><h2 id="eventTitle"></h2><p id="eventText"></p><div class="choices" id="choices"></div></div></div>
-<script>
-/* 数据层：所有国家、路线、锚点、事件与行动集中管理，避免逻辑散落。 */
-const DB={
- countries:{"大英帝国":{经济:75,军力:68,科技:72,稳定:76,财政:620,威望:78,人口:240,影响:81},"清王朝":{经济:58,军力:62,科技:52,稳定:60,财政:410,威望:64,人口:360,影响:56},"法兰西帝国":{经济:64,军力:66,科技:69,稳定:68,财政:470,威望:72,人口:150,影响:70},"德意志帝国":{经济:70,军力:82,科技:76,稳定:67,财政:500,威望:79,人口:120,影响:68},"大日本帝国":{经济:65,军力:74,科技:71,稳定:64,财政:420,威望:75,人口:90,影响:63},"俄罗斯帝国":{经济:57,军力:78,科技:58,稳定:63,财政:520,威望:70,人口:170,影响:67},"奥斯曼帝国":{经济:51,军力:59,科技:55,稳定:52,财政:390,威望:58,人口:140,影响:62}},
- routes:{历史主线:{名:"历史主线 · 原轨",简介:"尊重真实节点，在约束中寻找最优解。",加成:{稳定:2},偏离:0,反馈:"真实节点会照常发生，但你的应对改变代价与余波。"},宪政改革:{名:"架空线一 · 宪政改革",简介:"把真实社会矛盾导向协商、议会和制度更新。",加成:{稳定:5,科技:2},偏离:1,反馈:"改革不消除矛盾，而是把冲突导向制度化解决。"},海洋联邦:{名:"架空线二 · 海洋联邦",简介:"以贸易、港口和多边协定重塑真实的全球竞争。",加成:{经济:4,影响:4},偏离:1,反馈:"航运、资源和殖民竞争仍存在，但合作网络改变了收益分配。"},工业跃迁:{名:"架空线三 · 工业跃迁",简介:"抓住真实工业革命的窗口，提前集中投资教育与能源。",加成:{经济:5,科技:5},偏离:1,反馈:"技术仍受资源和时代限制，只是你的国家更早完成积累。"},大陆均衡:{名:"架空线四 · 大陆均衡",简介:"以安全体系、威慑和妥协降低真实列强对峙的战争规模。",加成:{军力:4,威望:3},偏离:1,反馈:"战争风险没有消失，你改变的是冲突的规模、成本和持续时间。"}},
- anchors:{1830:"工业革命扩散，铁路、工厂与金融网络重塑国家能力。",1848:"欧洲革命浪潮与社会改革压力上升。",1871:"德意志统一改变欧洲力量平衡。",1884:"列强加快争夺海外市场与资源。",1914:"联盟体系失控，第一次世界大战爆发。",1918:"战争结束，民族国家与新秩序开始重组。",1929:"经济大萧条冲击贸易、财政和社会稳定。",1939:"第二次世界大战爆发，工业与动员能力受到极限考验。",1945:"战争结束，国际制度与世界秩序重新建立。",1950:"战后时代开启，国家进入新的历史阶段。"},
- events:[{年份:1848,题:"1848年的改革压力",文:"真实的革命与社会改革浪潮已经传来。你可以压制它，也可以把压力转成制度更新。",选项:[{名:"召开改革会议",说:"稳定+9，科技+3，财政-25，偏离+4",做:s=>{s.稳定+=9;s.科技+=3;s.财政-=25;s.偏离+=4}},{名:"强化秩序",说:"军力+5，稳定-5，威望-2，偏离+1",做:s=>{s.军力+=5;s.稳定-=5;s.威望-=2;s.偏离+=1}}]},{年份:1871,题:"1871年的力量重组",文:"德意志统一改变了欧洲力量结构，旧有外交平衡需要重新安排。",选项:[{名:"推动均势会议",说:"威望+8，影响+6，财政-20，偏离+6",做:s=>{s.威望+=8;s.影响+=6;s.财政-=20;s.偏离+=6}},{名:"扩军备战",说:"军力+10，财政-35，稳定-3，偏离+2",做:s=>{s.军力+=10;s.财政-=35;s.稳定-=3;s.偏离+=2}}]},{年份:1929,题:"1929年的经济危机",文:"真实金融危机正在摧毁贸易与就业，国家必须决定谁来承担代价。",选项:[{名:"公共投资救市",说:"经济+7，稳定+6，财政-50，偏离+7",做:s=>{s.经济+=7;s.稳定+=6;s.财政-=50;s.偏离+=7}},{名:"紧缩保财政",说:"财政+30，经济-5，稳定-7，偏离+2",做:s=>{s.财政+=30;s.经济-=5;s.稳定-=7;s.偏离+=2}}]},{年份:1945,题:"1945年的新秩序",文:"大战结束，战后制度正在形成。你可以参与规则制定，也可以优先重建国内。",选项:[{名:"参与国际建设",说:"影响+10，威望+8，财政-30，偏离+5",做:s=>{s.影响+=10;s.威望+=8;s.财政-=30;s.偏离+=5}},{名:"优先重建国内",说:"经济+6，稳定+5，影响-3，偏离+1",做:s=>{s.经济+=6;s.稳定+=5;s.影响-=3;s.偏离+=1}}]}],
- actions:[{名:"工业化建设",费:40,描述:"修建工厂、铁路与城市基础设施。",做:s=>{s.经济+=12;s.科技+=4;s.财政-=35;s.威望+=3}},{名:"军制改革",费:35,描述:"整顿训练、编制和后勤体系。",做:s=>{s.军力+=13;s.财政-=30;s.稳定-=2;s.威望+=3}},{名:"科学教育",费:30,描述:"扩充学校和研究机构，获得长期技术收益。",做:s=>{s.科技+=13;s.经济+=3;s.财政-=28;s.威望+=5}},{名:"外交联络",费:25,描述:"争取友邦、会议与协定。",做:s=>{s.威望+=10;s.影响+=10;s.财政-=22;s.稳定+=2}},{名:"政治改革",费:20,描述:"改善制度与民生，稳住社会秩序。",做:s=>{s.稳定+=12;s.经济+=5;s.财政-=18;s.威望+=3}},{名:"海外拓展",费:45,描述:"控制贸易航线和资源地带。",做:s=>{s.影响+=13;s.财政-=40;s.军力+=4;s.威望+=5;s.稳定-=3}},{名:"基础设施",费:35,描述:"建设港口、道路和城市网络。",做:s=>{s.经济+=9;s.人口+=8;s.影响+=5;s.财政-=30}},{名:"战时动员",费:50,描述:"储备军需，扩大后勤和战备制度。",做:s=>{s.军力+=17;s.财政-=48;s.稳定-=5;s.威望+=3}}]};
-const STATE={年:1830,国家:"大英帝国",线路:"历史主线",经济:0,军力:0,科技:0,稳定:0,财政:0,威望:0,人口:0,影响:0,偏离:0,日志:[],已行动:false,结束:false,事件记录:[]};
-const $=id=>document.getElementById(id),钳=(n,a=0,b=100)=>Math.min(b,Math.max(a,Math.round(n))),时代=y=>y<=1850?"工业前夜":y<=1875?"扩张时代":y<=1900?"大国博弈":y<=1918?"世界大战":y<=1930?"动荡交错":y<=1950?"重塑秩序":"时代终章",国力=()=>Math.round((STATE.经济+STATE.军力+STATE.科技+STATE.稳定+STATE.影响+STATE.威望)/6+STATE.财政/25);
-function 规范(){["经济","军力","科技","稳定","威望","影响"].forEach(k=>STATE[k]=钳(STATE[k]));STATE.财政=Math.max(-500,Math.round(STATE.财政));STATE.人口=Math.max(1,Math.round(STATE.人口))}function 记(t){STATE.日志.unshift(t);STATE.日志=STATE.日志.slice(0,30)}
-function 年度财政(){return Math.max(18,Math.round(24+STATE.经济*.35-STATE.军力*.10))}function 可抵达评估(){return STATE.年<1950?"是 · 终点锁定为1950年":"已抵达 · 正常结算"}
-function 重开(){const b=DB.countries[STATE.国家],r=DB.routes[STATE.线路];Object.assign(STATE,{年:1830,经济:b.经济,军力:b.军力,科技:b.科技,稳定:b.稳定,财政:b.财政,威望:b.威望,人口:b.人口,影响:b.影响,偏离:r.偏离,已行动:false,结束:false,事件记录:[],日志:[`1830年：历史帷幕开启，你接管了${STATE.国家}。`,`路线：${r.名}`]});Object.entries(r.加成).forEach(([k,v])=>STATE[k]+=v);规范();渲染()}
-function 初始化(){ $("nation").innerHTML=Object.keys(DB.countries).map(n=>`<option>${n}</option>`).join("");$("lineSelect").innerHTML=Object.entries(DB.routes).map(([k,r])=>`<option value="${k}">${r.名}</option>`).join("");$("nation").value=STATE.国家;$("lineSelect").value=STATE.线路}
-function 渲染路线(){const r=DB.routes[STATE.线路];$("lineName").textContent=r.名;$("lineDesc").textContent=r.简介;$("lineSelect").value=STATE.线路}
-function 渲染(){渲染路线();$("nation").value=STATE.国家;$("year").textContent=`${STATE.年}年 · ${时代(STATE.年)}`;$("power").textContent=国力();$("money").textContent=STATE.财政;$("people").textContent=STATE.人口+"百万";$("prestige").textContent=STATE.威望;[["stability",STATE.稳定],["economy",STATE.经济],["military",STATE.军力],["science",STATE.科技]].forEach(([k,v])=>{$(k).textContent=v;$(k+"Bar").style.width=钳(v)+"%"});$("notice").textContent=STATE.稳定<25?"警告：秩序濒临崩溃。":STATE.财政<0?"警告：财政透支，需优先恢复收入。":STATE.军力>STATE.经济+20?"提示：军备负担过重。":"国家运行稳定，可以继续塑造历史。";$("cashflow").textContent=`+${年度财政()} / 年`;$("eventCount").textContent=`${STATE.事件记录.length} / ${DB.events.length}`;$("reachability").textContent=可抵达评估();$("actionState").textContent=STATE.已行动?"本年已部署":"本年可部署";$("assessment").textContent=STATE.财政<0?"评估：收入机制已设置最低增长，但透支会降低稳定；通过减少军事行动或发展经济可以恢复。":STATE.军力>STATE.经济+20?"评估：军备支出正在侵蚀年度现金流，仍可抵达1950年，但发展速度会下降。":"评估：所有五条路线均有持续收入、可选行动和终点结算，不会因路线选择被提前锁死。";渲染地区();渲染日志();渲染目标();渲染行动();渲染视图()}
-function 渲染地区(){const core=(STATE.影响+STATE.军力+STATE.经济)/3;$("regions").innerHTML=["欧洲","东亚","南亚","中东","非洲","美洲"].map((n,i)=>{const v=钳(core*(.7+i*.08),20,99);return`<div class="region"><h3>${n}</h3><span class="badge ${v<45?"warn":""}">${v>75?"主导":v>60?"关键":v>45?"平衡":"脆弱"}</span><p>战略态势：${v}%<br>真实背景：${背景(n,STATE.年)}</p><div class="meter"><i style="width:${v}%"></i></div></div>`}).join("")}
-function 背景(n,y){if(y>=1914&&y<=1918)return"战争动员影响扩大";if(y>=1939&&y<=1945)return"全球战争重塑格局";if(n==="欧洲"&&y>=1871)return"统一与均势竞争";if(n==="东亚"&&y>=1894)return"现代化与列强竞争";return"贸易、改革与势力角逐"}
-function 渲染视图(){$("anchor").textContent=DB.anchors[STATE.年]||"当前年份位于两个历史节点之间，结构性变化正在累积。";$("routeFeedback").textContent=DB.routes[STATE.线路].反馈;$("divergence").textContent=STATE.偏离+"%";$("coherence").textContent=STATE.偏离>35?"高风险分叉":"符合时代因果"}
-function 渲染行动(){$("actions").innerHTML=DB.actions.map((a,i)=>`<button class="action" data-i="${i}" ${STATE.已行动||STATE.结束?"disabled":""}><b>${a.名}<span class="cost">${a.费}财政</span></b><span>${a.描述}</span></button>`).join("");document.querySelectorAll(".action").forEach(b=>b.onclick=()=>执行(DB.actions[b.dataset.i]))}
-function 执行(a){if(STATE.已行动||STATE.结束)return;if(STATE.财政<a.费){记(`${STATE.年}年：财政不足，无法执行“${a.名}”。`);return渲染()}a.做(STATE);STATE.已行动=true;STATE.偏离+=STATE.线路==="历史主线"?1:2;规范();记(`${STATE.年}年：${a.名}完成，路线发生细微偏转。`);渲染()}
-function 渲染日志(){ $("logs").innerHTML=STATE.日志.length?STATE.日志.map(x=>`<div class="log">${x}</div>`).join(""):"<div class='empty'>暂无历史记录</div>"}
-function 渲染目标(){const p=国力(),g=[["跨越时代",STATE.年>=1950,"坚持到1950年"],["强国崛起",p>=220,"综合国力达到220"],["制度根基",STATE.稳定>=75,"稳定度达到75"],["工业先驱",STATE.经济>=80&&STATE.科技>=80,"经济与科技达到80"],["路线塑造者",STATE.偏离>=20&&STATE.年>=1900,"在真实骨架上形成明显分叉"]];$("goals").innerHTML=g.map(x=>`<div class="goal ${x[1]?"done":""}"><b>${x[1]?"已完成":"进行中"} · ${x[0]}</b><br>${x[2]}</div>`).join("")}
-function 事件弹窗(e){$("eventTitle").textContent=e.题;$("eventText").textContent=e.文;$("choices").innerHTML=e.选项.map((o,i)=>`<button class="choice" data-i="${i}"><b>${o.名}</b><small>${o.说}</small></button>`).join("");$("modal").classList.add("show");document.querySelectorAll(".choice").forEach(b=>b.onclick=()=>{const o=e.选项[b.dataset.i];o.做(STATE);STATE.事件记录.push(e.年份);规范();记(`${STATE.年}年：在“${e.题}”中选择“${o.名}”。`);$("modal").classList.remove("show");渲染()})}
-function 锚点(){const text=DB.anchors[STATE.年];if(text)记(`${STATE.年}年·真实节点：${text}`)}
-function 推进(){if(STATE.结束||$("modal").classList.contains("show"))return;if(STATE.年>=1950)return结算();STATE.年++;STATE.已行动=false;STATE.财政+=年度财政();STATE.财政-=Math.round(STATE.军力*.05);STATE.人口+=(STATE.经济+STATE.科技)/45;STATE.经济+=2;STATE.军力+=1;STATE.影响+=1;STATE.稳定+=Math.round((STATE.经济-STATE.军力)/20);if((STATE.年>=1914&&STATE.年<=1918)||(STATE.年>=1939&&STATE.年<=1945)){STATE.财政-=STATE.军力>60?55:25;STATE.稳定-=STATE.军力>60?8:3;记(`${STATE.年}年：真实战争节点冲击扩大，国家承担战争成本。`)}锚点();const event=DB.events.find(e=>e.年份===STATE.年);if(event&&!STATE.事件记录.includes(event.年份))事件弹窗(event);else if(Math.random()<.28)事件弹窗(DB.events[Math.floor(Math.random()*DB.events.length)]);else记(`${STATE.年}年：时代沿着真实结构推进，路线影响继续累积。`);规范();渲染()}
-function 结算(){STATE.结束=true;const p=国力(),r=DB.routes[STATE.线路];const t=p>=260&&STATE.稳定>=55?`强国结局：${r.名}在真实历史骨架上塑造了足以改变世界的国家。`:p>=200?`中坚结局：${r.名}改变了部分历史走向，但仍受时代约束。`:`失序结局：路线分叉与资源压力叠加，国家未能承受时代冲击。`;记(`1950年·时代终章：${t}`);渲染();$("next").disabled=true}
-$("nation").onchange=e=>{STATE.国家=e.target.value;重开()};$("lineSelect").onchange=e=>{STATE.线路=e.target.value;重开()};$("next").onclick=推进;$("save").onclick=()=>{localStorage.setItem("SVVIP_五线存档",JSON.stringify(STATE));记("存档成功：五线历史已保存。");渲染()};$("reset").onclick=()=>{if(confirm("确定重开当前路线吗？"))重开()};document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{document.querySelectorAll(".tab,.view").forEach(x=>x.classList.remove("active"));t.classList.add("active");$(t.dataset.v).classList.add("active")});初始化();重开();
-</script></body></html>
+<body>
+  <div class="app">
+    <header class="top">
+      <div class="brand">大时代 · 五线史诗</div>
+      <div class="topright">
+        <div class="year" id="year">1830年 · 工业前夜</div>
+        <button class="btn main" id="next">推进一年</button>
+        <button class="btn ghost" id="save">保存</button>
+        <button class="btn ghost" id="reset">重置</button>
+      </div>
+    </header>
+
+    <div class="grid">
+      <aside class="panel">
+        <h2>国家概览 <span class="sub">数据与路线</span></h2>
+        <select id="nation"></select>
+
+        <div class="timeline">
+          <b id="lineName">真实主线</b>
+          <div class="desc" id="lineDesc">尊重真实历史骨架，在约束中争取最优解。</div>
+        </div>
+
+        <select id="routeSelect"></select>
+
+        <div class="stats" id="stats"></div>
+      </aside>
+
+      <main class="panel">
+        <h2>历史舞台 <span class="sub">真实节点提供骨架，选择决定分叉</span></h2>
+        <div class="world-box">
+          <div class="info-card">
+            <h3>当年锚点</h3>
+            <p id="anchor">工业革命与铁路扩张改写国家能力。</p>
+          </div>
+          <div class="info-card">
+            <h3>路线反馈</h3>
+            <p id="routeFeedback">真实历史会照常发生，但你的应对会改变结果。</p>
+          </div>
+          <div class="info-card">
+            <h3>地区格局</h3>
+            <div class="region-grid" id="regions"></div>
+          </div>
+        </div>
+      </main>
+
+      <aside class="panel">
+        <h2>战略行动 <span class="sub">每年可部署一次</span></h2>
+        <div class="actions" id="actions"></div>
+      </aside>
+    </div>
+
+    <div class="bottom">
+      <section class="panel">
+        <h2>历史日志 <span class="sub">真实事件与玩家决定</span></h2>
+        <div class="list" id="logs"></div>
+      </section>
+
+      <section class="panel">
+        <h2>路线目标 <span class="sub">关键指标与结局条件</span></h2>
+        <div class="goals" id="goals"></div>
+      </section>
+    </div>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-box">
+      <h2 id="eventTitle">历史事件</h2>
+      <p id="eventText">事件文本</p>
+      <div class="choices" id="choices"></div>
+    </div>
+  </div>
+
+  <script>
+    const WORLD = {
+      years: { start: 1830, end: 1950 },
+      anchors: {
+        1830: "工业革命与铁路扩张改写国家能力。",
+        1848: "欧洲革命浪潮与改革压力加剧。",
+        1871: "德意志统一改变大陆力量平衡。",
+        1914: "世界大战成为决定性分水岭。",
+        1918: "战后秩序重塑全球格局。",
+        1929: "经济危机打击全球增长与信心。",
+        1939: "第二次世界大战重构地缘秩序。",
+        1945: "战后秩序与新全球权力结构建立。"
+      },
+      regions: ["欧洲", "东亚", "南亚", "中东", "非洲", "美洲"]
+    };
+
+    const COUNTRIES = {
+      "大英帝国": {
+        stats: { 经济: 75, 军力: 68, 科技: 72, 稳定: 76, 财政: 620, 威望: 78, 人口: 240, 影响: 81 },
+        tags: ["海权", "工业", "金融"]
+      },
+      "清王朝": {
+        stats: { 经济: 58, 军力: 62, 科技: 52, 稳定: 60, 财政: 410, 威望: 64, 人口: 360, 影响: 68 },
+        tags: ["帝国", "农业", "改革"]
+      },
+      "法兰西": {
+        stats: { 经济: 66, 军力: 67, 科技: 69, 稳定: 72, 财政: 540, 威望: 74, 人口: 200, 影响: 73 },
+        tags: ["革命", "文化", "军政"]
+      },
+      "德意志": {
+        stats: { 经济: 61, 军力: 74, 科技: 70, 稳定: 67, 财政: 500, 威望: 71, 人口: 190, 影响: 70 },
+        tags: ["统一", "军备", "工业"]
+      },
+      "日本": {
+        stats: { 经济: 57, 军力: 66, 科技: 63, 稳定: 64, 财政: 430, 威望: 69, 人口: 180, 影响: 62 },
+        tags: ["转型", "海军", "近代化"]
+      },
+      "美国": {
+        stats: { 经济: 64, 军力: 63, 科技: 73, 稳定: 75, 财政: 610, 威望: 72, 人口: 210, 影响: 79 },
+        tags: ["新大陆", "工业", "扩张"]
+      }
+    };
+
+    const ROUTES = {
+      history: {
+        name: "真实主线",
+        summary: "尊重真实历史骨架，在约束中争取最优解。",
+        feedback: "真实历史会照常发生，但你的应对会改变结果。",
+        focus: ["稳定", "科技", "军力", "影响"],
+        bonuses: { 稳定: 2 },
+        endings: [
+          { key: "strong", title: "强国结局", condition: s => s.经济 >= 80 && s.稳定 >= 60 && s.影响 >= 75 },
+          { key: "normal", title: "中庸结局", condition: s => s.year >= 1950 },
+          { key: "fail", title: "历史重压", condition: s => s.稳定 <= 30 || s.财政 <= -200 }
+        ]
+      },
+      reform: {
+        name: "宪政改革",
+        summary: "以制度、教育与社会平衡重写现代化进程。",
+        feedback: "改革可以带来稳定，也可能制造新的政治断裂。",
+        focus: ["稳定", "威望", "科技", "财政"],
+        bonuses: { 稳定: 4, 威望: 3 },
+        endings: [
+          { key: "constitutional", title: "现代宪政强国", condition: s => s.稳定 >= 80 && s.威望 >= 75 && s.科技 >= 70 },
+          { key: "managed", title: "渐进改革结局", condition: s => s.year >= 1950 },
+          { key: "collapse", title: "改革失控", condition: s => s.稳定 <= 25 || s.威望 <= 20 }
+        ]
+      },
+      federation: {
+        name: "海洋联邦",
+        summary: "以贸易、海权与外交网络改写全球秩序。",
+        feedback: "海军与商业网络能扩大影响，但也会放大财政压力。",
+        focus: ["财政", "影响", "威望", "经济"],
+        bonuses: { 影响: 4, 财政: 20 },
+        endings: [
+          { key: "maritime", title: "海洋霸权", condition: s => s.影响 >= 85 && s.财政 >= 500 && s.经济 >= 75 },
+          { key: "trade", title: "商业强国", condition: s => s.year >= 1950 },
+          { key: "decline", title: "海权衰退", condition: s => s.财政 <= -100 || s.影响 <= 25 }
+        ]
+      },
+      industrial: {
+        name: "工业跃迁",
+        summary: "以技术革命与重工业彻底拉开时代差距。",
+        feedback: "重工业与科技能创造爆发式增长，但也可能造成过度扩张。",
+        focus: ["科技", "经济", "财政", "影响"],
+        bonuses: { 科技: 5, 经济: 4 },
+        endings: [
+          { key: "industrial", title: "工业巨人", condition: s => s.科技 >= 85 && s.经济 >= 80 && s.财政 >= 400 },
+          { key: "tiered", title: "工业现代化", condition: s => s.year >= 1950 },
+          { key: "overdrive", title: "过度扩张", condition: s => s.财政 <= -200 || s.稳定 <= 30 }
+        ]
+      },
+      equilibrium: {
+        name: "大陆均衡",
+        summary: "以均势、高度军备和地缘威慑保住国家地位。",
+        feedback: "强大的军备体系能制造威慑，也可能拖垮财政和稳定。",
+        focus: ["军力", "稳定", "影响", "威望"],
+        bonuses: { 军力: 5, 稳定: 2 },
+        endings: [
+          { key: "continental", title: "大陆霸权", condition: s => s.军力 >= 90 && s.稳定 >= 65 && s.影响 >= 80 },
+          { key: "balance", title: "均势秩序", condition: s => s.year >= 1950 },
+          { key: "break", title: "军事失衡", condition: s => s.军力 <= 25 || s.稳定 <= 20 }
+        ]
+      }
+    };
+
+    const ACTIONS = {
+      common: [
+        { id: "industrialize", name: "工业化建设", cost: 40, description: "修建工厂、铁路与城市基础设施。", effect: { 经济: 12, 科技: 4, 财政: -35, 威望: 3 } },
+        { id: "reform_army", name: "军制改革", cost: 35, description: "整顿编制、提高训练与军需效率。", effect: { 军力: 9, 稳定: 3, 财政: -25 } },
+        { id: "education", name: "教育改革", cost: 25, description: "扩展学校体系与科教投入。", effect: { 科技: 6, 稳定: 4, 财政: -15, 威望: 2 } },
+        { id: "diplomacy", name: "外交扩展", cost: 30, description: "增进国际影响力与带来协作机会。", effect: { 影响: 8, 财政: -18, 威望: 3 } }
+      ],
+      routeSpecific: {
+        reform: [
+          { id: "constitutional", name: "宪政改革", cost: 30, description: "扩大议会、法治与参与层级。", effect: { 稳定: 9, 威望: 7, 财政: -20 } },
+          { id: "public_education", name: "公共教育", cost: 28, description: "普及公立教育以提升社会流动。", effect: { 科技: 8, 稳定: 6, 财政: -20 } }
+        ],
+        federation: [
+          { id: "naval_rise", name: "海军扩张", cost: 35, description: "强化海上威慑与航线控制。", effect: { 影响: 9, 财政: -25, 军力: 5 } },
+          { id: "trade_pact", name: "贸易协定", cost: 26, description: "建立更广泛的国际贸易网络。", effect: { 财政: 28, 影响: 7, 威望: 3 } }
+        ],
+        industrial: [
+          { id: "steel_works", name: "钢铁工业", cost: 40, description: "大规模投资重工业与装备生产。", effect: { 经济: 14, 科技: 9, 财政: -30 } },
+          { id: "railway_grid", name: "铁路网规划", cost: 34, description: "打通工业与人口中心之间的流动。", effect: { 经济: 11, 科技: 6, 财政: -24, 影响: 4 } }
+        ],
+        equilibrium: [
+          { id: "frontier_defense", name: "边疆防御", cost: 30, description: "强化国境安全与机动防御。", effect: { 军力: 10, 稳定: 4, 财政: -20 } },
+          { id: "strategic_rail", name: "战略铁路", cost: 32, description: "连接军工、资源与后勤枢纽。", effect: { 军力: 7, 经济: 6, 财政: -23 } }
+        ]
+      }
+    };
+
+    const REAL_EVENTS = [
+      {
+        id: "revolution_1848",
+        year: 1848,
+        title: "1848 年改革压力",
+        text: "真实的革命与社会改革浪潮已经传来。你可以压制它，也可以把压力转成制度更新。",
+        route: "all",
+        choices: [
+          { name: "压制动乱", effect: { 稳定: 5, 威望: -4, 财政: -8 }, resultText: "秩序短期恢复，但民怨沉积。" },
+          { name: "召集改革会议", effect: { 稳定: 7, 威望: 6, 财政: -12 }, resultText: "社会改革推进，国家获得长期稳定。" },
+          { name: "转向技术治理", effect: { 科技: 5, 经济: 4, 稳定: -3 }, resultText: "效率提升，但社会信任略有不足。" }
+        ]
+      },
+      {
+        id: "german_unification_1871",
+        year: 1871,
+        title: "1871 年统一转折",
+        text: "德意志统一与大陆秩序重构正在展开。新的对手与新的联盟都在形成。",
+        route: "all",
+        choices: [
+          { name: "强化军事均势", effect: { 军力: 10, 财政: -20, 稳定: -4 }, resultText: "威慑增强，但财政压力更大。" },
+          { name: "推动外交协商", effect: { 影响: 8, 威望: 6, 财政: -10 }, resultText: "外交空间扩大，国际合作有所改善。" }
+        ]
+      },
+      {
+        id: "world_war_1914",
+        year: 1914,
+        title: "1914 年世界大战",
+        text: "欧陆秩序被战争彻底重写，所有国家都必须作出抉择。",
+        route: "all",
+        choices: [
+          { name: "全面动员", effect: { 军力: 12, 财政: -30, 稳定: -8 }, resultText: "战时生产加速，但社会负担严重。" },
+          { name: "高压外交", effect: { 影响: 6, 威望: 2, 稳定: 5, 财政: -12 }, resultText: "避免冲突得以维持，外交回旋余地增加。" }
+        ]
+      },
+      {
+        id: "post_war_1918",
+        year: 1918,
+        title: "1918 年战后重组",
+        text: "大战落幕，世界秩序开始重估。新的国家、联盟与权力中心都在形成。",
+        route: "all",
+        choices: [
+          { name: "重建秩序", effect: { 稳定: 7, 财政: -18, 影响: 5 }, resultText: "秩序逐步恢复，社会回稳。" },
+          { name: "强化国防", effect: { 军力: 8, 财政: -22, 稳定: -4 }, resultText: "防御能力增强，但对外交更敏感。" }
+        ]
+      },
+      {
+        id: "crash_1929",
+        year: 1929,
+        title: "1929 年经济危机",
+        text: "全球经济开始失衡，生产、信贷和就业都遭受重创。",
+        route: "all",
+        choices: [
+          { name: "大规模救市", effect: { 财政: -26, 稳定: 4, 经济: 5 }, resultText: "短期成本高，但社会稳定得到修复。" },
+          { name: "稳健削减", effect: { 财政: 10, 稳定: -5, 经济: -6 }, resultText: "财政压住了，但经济增长受阻。" }
+        ]
+      },
+      {
+        id: "war_1939",
+        year: 1939,
+        title: "1939 年全球冲突",
+        text: "新的战争浪潮正在逼近，全球秩序再次面临极端压力。",
+        route: "all",
+        choices: [
+          { name: "全面备战", effect: { 军力: 12, 财政: -28, 稳定: -6 }, resultText: "应对迅速，但人民与财政都承受巨大压力。" },
+          { name: "联合协调", effect: { 影响: 10, 稳定: 4, 财政: -15 }, resultText: "国际协调提升，战略空间扩大。" }
+        ]
+      },
+      {
+        id: "postwar_1945",
+        year: 1945,
+        title: "1945 年战后世界",
+        text: "战争落地，新秩序的边界被重新定义。", 
+        route: "all",
+        choices: [
+          { name: "制定新秩序", effect: { 影响: 10, 稳定: 6, 财政: -14 }, resultText: "国家在新秩序中建立更大影响力。" },
+          { name: "保持强硬威慑", effect: { 军力: 9, 威望: 2, 财政: -20 }, resultText: "稳定与威慑并重，但国际成本更高。" }
+        ]
+      }
+    ];
+
+    const ROUTE_EVENTS = {
+      reform: [
+        {
+          id: "reform_constitution_1880",
+          year: 1880,
+          title: "宪政方案试行",
+          text: "改革派要求扩大参与、法治和责任制，旧秩序面临重构阵痛。",
+          route: "reform",
+          choices: [
+            { name: "推进宪政", effect: { 稳定: 9, 威望: 8, 财政: -15 }, resultText: "制度层级稳定，发展道路更顺。" },
+            { name: "限制改革", effect: { 稳定: 3, 威望: -5, 财政: 5 }, resultText: "秩序短期维持，但改革被压制。" }
+          ]
+        }
+      ],
+      federation: [
+        {
+          id: "trade_federation_1890",
+          year: 1890,
+          title: "全球贸易网络构想",
+          text: "海洋国家试图建立更紧密的港口、航线和商业联盟。",
+          route: "federation",
+          choices: [
+            { name: "推动联合贸易", effect: { 财政: 25, 影响: 9, 威望: 5 }, resultText: "贸易进入高速增长期。" },
+            { name: "沉迷军事护航", effect: { 军力: 8, 财政: -18, 影响: -4 }, resultText: "威慑增强，但经济更易受冲击。" }
+          ]
+        }
+      ],
+      industrial: [
+        {
+          id: "industrial_revolution_2_1885",
+          year: 1885,
+          title: "第二次工业革命",
+          text: "电力、钢铁和化工正在改变国家能力边界。",
+          route: "industrial",
+          choices: [
+            { name: "全面投资", effect: { 科技: 10, 经济: 12, 财政: -25 }, resultText: "生产与技术同步跃升。" },
+            { name: "谨慎推进", effect: { 稳定: 4, 经济: 6, 财政: -10 }, resultText: "缓慢推进，风险更低。" }
+          ]
+        }
+      ],
+      equilibrium: [
+        {
+          id: "continental_balance_1905",
+          year: 1905,
+          title: "大陆均势论",
+          text: "世界局势推动国家需要建立更强的威慑与安全结构。",
+          route: "equilibrium",
+          choices: [
+            { name: "建立联盟体系", effect: { 军力: 12, 影响: 6, 财政: -18 }, resultText: "威慑网络形成，地缘稳定增强。" },
+            { name: "单边扩张", effect: { 军力: 10, 威望: -4, 稳定: -6 }, resultText: "短期效率高，但邻国更难信任。" }
+          ]
+        }
+      ]
+    };
+
+    const STATE = {
+      year: 1830,
+      country: "大英帝国",
+      route: "history",
+      stats: { 经济: 75, 军力: 68, 科技: 72, 稳定: 76, 财政: 620, 威望: 78, 人口: 240, 影响: 81 },
+      logs: [],
+      ended: false,
+      currentEvent: null,
+      eventCount: 0
+    };
+
+    const $ = (id) => document.getElementById(id);
+
+    function getRouteData() {
+      return ROUTES[STATE.route] || ROUTES.history;
+    }
+
+    function getCountryData() {
+      return COUNTRIES[STATE.country] || COUNTRIES["大英帝国"];
+    }
+
+    function clampStats() {
+      for (const key of Object.keys(STATE.stats)) {
+        if (key === "财政") {
+          STATE.stats[key] = Math.round(STATE.stats[key]);
+        } else {
+          STATE.stats[key] = Math.min(100, Math.max(0, Math.round(STATE.stats[key])));
+        }
+      }
+      STATE.stats.人口 = Math.max(1, Math.round(STATE.stats.人口));
+    }
+
+    function applyEffect(effect) {
+      for (const key in effect) {
+        if (key === "财政") {
+          STATE.stats.财政 += Number(effect[key]);
+        } else if (key === "人口") {
+          STATE.stats.人口 += Number(effect[key]);
+        } else {
+          STATE.stats[key] = (STATE.stats[key] || 0) + Number(effect[key]);
+        }
+      }
+      clampStats();
+    }
+
+    function getEraName(year) {
+      if (year <= 1850) return "工业前夜";
+      if (year <= 1875) return "扩张时代";
+      if (year <= 1900) return "大国博弈";
+      if (year <= 1918) return "世界大战";
+      if (year <= 1930) return "重组时代";
+      if (year <= 1945) return "全球冲突";
+      return "战后秩序";
+    }
+
+    function addLog(msg) {
+      STATE.logs.unshift(msg);
+      if (STATE.logs.length > 30) STATE.logs.pop();
+    }
+
+    function getPowerScore() {
+      const s = STATE.stats;
+      return Math.round((s.经济 + s.军力 + s.科技 + s.稳定 + s.影响 + s.威望) / 6);
+    }
+
+    function resetGame() {
+      const base = getCountryData().stats;
+      STATE.year = WORLD.years.start;
+      STATE.ended = false;
+      STATE.currentEvent = null;
+      STATE.logs = [];
+      STATE.eventCount = 0;
+      STATE.stats = { ...base };
+      applyRouteBonus();
+      addLog(`${STATE.country} 于 ${STATE.year} 年起步，路线：${getRouteData().name}。`);
+      render();
+    }
+
+    function applyRouteBonus() {
+      const route = getRouteData();
+      if (!route || !route.bonuses) return;
+      for (const key in route.bonuses) {
+        if (STATE.stats[key] !== undefined) {
+          STATE.stats[key] += route.bonuses[key];
+        }
+      }
+      clampStats();
+    }
+
+    function renderStats() {
+      const keys = ["经济", "军力", "科技", "稳定", "财政", "威望", "人口", "影响"];
+      const list = keys.map(key => {
+        const value = STATE.stats[key] ?? 0;
+        const width = key === "财政" ? Math.min(100, Math.max(0, (value + 500) / 12)) : value;
+        const color = key === "军力" ? "var(--red)" : key === "科技" ? "var(--blue)" : key === "稳定" ? "var(--green)" : key === "财政" ? "var(--gold)" : key === "影响" ? "var(--purple)" : key === "威望" ? "var(--orange)" : "var(--blue)";
+
+        return `
+          <div class="metric">
+            <div class="head"><span>${key}</span><span>${key === "财政" ? value : value}</span></div>
+            <div class="bar"><i style="width:${Math.min(100, width)}%; background:${color};"></i></div>
+          </div>
+        `;
+      }).join("");
+
+      $("stats").innerHTML = list;
+    }
+
+    function renderRoute() {
+      const route = getRouteData();
+      $("lineName").textContent = route.name;
+      $("lineDesc").textContent = route.summary;
+      $("routeSelect").value = STATE.route;
+      $("nation").value = STATE.country;
+      $("year").textContent = `${STATE.year}年 · ${getEraName(STATE.year)}`;
+      $("anchor").textContent = WORLD.anchors[STATE.year] || "当前年份位于两个历史节点之间，结构性变化正在累积。";
+      $("routeFeedback").textContent = route.feedback;
+    }
+
+    function renderRegions() {
+      const core = (STATE.stats.影响 + STATE.stats.军力 + STATE.stats.经济) / 3;
+      const regions = WORLD.regions.map((name, index) => {
+        const value = Math.min(100, Math.max(10, Math.round(core * (0.72 + index * 0.08))));
+        return `
+          <div class="region">
+            <div class="name">${name}</div>
+            <div class="value">${value}</div>
+          </div>
+        `;
+      });
+      $("regions").innerHTML = regions.join("");
+    }
+
+    function getAvailableActions() {
+      const common = ACTIONS.common.map(a => ({ ...a, type: "common" }));
+      const routeSpecific = (ACTIONS.routeSpecific[STATE.route] || []).map(a => ({ ...a, type: "route" }));
+      return [...common, ...routeSpecific];
+    }
+
+    function renderActions() {
+      const actions = getAvailableActions();
+      $("actions").innerHTML = actions.map(action => `
+        <button class="action" data-action="${action.id}" ${STATE.ended ? "disabled" : ""}>
+          <div class="action-head">
+            <span>${action.name}</span>
+            <span class="cost">${action.cost}财</span>
+          </div>
+          <small>${action.description}</small>
+        </button>
+      `).join("");
+
+      $("actions").querySelectorAll(".action").forEach(btn => {
+        btn.onclick = () => executeAction(btn.dataset.action);
+      });
+    }
+
+    function renderLogs() {
+      const logs = STATE.logs.length ? STATE.logs : ["暂无历史记录，时间线尚未写下任何决定。"];
+      $("logs").innerHTML = logs.map(log => `<div class="log">${log}</div>`).join("");
+    }
+
+    function renderGoals() {
+      const route = getRouteData();
+      const goals = [
+        { text: "跨越时代", done: STATE.year >= WORLD.years.end },
+        { text: "强国崛起", done: getPowerScore() >= 220 },
+        { text: `稳定度达到 ${route.name.includes("宪政") ? "80" : "60"}`, done: STATE.stats.稳定 >= (route.name.includes("宪政") ? 80 : 60) },
+        { text: `科技或军力达到 ${route.name.includes("工业") ? "85" : "75"}`, done: STATE.stats.科技 >= (route.name.includes("工业") ? 85 : 75) || STATE.stats.军力 >= 75 }
+      ];
+
+      $("goals").innerHTML = goals.map(goal => `
+        <div class="goal">
+          <div class="text">${goal.text}</div>
+          <span class="chip ${goal.done ? "done" : "todo"}">${goal.done ? "已达成" : "待达成"}</span>
+        </div>
+      `).join("");
+    }
+
+    function render() {
+      renderRoute();
+      renderStats();
+      renderRegions();
+      renderActions();
+      renderLogs();
+      renderGoals();
+    }
+
+    function resolveEnding() {
+      const route = getRouteData();
+      const ending = route.endings.find(e => e.condition(STATE.stats));
+      const target = ending ? ending.title : "未决结局";
+      addLog(`结局判定：${target}`);
+      STATE.ended = true;
+      render();
+      return target;
+    }
+
+    function getYearEventCandidates() {
+      const route = getRouteData();
+      const hits = [];
+      for (const event of REAL_EVENTS) {
+        if (event.year === STATE.year) hits.push(event);
+      }
+      const routeEvents = ROUTE_EVENTS[STATE.route] || [];
+      for (const event of routeEvents) {
+        if (event.year === STATE.year) hits.push(event);
+      }
+      return hits;
+    }
+
+    function showEventModal(event) {
+      STATE.currentEvent = event;
+      $("eventTitle").textContent = event.title;
+      $("eventText").textContent = event.text;
+      $("choices").innerHTML = event.choices.map((choice, index) => `
+        <button class="choice" data-idx="${index}"><b>${choice.name}</b><small>${choice.resultText}</small></button>
+      `).join("");
+
+      $("choices").querySelectorAll(".choice").forEach(btn => {
+        btn.onclick = () => chooseEventOption(Number(btn.dataset.idx));
+      });
+
+      $("modal").classList.add("show");
+    }
+
+    function closeEventModal() {
+      STATE.currentEvent = null;
+      $("modal").classList.remove("show");
+    }
+
+    function chooseEventOption(index) {
+      if (!STATE.currentEvent) return;
+      const choice = STATE.currentEvent.choices[index];
+      if (!choice) return;
+
+      applyEffect(choice.effect);
+      addLog(`${STATE.year}年：${STATE.currentEvent.title} -> ${choice.name}：${choice.resultText}`);
+      closeEventModal();
+      render();
+    }
+
+    function executeAction(actionId) {
+      if (STATE.ended) return;
+      const action = getAvailableActions().find(a => a.id === actionId);
+      if (!action) return;
+
+      if (STATE.stats.财政 < action.cost) {
+        addLog(`${STATE.year}年：财政不足，无法执行“${action.name}”。`);
+        render();
+        return;
+      }
+
+      STATE.stats.财政 -= action.cost;
+      applyEffect(action.effect);
+      addLog(`${STATE.year}年：执行 ${action.name}，影响已落地。`);
+      render();
+    }
+
+    function progressYear() {
+      if (STATE.ended) return;
+      if ($("modal").classList.contains("show")) return;
+      if (STATE.year >= WORLD.years.end) {
+        resolveEnding();
+        return;
+      }
+
+      STATE.year += 1;
+      const income = Math.max(18, Math.round(24 + STATE.stats.经济 * 0.35 - STATE.stats.军力 * 0.10));
+      STATE.stats.财政 += income;
+      STATE.stats.稳定 += getRouteData().bonuses?.稳定 || 0;
+      STATE.stats.威望 += STATE.route === "reform" ? 1 : 0;
+      clampStats();
+
+      const events = getYearEventCandidates();
+      if (events.length) {
+        const event = events[0];
+        addLog(`${STATE.year}年：${event.title}正在发生。`);
+        showEventModal(event);
+      }
+
+      if (STATE.year >= WORLD.years.end) {
+        resolveEnding();
+      }
+
+      render();
+    }
+
+    function saveGame() {
+      const data = {
+        year: STATE.year,
+        country: STATE.country,
+        route: STATE.route,
+        stats: STATE.stats,
+        logs: STATE.logs,
+        ended: STATE.ended
+      };
+      localStorage.setItem("SVVIP_SAVE", JSON.stringify(data));
+      addLog("游戏已保存。");
+      render();
+    }
+
+    function loadGame() {
+      try {
+        const raw = localStorage.getItem("SVVIP_SAVE");
+        if (!raw) return false;
+        const data = JSON.parse(raw);
+        if (!data) return false;
+        STATE.year = data.year || 1830;
+        STATE.country = data.country || "大英帝国";
+        STATE.route = data.route || "history";
+        STATE.stats = { ...getCountryData().stats, ...(data.stats || {}) };
+        STATE.logs = Array.isArray(data.logs) ? data.logs : [];
+        STATE.ended = !!data.ended;
+        clampStats();
+        render();
+        return true;
+      } catch (err) {
+        return false;
+      }
+    }
+
+    function initSelects() {
+      $("nation").innerHTML = Object.keys(COUNTRIES).map(name => `<option value="${name}">${name}</option>`).join("");
+      $("routeSelect").innerHTML = Object.entries(ROUTES).map(([key, route]) => `<option value="${key}">${route.name}</option>`).join("");
+
+      $("nation").onchange = (e) => {
+        STATE.country = e.target.value;
+        resetGame();
+      };
+
+      $("routeSelect").onchange = (e) => {
+        STATE.route = e.target.value;
+        resetGame();
+      };
+    }
+
+    function init() {
+      initSelects();
+      const loaded = loadGame();
+      if (!loaded) {
+        resetGame();
+      }
+      $("next").onclick = progressYear;
+      $("save").onclick = saveGame;
+      $("reset").onclick = () => {
+        resetGame();
+      };
+    }
+
+    init();
+  </script>
+</body>
+</html>
