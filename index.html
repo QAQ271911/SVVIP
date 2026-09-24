@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>大时代：五线史诗 v0.1.17</title>
+  <title>大时代：五线史诗 v0.1.18</title>
   <style>
-    :root{--bg:#08121d;--panel:#102131;--line:#2b4d69;--text:#edf7ff;--muted:#9eb8cd;--gold:#f5d17a;--blue:#6ebaff;--green:#79e2a6;--red:#ff8888;--purple:#d3b1ff;--shadow:rgba(0,0,0,.35)}
-    *{box-sizing:border-box}html,body{margin:0;padding:0;background:radial-gradient(circle at top,#162d45 0,#08121d 45%);color:var(--text);font-family:"Microsoft YaHei","PingFang SC",sans-serif}body{min-height:100vh}.app{max-width:1500px;margin:0 auto;padding:18px}.top,.panel,.modal-box{background:rgba(16,33,49,.94);border:1px solid var(--line);box-shadow:0 10px 20px var(--shadow)}.top{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-radius:12px}.brand{font-size:22px;font-weight:900;color:var(--gold)}.version,.sub,.muted{color:var(--muted);font-size:12px}.topright{display:flex;align-items:center;gap:8px}.year{color:var(--gold);font-weight:800;margin-right:5px}.btn,.action,.choice{border:1px solid #36637b;background:#122b3e;color:var(--text);border-radius:7px;padding:8px 12px;cursor:pointer;transition:.15s}.btn:hover,.action:hover,.choice:hover{border-color:var(--gold);background:#1d3d57}.btn.main{background:linear-gradient(180deg,#7b5a1b,#4b3513);border-color:var(--gold)}.btn:disabled,.action:disabled{opacity:.45;cursor:not-allowed}.grid{display:grid;grid-template-columns:300px 1.12fr 320px;gap:14px;margin-top:14px}.bottom{display:grid;grid-template-columns:1.15fr 1fr;gap:14px;margin-top:14px}.panel{padding:16px;border-radius:12px}.panel h2{margin:0 0 12px;font-size:17px;color:var(--gold)}.panel h3{margin:0 0 6px;font-size:15px}.card{border:1px solid #2b4661;background:#0d1d2b;border-radius:8px;padding:11px;margin:10px 0}.card p{margin:5px 0;color:#d9ebfb}.mini-list,.list,.goals,.timeline{display:grid;gap:8px}.mini,.log,.goal,.point{padding:8px 0;border-bottom:1px solid #20354b}.mini:last-child,.log:last-child,.goal:last-child,.point:last-child{border-bottom:none}.select-group{display:grid;gap:8px}select{width:100%;padding:9px;background:#0b1724;border:1px solid var(--line);color:var(--text);border-radius:6px}.stats{margin-top:10px}.metric{margin:8px 0}.metric .head{display:flex;justify-content:space-between;align-items:center}.metric b{color:var(--gold)}.bar{height:7px;border-radius:4px;background:#0c1721;overflow:hidden}.bar i{display:block;height:100%;border-radius:4px}.tags{display:flex;flex-wrap:wrap;gap:6px}.tag,.chip{padding:3px 8px;border-radius:12px;background:#1f3e5c;color:var(--blue);font-size:12px}.chip.done{background:#1d5b42;color:#dfffe9}.chip.todo{background:#374454;color:#d5e0ea}.regions{display:grid;grid-template-columns:repeat(2,minmax(120px,1fr));gap:8px}.region-card{padding:10px;border:1px solid #24425a;border-radius:8px;background:#0d1b2a}.region-head{display:flex;justify-content:space-between;align-items:center}.region-card small{color:var(--muted)}.region-card b{font-size:20px}.hot{color:var(--red)}.warm{color:var(--gold)}.cool{color:var(--green)}.actions{display:grid;gap:8px}.action{text-align:left}.action-head{display:flex;justify-content:space-between;align-items:center;font-weight:700}.cost{color:var(--gold)}.action small,.choice small{display:block;color:var(--muted);margin-top:4px}.leader-grid{display:grid;grid-template-columns:repeat(2,minmax(120px,1fr));gap:8px;margin-top:8px}.attr-box{background:#0b1a29;border:1px solid #23405d;border-radius:8px;padding:8px}.attr-box .label{font-size:12px;color:var(--muted)}.attr-box .val{font-size:20px;font-weight:800;color:var(--gold)}.power-list{display:grid;gap:8px}.power-row{display:grid;grid-template-columns:80px 1fr 42px;align-items:center;gap:8px}.power-row .name{font-size:12px;color:#dfeefb}.power-track{height:10px;background:#0d1c2a;border-radius:999px;overflow:hidden;border:1px solid #233d4f}.power-track i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--gold));border-radius:999px}.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.modal-box{max-width:700px;width:100%;padding:22px;border-radius:12px}.choices{display:grid;gap:10px;margin-top:18px}.choice{text-align:left}.choice b{font-size:14px;color:var(--gold)}.summary-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0}.@media (max-width:1100px){.grid{grid-template-columns:1fr 1fr}.main-panel{grid-column:span 2}}@media (max-width:700px){.top{display:block}.topright{margin-top:10px;flex-wrap:wrap}.grid,.bottom{grid-template-columns:1fr}.main-panel{grid-column:auto}.regions{grid-template-columns:1fr}.leader-grid{grid-template-columns:1fr 1fr}}
+    :root{--bg:#07131d;--panel:#0f1f2d;--panel2:#12293b;--line:#2a4966;--text:#edf7ff;--muted:#9cb5c9;--gold:#f5d27b;--blue:#7ab6ff;--green:#79e2a6;--red:#ff8d8d;--purple:#d6b9ff;--shadow:rgba(0,0,0,.28)}
+    *{box-sizing:border-box}html,body{margin:0;padding:0;background:radial-gradient(circle at top,#15314a 0,#07131d 42%);color:var(--text);font-family:"Microsoft YaHei","PingFang SC",sans-serif}body{min-height:100vh}.app{max-width:1500px;margin:0 auto;padding:18px}.top,.panel,.modal-box{background:rgba(15,31,45,.96);border:1px solid var(--line);box-shadow:0 12px 22px var(--shadow)}.top{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-radius:12px}.brand{font-size:22px;font-weight:900;color:var(--gold)}.version,.sub,.muted{color:var(--muted);font-size:12px}.topright{display:flex;align-items:center;gap:8px}.year{color:var(--gold);font-weight:900;margin-right:5px}.btn,.action,.choice{border:1px solid #3a5a7a;background:#122b3e;color:var(--text);border-radius:7px;padding:8px 12px;cursor:pointer;transition:.15s}.btn:hover,.action:hover,.choice:hover{border-color:var(--gold);background:#1d3d57}.btn.main{background:linear-gradient(180deg,#7a5719,#3d2b10);border-color:var(--gold)}.btn:disabled,.action:disabled{opacity:.45;cursor:not-allowed}.grid{display:grid;grid-template-columns:310px 1.2fr 320px;gap:14px;margin-top:14px}.bottom{display:grid;grid-template-columns:1.2fr 1fr;gap:14px;margin-top:14px}.panel{padding:16px;border-radius:12px}.panel h2{margin:0 0 12px;font-size:17px;color:var(--gold)}.panel h3{margin:0 0 8px;font-size:15px;color:#eaf6ff}.card{margin:10px 0;padding:11px;border:1px solid #2c4a63;background:#0d1d2b;border-radius:8px}.card p{margin:6px 0;color:#d9ebfb;line-height:1.6}.mini-list,.list,.goal-list,.timeline{display:grid;gap:8px}.mini,.log,.goal,.point{padding:8px 0;border-bottom:1px solid #20354b}.mini:last-child,.log:last-child,.goal:last-child,.point:last-child{border-bottom:none}.select-group{display:grid;gap:8px}select{width:100%;padding:9px;background:#0b1724;border:1px solid var(--line);color:var(--text);border-radius:6px}.tags{display:flex;flex-wrap:wrap;gap:6px}.tag,.chip{padding:4px 8px;border-radius:12px;background:#1a3555;color:var(--blue);font-size:12px}.chip.done{background:#1d5b42;color:#dfffe9}.chip.todo{background:#374454;color:#d5e0ea}.stats{margin-top:10px}.metric{margin:8px 0}.metric .head{display:flex;justify-content:space-between;align-items:center}.metric b{color:var(--gold)}.bar{height:7px;border-radius:4px;background:#0c1721;overflow:hidden}.bar i{display:block;height:100%;border-radius:4px}.leader-grid{display:grid;grid-template-columns:repeat(2,minmax(120px,1fr));gap:8px;margin-top:8px}.attr-box{background:#0a1827;border:1px solid #22405e;border-radius:8px;padding:8px}.attr-box .label{font-size:12px;color:var(--muted)}.attr-box .val{font-size:20px;font-weight:800;color:var(--gold)}.power-list{display:grid;gap:8px}.power-row{display:grid;grid-template-columns:78px 1fr 40px;align-items:center;gap:8px}.power-row .name{font-size:12px;color:#e5f2ff}.power-track{height:10px;background:#0c1c2a;border-radius:999px;overflow:hidden;border:1px solid #233d4f}.power-track i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--gold));border-radius:999px}.region-grid{display:grid;grid-template-columns:repeat(2,minmax(130px,1fr));gap:8px}.region-card{padding:10px;border:1px solid #23415d;border-radius:8px;background:#0d1b2b}.region-head{display:flex;justify-content:space-between;align-items:center}.region-card small{color:var(--muted)}.hot{color:var(--red)}.warm{color:var(--gold)}.cool{color:var(--green)}.actions{display:grid;gap:8px}.action{text-align:left}.action-head{display:flex;justify-content:space-between;align-items:center;font-weight:700}.cost{color:var(--gold)}.action small,.choice small{display:block;color:var(--muted);margin-top:4px}.summary-line{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #213955}.summary-line:last-child{border-bottom:none}.state-grid{display:grid;grid-template-columns:repeat(2,minmax(110px,1fr));gap:8px}.state-box{background:#0c1b2b;border:1px solid #2a4868;border-radius:8px;padding:10px}.state-box .label{font-size:12px;color:var(--muted)}.state-box .value{font-size:22px;font-weight:900;color:var(--gold)}.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.74);align-items:center;justify-content:center;padding:20px;z-index:100}.modal.show{display:flex}.modal-box{max-width:700px;width:100%;padding:22px;border-radius:12px}.choices{display:grid;gap:10px;margin-top:18px}.choice{text-align:left}.choice b{font-size:14px;color:var(--gold)}.goal-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #20354b}.goal-row:last-child{border-bottom:none}.@media (max-width:1100px){.grid{grid-template-columns:1fr 1fr}.main-panel{grid-column:span 2}}@media (max-width:700px){.top{display:block}.topright{margin-top:10px;flex-wrap:wrap}.grid,.bottom{grid-template-columns:1fr}.main-panel{grid-column:auto}.region-grid,.state-grid,.leader-grid{grid-template-columns:1fr 1fr}} 
   </style>
 </head>
 <body>
   <div class="app">
     <header class="top">
-      <div><span class="brand">大时代 · 五线史诗</span> <span class="version">v0.1.17 · 国家统治模拟器</span></div>
+      <div><span class="brand">大时代 · 五线史诗</span> <span class="version">v0.1.18 · 国家统治模拟器</span></div>
       <div class="topright">
         <span class="year" id="year"></span>
         <button class="btn main" id="next">推进一年</button>
@@ -36,36 +36,42 @@
         </div>
 
         <div class="card">
-          <h3>政治权力图</h3>
+          <h3>政党权力图</h3>
           <div class="power-list" id="powerList"></div>
         </div>
 
         <div class="card">
-          <h3>制度与地缘</h3>
-          <p id="institution"></p>
-          <div class="mini-list" id="miniList"></div>
+          <h3>领导人合法性</h3>
+          <div class="state-grid" id="stateGrid"></div>
         </div>
       </aside>
 
       <main class="panel main-panel">
         <h2>历史舞台 <span class="sub">最高领导人、政党、地区博弈与事件链</span></h2>
         <div class="card"><h3>时代锚点</h3><p id="anchor"></p></div>
-        <div class="card"><h3>国家AI辅助决策</h3><p id="aiAdvisor"></p><button class="btn" id="plan" style="margin-top:8px">生成国策推演</button></div>
-        <div class="card"><h3>地区博弈</h3><div class="regions" id="regions"></div></div>
-        <div class="card"><h3>国家驻点与命运之子</h3><div class="timeline" id="regionalAgents"></div></div>
-        <div class="card"><h3>国家特长</h3><div class="tags" id="traits"></div><p id="traitDesc" style="margin-top:10px"></p></div>
+        <div class="card"><h3>制度与地缘</h3><p id="institution"></p></div>
+        <div class="card"><h3>国家AI辅助决策</h3><p id="aiAdvisor"></p><button class="btn" id="plan" style="margin-top:10px">生成国策推演</button></div>
+        <div class="card"><h3>地区割据与叛乱热力图</h3><div class="region-grid" id="regions"></div></div>
+        <div class="card"><h3>事件链与惯性</h3><div class="timeline" id="inertia"></div></div>
+        <div class="card"><h3>国策特长</h3><div class="tags" id="traits"></div><p id="traitDesc" style="margin-top:10px"></p></div>
       </main>
 
       <aside class="panel">
         <h2>战略行动 <span class="sub">每年可部署一次</span></h2>
         <div class="actions" id="actions"></div>
-        <div class="card" style="margin-top:14px"><h3>历史惯性</h3><div class="timeline" id="inertia"></div></div>
+        <div class="card" style="margin-top:14px"><h3>国家结构速览</h3><div class="mini-list" id="miniList"></div></div>
       </aside>
     </div>
 
     <div class="bottom">
-      <section class="panel"><h2>历史日志 <span class="sub">事件链与分支结果</span></h2><div class="list" id="logs"></div></section>
-      <section class="panel"><h2>多结局树 <span class="sub">关键目标与历史终局</span></h2><div class="goals" id="goals"></div></section>
+      <section class="panel">
+        <h2>历史日志 <span class="sub">事件链与分支结果</span></h2>
+        <div class="list" id="logs"></div>
+      </section>
+      <section class="panel">
+        <h2>结局树 <span class="sub">关键目标与历史终局</span></h2>
+        <div class="goal-list" id="goals"></div>
+      </section>
     </div>
   </div>
 
@@ -78,7 +84,7 @@
   </div>
 
   <script>
-    const VERSION = '0.1.17';
+    const VERSION = '0.1.18';
     const YEARS = { start: 1830, end: 1950 };
     const METRICS = ['经济','军力','科技','稳定','财政','威望','人口','影响','社会','产业','贸易','军需'];
     const FACTIONS = ['保守派','改革派','军方','商业派','外交派','工党','地方派'];
@@ -95,127 +101,133 @@
 
     const countries = {
       '大英帝国': {
-        base: {经济:75,军力:68,科技:72,稳定:76,财政:620,威望:78,人口:240,影响:81,社会:58,产业:55,贸易:52,军需:60},
-        institution: '议会帝国 · 海军网络 · 诸自治领联盟',
-        tags: ['海权','工业','金融'],
-        mood: '自由贸易与帝国制衡并存。',
-        leaderPreset: { name: '维多利亚女王', charisma:80, resolve:77, wisdom:74, ruthlessness:38, reform:63, legitimacy:82 },
-        regions: [
-          { name: '不列颠', basePower:78, potential:82, heat:26, contender:'查尔斯·皮特', ambition:'维持海上霸权与议会稳定' },
-          { name: '印度', basePower:72, potential:76, heat:34, contender:'拉尔·萨哈布', ambition:'争取自治与军事重组' },
-          { name: '北美', basePower:70, potential:74, heat:28, contender:'艾德温·格兰特', ambition:'扩大贸易和殖民网络' },
-          { name: '埃及', basePower:67, potential:68, heat:41, contender:'穆罕默德·阿里之徒', ambition:'把海湾与铁路纳入帝国轴心' }
+        base:{经济:75,军力:68,科技:72,稳定:76,财政:620,威望:78,人口:240,影响:81,社会:58,产业:55,贸易:52,军需:60},
+        tags:['海权','工业','金融'],
+        institution:'议会帝国 · 海军网络 · 诸自治领联盟',
+        mood:'自由贸易与帝国制衡并存。',
+        trait:'海权体系极其依赖航线、资本与帝国控制。',
+        leaderPreset:{ name:'维多利亚女王', charisma:80, resolve:77, wisdom:74, ruthlessness:38, reform:63, legitimacy:82 },
+        regions:[
+          { name:'不列颠', heat:28, risk:40, contender:'查尔斯·皮特', ambition:'维持海上霸权与议会稳定' },
+          { name:'印度', heat:36, risk:52, contender:'拉尔·萨哈布', ambition:'争取自治与军事重组' },
+          { name:'北美', heat:30, risk:44, contender:'艾德温·格兰特', ambition:'扩大贸易和殖民网络' },
+          { name:'埃及', heat:41, risk:56, contender:'穆罕默德·阿里之徒', ambition:'把海湾与铁路纳入帝国轴心' }
         ]
       },
       '清王朝': {
-        base: {经济:58,军力:62,科技:52,稳定:60,财政:410,威望:64,人口:360,影响:68,社会:58,产业:55,贸易:52,军需:60},
-        institution: '皇权官僚制 · 多民族帝国 · 新军重组',
-        tags: ['帝国','农业','改革'],
-        mood: '中央权威与地方自治冲突加剧。',
-        leaderPreset: { name: '光绪帝', charisma:71, resolve:68, wisdom:66, ruthlessness:48, reform:56, legitimacy:72 },
-        regions: [
-          { name: '直隶', basePower:70, potential:76, heat:42, contender:'袁世凯', ambition:'取代旧制，团结新军' },
-          { name: '江南', basePower:68, potential:80, heat:38, contender:'胡雪岩系', ambition:'控制商贸与民间动员' },
-          { name: '西北', basePower:60, potential:66, heat:52, contender:'马家军将领', ambition:'在边疆独立与军国之间周旋' },
-          { name: '云南', basePower:58, potential:67, heat:49, contender:'唐继尧', ambition:'利用地方势力对抗中央' }
+        base:{经济:58,军力:62,科技:52,稳定:60,财政:410,威望:64,人口:360,影响:68,社会:58,产业:55,贸易:52,军需:60},
+        tags:['帝国','农业','改革'],
+        institution:'皇权官僚制 · 多民族帝国 · 新军重组',
+        mood:'中央权威与地方自治冲突加剧。',
+        trait:'极端依赖中央秩序与军政联动。',
+        leaderPreset:{ name:'光绪帝', charisma:71, resolve:68, wisdom:66, ruthlessness:48, reform:56, legitimacy:72 },
+        regions:[
+          { name:'直隶', heat:42, risk:58, contender:'袁世凯', ambition:'取代旧制，团结新军' },
+          { name:'江南', heat:38, risk:50, contender:'胡雪岩系', ambition:'控制商贸与民间动员' },
+          { name:'西北', heat:52, risk:64, contender:'马家军将领', ambition:'在边疆独立与军国之间周旋' },
+          { name:'云南', heat:48, risk:60, contender:'唐继尧', ambition:'利用地方势力对抗中央' }
         ]
       },
       '法兰西': {
-        base: {经济:66,军力:67,科技:69,稳定:72,财政:540,威望:74,人口:200,影响:73,社会:58,产业:55,贸易:52,军需:60},
-        institution: '共和国家 · 中央集权 · 文化影响',
-        tags: ['革命','文化','共和'],
-        mood: '街垒政治与新共和国叙事交织。',
-        leaderPreset: { name: '第三共和国总统', charisma:73, resolve:72, wisdom:70, ruthlessness:45, reform:69, legitimacy:76 },
-        regions: [
-          { name: '巴黎', basePower:80, potential:85, heat:39, contender:'雅克·鲁塞尔', ambition:'控制街头与议会联盟' },
-          { name: '北部', basePower:72, potential:78, heat:33, contender:'勒内·维克多', ambition:'工人运动与工业联合' },
-          { name: '南部', basePower:69, potential:73, heat:36, contender:'阿尔贝·莫利耶', ambition:'重建地方自治与农业秩序' },
-          { name: '阿尔及利亚', basePower:63, potential:72, heat:46, contender:'夏尔·德·福尔', ambition:'维护殖民秩序和军事威严' }
+        base:{经济:66,军力:67,科技:69,稳定:72,财政:540,威望:74,人口:200,影响:73,社会:58,产业:55,贸易:52,军需:60},
+        tags:['革命','文化','共和'],
+        institution:'共和国家 · 中央集权 · 文化影响',
+        mood:'街垒政治与新共和国叙事交织。',
+        trait:'政治合法性极高，但社会动员也会带来巨大风险。',
+        leaderPreset:{ name:'第三共和国总统', charisma:73, resolve:72, wisdom:70, ruthlessness:45, reform:69, legitimacy:76 },
+        regions:[
+          { name:'巴黎', heat:39, risk:52, contender:'雅克·鲁塞尔', ambition:'控制街头与议会联盟' },
+          { name:'北部', heat:33, risk:48, contender:'勒内·维克多', ambition:'工人运动与工业联合' },
+          { name:'南部', heat:36, risk:50, contender:'阿尔贝·莫利耶', ambition:'重建地方自治与农业秩序' },
+          { name:'阿尔及利亚', heat:46, risk:60, contender:'夏尔·德·福尔', ambition:'维护殖民秩序和军事威严' }
         ]
       },
       '德意志': {
-        base: {经济:61,军力:74,科技:70,稳定:67,财政:500,威望:71,人口:190,影响:70,社会:58,产业:55,贸易:52,军需:60},
-        institution: '联邦帝国 · 军工体系 · 工业联盟',
-        tags: ['统一','军备','工业'],
-        mood: '工业资本与军队争夺国家方向。',
-        leaderPreset: { name: '威廉二世', charisma:76, resolve:80, wisdom:68, ruthlessness:62, reform:52, legitimacy:70 },
-        regions: [
-          { name: '普鲁士', basePower:82, potential:88, heat:31, contender:'赫尔曼·冯·施莱辛', ambition:'推动军备与大国博弈' },
-          { name: '莱茵', basePower:76, potential:83, heat:29, contender:'古斯塔夫·麦克', ambition:'工业城市与资本的联合' },
-          { name: '波兰地', basePower:64, potential:71, heat:45, contender:'波兰民族运动', ambition:'争取人群与地方自治' },
-          { name: '萨克森', basePower:68, potential:72, heat:35, contender:'奥托·施密特', ambition:'利用联邦政治进行改良' }
+        base:{经济:61,军力:74,科技:70,稳定:67,财政:500,威望:71,人口:190,影响:70,社会:58,产业:55,贸易:52,军需:60},
+        tags:['统一','军备','工业'],
+        institution:'联邦帝国 · 军工体系 · 工业联盟',
+        mood:'工业资本与军队争夺国家方向。',
+        trait:'国家强大，但对军备和联盟博弈极为依赖。',
+        leaderPreset:{ name:'威廉二世', charisma:76, resolve:80, wisdom:68, ruthlessness:62, reform:52, legitimacy:70 },
+        regions:[
+          { name:'普鲁士', heat:31, risk:46, contender:'赫尔曼·冯·施莱辛', ambition:'推动军备与大国博弈' },
+          { name:'莱茵', heat:29, risk:42, contender:'古斯塔夫·麦克', ambition:'工业城市与资本的联合' },
+          { name:'波兰地', heat:45, risk:62, contender:'波兰民族运动', ambition:'争取人群与地方自治' },
+          { name:'萨克森', heat:35, risk:48, contender:'奥托·施密特', ambition:'利用联邦政治进行改良' }
         ]
       },
       '日本': {
-        base: {经济:57,军力:66,科技:63,稳定:64,财政:430,威望:69,人口:180,影响:62,社会:58,产业:55,贸易:52,军需:60},
-        institution: '维新天皇制 · 官僚与军部',
-        tags: ['转型','海军','近代化'],
-        mood: '改革派与军部正在争夺国家方向。',
-        leaderPreset: { name: '明治天皇', charisma:72, resolve:74, wisdom:69, ruthlessness:52, reform:61, legitimacy:80 },
-        regions: [
-          { name: '关东', basePower:72, potential:80, heat:30, contender:'山县有朋', ambition:'建立强国军政秩序' },
-          { name: '关西', basePower:68, potential:76, heat:32, contender:'大隈重信', ambition:'推进自由化与工业扩张' },
-          { name: '北海道', basePower:62, potential:69, heat:36, contender:'伊藤博文门生', ambition:'控制资源与殖民开发' },
-          { name: '朝鲜', basePower:60, potential:72, heat:48, contender:'朴泳孝', ambition:'在政局转向中争取主导' }
+        base:{经济:57,军力:66,科技:63,稳定:64,财政:430,威望:69,人口:180,影响:62,社会:58,产业:55,贸易:52,军需:60},
+        tags:['转型','海军','近代化'],
+        institution:'维新天皇制 · 官僚与军部',
+        mood:'改革派与军部正在争夺国家方向。',
+        trait:'转型速度快，但状态容易被军政冲突放大。',
+        leaderPreset:{ name:'明治天皇', charisma:72, resolve:74, wisdom:69, ruthlessness:52, reform:61, legitimacy:80 },
+        regions:[
+          { name:'关东', heat:30, risk:46, contender:'山县有朋', ambition:'建立强国军政秩序' },
+          { name:'关西', heat:32, risk:49, contender:'大隈重信', ambition:'推进自由化与工业扩张' },
+          { name:'北海道', heat:36, risk:51, contender:'伊藤博文门生', ambition:'控制资源与殖民开发' },
+          { name:'朝鲜', heat:48, risk:62, contender:'朴泳孝', ambition:'在政局转向中争取主导' }
         ]
       },
       '美国': {
-        base: {经济:64,军力:63,科技:73,稳定:75,财政:610,威望:72,人口:210,影响:79,社会:58,产业:55,贸易:52,军需:60},
-        institution: '联邦共和 · 工业资本 · 西部扩张',
-        tags: ['新大陆','工业','扩张'],
-        mood: '联邦、州权、资本与劳动者都在试图定义国家。',
-        leaderPreset: { name: '林肯式总统', charisma:75, resolve:73, wisdom:79, ruthlessness:43, reform:72, legitimacy:78 },
-        regions: [
-          { name: '东北', basePower:80, potential:86, heat:25, contender:'富兰克林·皮尔斯', ambition:'资本积累与工业链扩展' },
-          { name: '南方', basePower:70, potential:73, heat:42, contender:'杰佛逊·戴维斯', ambition:'争夺州权与农业秩序' },
-          { name: '西部', basePower:74, potential:82, heat:48, contender:'卡尔·布朗', ambition:'控制扩张与矿业利益' },
-          { name: '太平洋', basePower:65, potential:75, heat:39, contender:'乔治·斯库德', ambition:'航线与海洋贸易优势' }
+        base:{经济:64,军力:63,科技:73,稳定:75,财政:610,威望:72,人口:210,影响:79,社会:58,产业:55,贸易:52,军需:60},
+        tags:['新大陆','工业','扩张'],
+        institution:'联邦共和 · 工业资本 · 西部扩张',
+        mood:'联邦、州权、资本与劳动者都在试图定义国家。',
+        trait:'资本力量强大，但联邦裂痕会放大内部危机。',
+        leaderPreset:{ name:'林肯式总统', charisma:75, resolve:73, wisdom:79, ruthlessness:43, reform:72, legitimacy:78 },
+        regions:[
+          { name:'东北', heat:25, risk:42, contender:'富兰克林·皮尔斯', ambition:'资本积累与工业链扩展' },
+          { name:'南方', heat:42, risk:58, contender:'杰佛逊·戴维斯', ambition:'争夺州权与农业秩序' },
+          { name:'西部', heat:48, risk:63, contender:'卡尔·布朗', ambition:'控制扩张与矿业利益' },
+          { name:'太平洋', heat:39, risk:54, contender:'乔治·斯库德', ambition:'航线与海洋贸易优势' }
         ]
       }
     };
 
     const routes = {
-      history: { name: '真实主线', desc: '尊重历史骨架，在约束中争取最优解。', bonus: {稳定:2} },
-      reform: { name: '宪政改革', desc: '用法治、教育与社会妥协重写现代化。', bonus: {社会:4,威望:2} },
-      federation: { name: '海洋联邦', desc: '用贸易、海权与外交网络改写全球秩序。', bonus: {贸易:4,影响:3} },
-      industrial: { name: '工业跃迁', desc: '用技术革命和重工业拉开时代差距。', bonus: {科技:4,产业:5} },
-      equilibrium: { name: '大陆均衡', desc: '用军备、联盟和地缘威慑保住国家地位。', bonus: {军力:4,军需:4} }
+      history:{ name:'真实主线', desc:'尊重历史骨架，在约束中争取最优解。', bonus:{稳定:2} },
+      reform:{ name:'宪政改革', desc:'用法治、教育与社会妥协重写现代化。', bonus:{社会:4,威望:2} },
+      federation:{ name:'海洋联邦', desc:'用贸易、海权与外交网络改写全球秩序。', bonus:{贸易:4,影响:3} },
+      industrial:{ name:'工业跃迁', desc:'用技术革命和重工业拉开时代差距。', bonus:{科技:4,产业:5} },
+      equilibrium:{ name:'大陆均衡', desc:'用军备、联盟和地缘威慑保住国家地位。', bonus:{军力:4,军需:4} }
     };
 
     const ACTIONS = [
-      { id: 'industry', name: '工业化建设', cost: 40, desc: '工厂、铁路与城市基础设施。', effect: {经济:12,科技:4,产业:10,财政:-35,威望:2} },
-      { id: 'army', name: '军制改革', cost: 35, desc: '整顿编制，提高训练与后勤。', effect: {军力:9,稳定:3,军需:8,财政:-25} },
-      { id: 'education', name: '教育改革', cost: 25, desc: '扩展学校体系与科教投入。', effect: {科技:6,稳定:4,社会:5,财政:-15,威望:2} },
-      { id: 'diplomacy', name: '外交扩展', cost: 30, desc: '建立协作网络与贸易机会。', effect: {影响:8,贸易:4,威望:3,财政:-18} },
-      { id: 'control', name: '镇压叛乱', cost: 28, desc: '派遣军警与地方官加强治安，压制起义。', effect: {稳定:8,军力:4,财政:-18,社会:-5} },
-      { id: 'integrate', name: '地方整编', cost: 32, desc: '承认地方利益，整合地方武装与自治权。', effect: {稳定:5,影响:6,社会:4,财政:-20} }
+      { id:'industry', name:'工业化建设', cost:40, desc:'工厂、铁路与城市基础设施。', effect:{经济:12,科技:4,产业:10,财政:-35,威望:2} },
+      { id:'army', name:'军制改革', cost:35, desc:'整顿编制，提高训练与后勤。', effect:{军力:9,稳定:3,军需:8,财政:-25} },
+      { id:'education', name:'教育改革', cost:25, desc:'扩展学校体系与科教投入。', effect:{科技:6,稳定:4,社会:5,财政:-15,威望:2} },
+      { id:'diplomacy', name:'外交扩展', cost:30, desc:'建立协作网络与贸易机会。', effect:{影响:8,贸易:4,威望:3,财政:-18} },
+      { id:'control', name:'镇压叛乱', cost:28, desc:'派遣军警与地方官加强治安，压制起义。', effect:{稳定:8,军力:4,财政:-18,社会:-5} },
+      { id:'integrate', name:'地方整编', cost:32, desc:'承认地方利益，整合地方武装与自治权。', effect:{稳定:5,影响:6,社会:4,财政:-20} }
     ];
 
     const GLOBAL_EVENTS = [
-      { id: '1848_reform_pressure', year: 1848, title: '1848：改革浪潮', text: '城市工人、知识分子与旧精英都要求重新定义国家。', choices: [
-        { name: '压制动乱', result: '短期秩序恢复，但社会怨恨升级。', effect: {稳定:8,社会:-8,财政:-25}, influence: {军方:18,保守派:12} },
-        { name: '开放改革', result: '社会契约被修补，威望上升。', effect: {稳定:6,社会:10,威望:7,财政:-18}, influence: {改革派:20,工党:12} },
-        { name: '妥协立宪', result: '合法性稳步增强。', effect: {稳定:10,威望:8,社会:6,财政:-12}, influence: {改革派:12,商业派:8} }
+      { id:'1848_reform_pressure', year:1848, title:'1848：改革浪潮', text:'城市工人、知识分子与旧精英都要求重新定义国家。', choices:[
+        { name:'压制动乱', result:'短期秩序恢复，但社会怨恨升级。', effect:{稳定:8,社会:-8,财政:-25}, influence:{军方:18,保守派:12} },
+        { name:'开放改革', result:'社会契约被修补，威望上升。', effect:{稳定:6,社会:10,威望:7,财政:-18}, influence:{改革派:20,工党:12} },
+        { name:'妥协立宪', result:'合法性稳步增强。', effect:{稳定:10,威望:8,社会:6,财政:-12}, influence:{改革派:12,商业派:8} }
       ] },
-      { id: '1871_unification', year: 1871, title: '1871：统一与均势', text: '新的民族国家改变大陆格局，军事、政治与资本都在重新分配。', choices: [
-        { name: '强化军备', result: '威慑增强，但财政和社会代价增加。', effect: {军力:12,财政:-30,稳定:-4,军需:8}, influence: {军方:18,保守派:10} },
-        { name: '扩展工业', result: '经济与科技上升，社会也更活跃。', effect: {经济:10,科技:8,产业:10,财政:-20}, influence: {商业派:15,改革派:8} },
-        { name: '保留权力均衡', result: '稳中求进，威望与影响都受益。', effect: {稳定:6,影响:9,威望:7,财政:-10}, influence: {外交派:14,保守派:6} }
+      { id:'1871_unification', year:1871, title:'1871：统一与均势', text:'新的民族国家改变大陆格局，军事、政治与资本都在重新分配。', choices:[
+        { name:'强化军备', result:'威慑增强，但财政和社会代价增加。', effect:{军力:12,财政:-30,稳定:-4,军需:8}, influence:{军方:18,保守派:10} },
+        { name:'扩展工业', result:'经济与科技上升，社会也更活跃。', effect:{经济:10,科技:8,产业:10,财政:-20}, influence:{商业派:15,改革派:8} },
+        { name:'保留权力均衡', result:'稳中求进，威望与影响都受益。', effect:{稳定:6,影响:9,威望:7,财政:-10}, influence:{外交派:14,保守派:6} }
       ] },
-      { id: '1914_world_war', year: 1914, title: '1914：世界大战', text: '动员、谈判或中立都会留下代价。你的制度能承受总动员吗？', choices: [
-        { name: '全面动员', result: '国力提升，但社会与财政受到压迫。', effect: {军力:14,军需:14,财政:-35,社会:-7,稳定:-6}, influence: {军方:22,保守派:12} },
-        { name: '有限动员', result: '先保住国力、后扭转局势。', effect: {稳定:4,经济:6,军力:8,财政:-18}, influence: {外交派:15,商业派:8} },
-        { name: '中立求稳', result: '保住财政与社会，但影响下降。', effect: {财政:20,稳定:5,影响:-10,威望:-4}, influence: {外交派:18,商业派:6} }
+      { id:'1914_world_war', year:1914, title:'1914：世界大战', text:'动员、谈判或中立都会留下代价。你的制度能承受总动员吗？', choices:[
+        { name:'全面动员', result:'国力提升，但社会与财政受到压迫。', effect:{军力:14,军需:14,财政:-35,社会:-7,稳定:-6}, influence:{军方:22,保守派:12} },
+        { name:'有限动员', result:'先保住国力、后扭转局势。', effect:{稳定:4,经济:6,军力:8,财政:-18}, influence:{外交派:15,商业派:8} },
+        { name:'中立求稳', result:'保住财政与社会，但影响下降。', effect:{财政:20,稳定:5,影响:-10,威望:-4}, influence:{外交派:18,商业派:6} }
       ] },
-      { id: '1929_credit_crash', year: 1929, title: '1929：经济危机', text: '银行、工厂和家庭都在失去安全感。救市意味着债务，紧缩意味着失业。', choices: [
-        { name: '大规模救市', result: '暂时稳定，但财政承压。', effect: {稳定:10,财政:-34,经济:8,社会:6}, influence: {商业派:16,改革派:10} },
-        { name: '紧缩复苏', result: '财政更稳，但社会代价很高。', effect: {财政:15,稳定:-8,社会:-10,威望:-5}, influence: {保守派:18,军方:6} },
-        { name: '社会工程', result: '工人与城市获得一轮缓冲，国家更具合法性。', effect: {稳定:7,社会:12,威望:8,财政:-20}, influence: {工党:18,改革派:10} }
+      { id:'1929_credit_crash', year:1929, title:'1929：经济危机', text:'银行、工厂和家庭都在失去安全感。救市意味着债务，紧缩意味着失业。', choices:[
+        { name:'大规模救市', result:'暂时稳定，但财政承压。', effect:{稳定:10,财政:-34,经济:8,社会:6}, influence:{商业派:16,改革派:10} },
+        { name:'紧缩复苏', result:'财政更稳，但社会代价很高。', effect:{财政:15,稳定:-8,社会:-10,威望:-5}, influence:{保守派:18,军方:6} },
+        { name:'社会工程', result:'工人与城市获得一轮缓冲，国家更具合法性。', effect:{稳定:7,社会:12,威望:8,财政:-20}, influence:{工党:18,改革派:10} }
       ] },
-      { id: '1945_new_world', year: 1945, title: '1945：新世界', text: '战争结束，帝国、民族国家与新国际组织争夺未来叙事。', choices: [
-        { name: '参与新秩序', result: '影响提升，但需要成本与妥协。', effect: {影响:12,财政:-20,威望:7,稳定:4}, influence: {外交派:20,商业派:9} },
-        { name: '保守主权', result: '更容易稳住国家，但失去部分国际话语权。', effect: {稳定:7,军力:6,影响:-8,财政:10}, influence: {保守派:16,军方:8} },
-        { name: '改革联盟', result: '让制度更现代化，代价是更大社会调整。', effect: {稳定:8,社会:12,威望:9,财政:-12}, influence: {改革派:18,工党:10} }
+      { id:'1945_new_world', year:1945, title:'1945：新世界', text:'战争结束，帝国、民族国家与新国际组织争夺未来叙事。', choices:[
+        { name:'参与新秩序', result:'影响提升，但需要成本与妥协。', effect:{影响:12,财政:-20,威望:7,稳定:4}, influence:{外交派:20,商业派:9} },
+        { name:'保守主权', result:'更容易稳住国家，但失去部分国际话语权。', effect:{稳定:7,军力:6,影响:-8,财政:10}, influence:{保守派:16,军方:8} },
+        { name:'改革联盟', result:'让制度更现代化，代价是更大社会调整。', effect:{稳定:8,社会:12,威望:9,财政:-12}, influence:{改革派:18,工党:10} }
       ] }
     ];
 
@@ -233,23 +245,24 @@
       flags: {},
       leader: {},
       regions: [],
-      aiAdvice: ''
+      aiAdvice: '',
+      pressure: 0
     };
 
-    const $ = id => document.getElementById(id);
+    const $ = (id) => document.getElementById(id);
 
     function clamp() {
       METRICS.forEach(k => {
-        const value = Number(state.stats[k] || 0);
-        if (k === '财政') state.stats[k] = Math.round(value);
-        else if (k === '人口') state.stats[k] = Math.min(500, Math.max(0, value));
-        else state.stats[k] = Math.min(100, Math.max(0, value));
+        const v = Number(state.stats[k] || 0);
+        if (k === '财政') state.stats[k] = Math.round(v);
+        else if (k === '人口') state.stats[k] = Math.min(500, Math.max(0, v));
+        else state.stats[k] = Math.min(100, Math.max(0, v));
       });
     }
 
     function apply(obj) {
       Object.keys(obj || {}).forEach(k => {
-        if (k in state.stats) state.stats[k] += obj[k];
+        if (k in state.stats) state.stats[k] += Number(obj[k] || 0);
       });
       clamp();
     }
@@ -257,7 +270,7 @@
     function setFactionInfluence(overrides) {
       FACTIONS.forEach(f => { if (!state.factionInfluence[f]) state.factionInfluence[f] = 0; });
       Object.keys(overrides || {}).forEach(f => {
-        if (f in state.factionInfluence) state.factionInfluence[f] += overrides[f];
+        if (f in state.factionInfluence) state.factionInfluence[f] += Number(overrides[f] || 0);
       });
       FACTIONS.forEach(f => state.factionInfluence[f] = Math.max(0, Math.min(100, state.factionInfluence[f])));
     }
@@ -277,11 +290,11 @@
 
     function log(msg) {
       state.logs.unshift(msg);
-      state.logs = state.logs.slice(0, 35);
+      state.logs = state.logs.slice(0, 36);
     }
 
     function buildLeaderProfile(countryData) {
-      const preset = countryData.leaderPreset || { name: '国家领袖', charisma:60, resolve:60, wisdom:60, ruthlessness:40, reform:50, legitimacy:60 };
+      const preset = countryData.leaderPreset || { name:'国家领袖', charisma:60, resolve:60, wisdom:60, ruthlessness:40, reform:50, legitimacy:60 };
       state.leader = {
         ...preset,
         authority: Math.round((preset.resolve + preset.legitimacy + preset.charisma) / 3),
@@ -290,11 +303,20 @@
     }
 
     function buildRegions(countryData) {
-      state.regions = (countryData.regions || []).map((region, idx) => {
-        const baseStrength = (state.stats.经济 + state.stats.军力 + state.stats.影响 + state.stats.科技) / 4;
-        const contenderScore = Math.min(99, Math.round(region.basePower * 0.45 + region.potential * 0.35 + baseStrength * 0.20));
-        return { ...region, heat: region.heat || 20 + idx * 8, contenderScore };
-      });
+      state.regions = (countryData.regions || []).map((region) => ({
+        ...region,
+        heat: Math.min(100, Math.max(0, region.heat || 20)),
+        risk: Math.min(100, Math.max(0, region.risk || 50)),
+        contenderScore: Math.round((region.heat || 20) * 0.55 + (region.risk || 50) * 0.45)
+      }));
+    }
+
+    function computePressure() {
+      const s = state.stats;
+      const avgHeat = state.regions.reduce((total, r) => total + r.heat, 0) / Math.max(1, state.regions.length);
+      const pressure = Math.round((100 - s.稳定) * 0.38 + (100 - s.威望) * 0.18 + avgHeat * 0.44 + (100 - s.财政 / 6) * 0.12);
+      state.pressure = Math.max(0, Math.min(100, pressure));
+      return state.pressure;
     }
 
     function getFactionSummary() {
@@ -304,13 +326,13 @@
 
     function buildAIAdvice() {
       const s = state.stats;
-      const hottest = [...state.regions].sort((a,b) => b.heat - a.heat)[0];
-      if (s.稳定 < 42 || (hottest && hottest.heat > 70)) {
-        return `AI判断：国家正在承受地方叛乱与制度压力，建议优先镇压${hottest ? hottest.name : '关键地区'}，随后整编地方军政，避免“镇压-反弹”的循环。`;
+      const hot = [...state.regions].sort((a,b) => b.heat - a.heat)[0];
+      if (s.稳定 < 42 || (hot && hot.heat > 70)) {
+        return `AI判断：国家正在承受地方叛乱与制度压力，建议优先镇压${hot ? hot.name : '关键地区'}，随后整编地方军政，避免“镇压-反弹”的循环。`;
       }
       if (s.财政 < 180) return 'AI判断：财政压制日益明显，建议压缩盲目扩张、保护税源和重工业，降低债务对社会合法性的冲击。';
       if (s.军力 < 58 && s.稳定 > 55) return 'AI判断：军力与军需水平不足，建议推进军制改革、关键铁路与边境防御，避免外部威胁叠加。';
-      if (s.科技 < 65) return 'AI判断：教育、技术与工业生态仍偏弱，建议以教育改革和工业建设为主，不宜在外部扩张上过度冒险。';
+      if (s.科技 < 65) return 'AI判断：知识、教育与工业生态仍偏弱，建议以教育改革和工业建设为主，不宜在外部扩张上过度冒险。';
       if (s.影响 < 55) return 'AI判断：国际影响力不足，建议与海权/协约网络同行，稳步提升外交、贸易和国家信誉。';
       return 'AI判断：国家处于相对稳固期，建议保持稳定、财政和社会之间的平衡，并在地区博弈中选取最能提升合法性的路线。';
     }
@@ -325,9 +347,9 @@
           title: `${state.year}：${hotRegion.name}割据危机`,
           text: `${hotRegion.contender}在${hotRegion.name}集结力量，地区潜力与国家政治冲突叠加。`,
           choices: [
-            { name: '镇压并整编', result: '短期秩序恢复，但损耗社会与法制。', effect: {稳定:8,军力:5,社会:-8,财政:-22}, influence: {军方:20,地方派:10} },
-            { name: '地方自治改革', result: '维持稳定与延缓叛乱，但牺牲部分中央控制。', effect: {稳定:5,社会:8,影响:7,财政:-15}, influence: {改革派:15,地方派:18} },
-            { name: '联合当地名士', result: '提升合法性，削弱割据热度。', effect: {稳定:6,威望:7,社会:5,财政:-12}, influence: {工党:10,外交派:8} }
+            { name:'镇压并整编', result:'短期秩序恢复，但损耗社会与法制。', effect:{稳定:8,军力:5,社会:-8,财政:-22}, influence:{军方:20,地方派:10} },
+            { name:'地方自治改革', result:'维持稳定与延缓叛乱，但牺牲部分中央控制。', effect:{稳定:5,社会:8,影响:7,财政:-15}, influence:{改革派:15,地方派:18} },
+            { name:'联合当地名士', result:'提升合法性，削弱割据热度。', effect:{稳定:6,威望:7,社会:5,财政:-12}, influence:{工党:10,外交派:8} }
           ]
         };
       }
@@ -338,16 +360,22 @@
       const c = getCountryData();
       $('leaderName').textContent = `${state.leader.name} · ${state.leader.authority}权威`;
       $('leaderDesc').textContent = `${c.mood} 其统治风格以${state.leader.charisma > 75 ? '威严型' : state.leader.reform > 65 ? '改革型' : state.leader.ruthlessness > 55 ? '铁腕型' : '务实型'}为核心。`;
-      const metricMap = [
-        ['威望', state.leader.charisma],
-        ['决断', state.leader.resolve],
-        ['智慧', state.leader.wisdom],
-        ['合法', state.leader.legitimacy],
-        ['改革', state.leader.reform],
-        ['铁腕', state.leader.ruthlessness]
-      ];
+      const metricMap = [ ['威望', state.leader.charisma], ['决断', state.leader.resolve], ['智慧', state.leader.wisdom], ['合法', state.leader.legitimacy], ['改革', state.leader.reform], ['铁腕', state.leader.ruthlessness] ];
       $('leaderStats').innerHTML = metricMap.map(([label, value]) => `
         <div class="attr-box"><div class="label">${label}</div><div class="val">${value}</div></div>
+      `).join('');
+    }
+
+    function renderStateGrid() {
+      const s = state.stats;
+      const blocks = [
+        ['合法性', Math.max(0, Math.min(100, Math.round((s.稳定 + s.威望 + state.leader.legitimacy) / 3)))],
+        ['财政', Math.max(0, Math.min(100, Math.round((s.财政 + 100) / 10)))],
+        ['军政', Math.max(0, Math.min(100, Math.round((s.军力 + state.leader.resolve) / 2)))],
+        ['社会', Math.max(0, Math.min(100, Math.round((s.社会 + s.稳定 + state.leader.reform) / 3))) ]
+      ];
+      $('stateGrid').innerHTML = blocks.map(([label, value]) => `
+        <div class="state-box"><div class="label">${label}</div><div class="value">${value}</div></div>
       `).join('');
     }
 
@@ -370,25 +398,13 @@
         return `
           <div class="region-card">
             <div class="region-head"><strong>${region.name}</strong><b class="${cls}">${Math.round(region.heat)}</b></div>
-            <small>热度 / 关键人物 / 竞争</small>
+            <small>热度 / 关键人物 / 风险</small>
             <div style="margin-top:8px;color:#dfeefb;font-size:12px;line-height:1.6;">
-              ${region.contender}<br>评估：${region.contenderScore}<br>目标：${region.ambition}
+              ${region.contender}<br>风险 ${region.risk} | 评估 ${region.contenderScore}<br>目标：${region.ambition}
             </div>
           </div>
         `;
       }).join('');
-    }
-
-    function renderRegionalAgents() {
-      const list = state.regions.map(region => `
-        <div class="point"><strong>${region.name}</strong><br><span class="muted">命运之子：${region.contender}</span><br><span>综合实力 ${region.contenderScore} | 地区潜力 ${region.potential} | 热度 ${region.heat}</span></div>
-      `).join('');
-      $('regionalAgents').innerHTML = list || '<div class="point">暂无地区领袖</div>';
-    }
-
-    function renderInertia() {
-      const list = [...(state.inertia || []), ...(state.logs || []).slice(0, 2)].slice(0, 6);
-      $('inertia').innerHTML = list.map(x => `<div class="point">${x}</div>`).join('') || '<div class="point">暂无惯性</div>';
     }
 
     function renderMiniInfo() {
@@ -397,19 +413,20 @@
         `路线：${getRouteData().name}`,
         `政治气候：${c.mood}`,
         `统治集团：${getFactionSummary()}`,
-        `地区热区：${state.regions.filter(r => r.heat > 50).length}个`,
-        `领袖权威：${state.leader.authority}`
+        `地区风险：${state.regions.filter(r => r.heat > 50).length}个热点`,
+        `当前压力：${computePressure()} / 100`
       ].map(x => `<div class="mini">${x}</div>`).join('');
     }
 
     function renderActions() {
-      const routeName = getRouteData().name;
-      const routeExtras = [];
-      if (routeName === '宪政改革') routeExtras.push({ id: 'parliament', name: '扩大议会', cost: 30, desc: '提高制度合法性与社会参与。', effect: {稳定:8,社会:8,威望:7,财政:-20} });
-      if (routeName === '海洋联邦') routeExtras.push({ id: 'navy', name: '海军扩张', cost: 35, desc: '控制航线并维护海外网络。', effect: {影响:9,贸易:6,军力:5,财政:-25} });
-      if (routeName === '工业跃迁') routeExtras.push({ id: 'steel', name: '钢铁与电力', cost: 40, desc: '以重工业换取技术与产能。', effect: {科技:9,经济:14,产业:12,财政:-30} });
-      if (routeName === '大陆均衡') routeExtras.push({ id: 'railway', name: '战略铁路', cost: 32, desc: '连接军工、资源与边疆。', effect: {军力:7,经济:6,产业:7,军需:10,财政:-23} });
-      const actions = [...ACTIONS, ...routeExtras];
+      const route = getRouteData();
+      const extras = [];
+      if (route.name === '宪政改革') extras.push({ id:'parliament', name:'扩大议会', cost:30, desc:'提高制度合法性与社会参与。', effect:{稳定:8,社会:8,威望:7,财政:-20} });
+      if (route.name === '海洋联邦') extras.push({ id:'navy', name:'海军扩张', cost:35, desc:'控制航线并维护海外网络。', effect:{影响:9,贸易:6,军力:5,财政:-25} });
+      if (route.name === '工业跃迁') extras.push({ id:'steel', name:'钢铁与电力', cost:40, desc:'以重工业换取技术与产能。', effect:{科技:9,经济:14,产业:12,财政:-30} });
+      if (route.name === '大陆均衡') extras.push({ id:'railway', name:'战略铁路', cost:32, desc:'连接军工、资源与边疆。', effect:{军力:7,经济:6,产业:7,军需:10,财政:-23} });
+
+      const actions = [...ACTIONS, ...extras];
       $('actions').innerHTML = actions.map((a, i) => `
         <button class="action" data-i="${i}" ${state.used || state.ended ? 'disabled' : ''}>
           <div class="action-head"><span>${a.name}</span><span class="cost">${a.cost}财</span></div>
@@ -417,6 +434,10 @@
         </button>
       `).join('');
       $('actions').querySelectorAll('.action').forEach(btn => btn.onclick = () => performAction(Number(btn.dataset.i)));
+    }
+
+    function renderLogs() {
+      $('logs').innerHTML = (state.logs.length ? state.logs : ['暂无历史记录。']).map(x => `<div class="log">${x}</div>`).join('');
     }
 
     function renderGoals() {
@@ -430,12 +451,13 @@
         ['地方整合', state.regions.every(r => r.heat < 40)]
       ];
       $('goals').innerHTML = goals.map(([text, done]) => `
-        <div class="goal"><span>${text}</span><span class="chip ${done ? 'done' : 'todo'}">${done ? '已达成' : '待达成'}</span></div>
+        <div class="goal-row"><span>${text}</span><span class="chip ${done ? 'done' : 'todo'}">${done ? '已达成' : '待达成'}</span></div>
       `).join('');
     }
 
-    function renderLogs() {
-      $('logs').innerHTML = (state.logs.length ? state.logs : ['暂无历史记录。']).map(x => `<div class="log">${x}</div>`).join('');
+    function renderInertia() {
+      const list = [...(state.inertia || []), ...state.logs.slice(0, 2)];
+      $('inertia').innerHTML = list.slice(0, 8).map(x => `<div class="point">${x}</div>`).join('') || '<div class="point">暂无惯性</div>';
     }
 
     function renderStatus() {
@@ -447,7 +469,7 @@
       $('institution').textContent = c.institution;
       $('anchor').textContent = anchors[state.year] || '结构性变化正在累积，下一次选择可能改变时代。';
       $('traits').innerHTML = c.tags.map(tag => `<span class="tag">${tag}</span>`).join('') + ` <span class="tag">${state.leader.name}</span> <span class="tag">${r.name}</span>`;
-      $('traitDesc').textContent = `当前路线：${r.desc}。领导人的威望、合法性与决断会影响危机判断：威严型更偏国家整合，改革型更重社会与合法性，铁腕型更偏军备与镇压。`;
+      $('traitDesc').textContent = `${c.trait} 当前路线：${r.desc}`;
       state.aiAdvice = buildAIAdvice();
       $('aiAdvisor').textContent = state.aiAdvice;
 
@@ -459,19 +481,18 @@
         const color = k === '稳定' ? 'var(--green)' : k === '军力' ? 'var(--red)' : k === '财政' ? 'var(--gold)' : k === '影响' ? 'var(--purple)' : 'var(--blue)';
         return `<div class="metric"><div class="head"><span>${k}</span><b>${v}</b></div><div class="bar"><i style="width:${width}%;background:${color};"></i></div></div>`;
       }).join('');
-      const existingStats = document.querySelector('.stats');
-      if (existingStats) existingStats.replaceWith(statsWrap);
-      else document.querySelector('.card .mini-list')?.parentElement?.appendChild(statsWrap);
+      const old = document.querySelector('.stats');
+      if (old) old.replaceWith(statsWrap);
 
       renderLeaderPanel();
+      renderStateGrid();
       renderPartyPower();
-      renderMiniInfo();
       renderRegions();
-      renderRegionalAgents();
-      renderInertia();
+      renderMiniInfo();
       renderActions();
       renderLogs();
       renderGoals();
+      renderInertia();
     }
 
     function resetGame() {
@@ -499,8 +520,8 @@
       state.factionInfluence['地方派'] = 11;
       buildLeaderProfile(c);
       buildRegions(c);
-      apply(routes[state.route].bonus || {});
-      log(`${state.country} 于 1830 年起步，路线：${routes[state.route].name}。你以 ${state.leader.name} 的姿态统治国家。`);
+      apply(getRouteData().bonus || {});
+      log(`${state.country} 于 1830 年起步，路线：${getRouteData().name}。你以 ${state.leader.name} 的姿态统治国家。`);
       render();
     }
 
@@ -534,12 +555,12 @@
 
     function performAction(index) {
       if (state.used || state.ended) return;
-      const routeName = getRouteData().name;
+      const route = getRouteData();
       const extras = [];
-      if (routeName === '宪政改革') extras.push({ id: 'parliament', name: '扩大议会', cost: 30, desc: '提高制度合法性与社会参与。', effect: {稳定:8,社会:8,威望:7,财政:-20} });
-      if (routeName === '海洋联邦') extras.push({ id: 'navy', name: '海军扩张', cost: 35, desc: '控制航线并维护海外网络。', effect: {影响:9,贸易:6,军力:5,财政:-25} });
-      if (routeName === '工业跃迁') extras.push({ id: 'steel', name: '钢铁与电力', cost: 40, desc: '以重工业换取技术与产能。', effect: {科技:9,经济:14,产业:12,财政:-30} });
-      if (routeName === '大陆均衡') extras.push({ id: 'railway', name: '战略铁路', cost: 32, desc: '连接军工、资源与边疆。', effect: {军力:7,经济:6,产业:7,军需:10,财政:-23} });
+      if (route.name === '宪政改革') extras.push({ id:'parliament', name:'扩大议会', cost:30, desc:'提高制度合法性与社会参与。', effect:{稳定:8,社会:8,威望:7,财政:-20} });
+      if (route.name === '海洋联邦') extras.push({ id:'navy', name:'海军扩张', cost:35, desc:'控制航线并维护海外网络。', effect:{影响:9,贸易:6,军力:5,财政:-25} });
+      if (route.name === '工业跃迁') extras.push({ id:'steel', name:'钢铁与电力', cost:40, desc:'以重工业换取技术与产能。', effect:{科技:9,经济:14,产业:12,财政:-30} });
+      if (route.name === '大陆均衡') extras.push({ id:'railway', name:'战略铁路', cost:32, desc:'连接军工、资源与边疆。', effect:{军力:7,经济:6,产业:7,军需:10,财政:-23} });
       const actions = [...ACTIONS, ...extras];
       const a = actions[index];
       if (!a) return;
@@ -589,14 +610,16 @@
       s.贸易 += state.route === 'federation' ? 2 : 1;
       s.产业 += state.route === 'industrial' ? 3 : 1;
       s.军需 += state.route === 'equilibrium' ? 2 : 0;
-      state.regions.forEach(region => region.heat = Math.min(100, Math.max(0, region.heat + (state.stats.稳定 < 60 ? 3 : 1) + (state.route === 'reform' ? 1 : 0))));
+      state.regions.forEach(region => {
+        region.heat = Math.min(100, Math.max(0, region.heat + (state.stats.稳定 < 60 ? 3 : 1) + (state.route === 'reform' ? 1 : 0)));
+      });
       if (s.财政 < 0) { s.稳定 -= 4; s.威望 -= 2; log(`${state.year}年：债务压力削弱了政权合法性。`); }
       if (s.社会 < 35) { s.稳定 -= 5; log(`${state.year}年：社会不安开始扩散。`); }
       if (state.regions.some(r => r.heat > 60)) {
         const hot = [...state.regions].sort((a,b) => b.heat - a.heat)[0];
         state.inertia.unshift(`地区热点：${hot.name}热度${Math.round(hot.heat)}，地方割据正在形成。`);
       }
-      state.inertia = state.inertia.slice(0, 5);
+      state.inertia = state.inertia.slice(0, 6);
       clamp();
       const available = getAvailableEvent();
       if (available) {
@@ -608,21 +631,20 @@
     }
 
     function saveGame() {
-      localStorage.setItem('SVVIP_SAVE_V17', JSON.stringify(state));
+      localStorage.setItem('SVVIP_SAVE_V18', JSON.stringify(state));
       log('游戏已保存。');
       render();
     }
 
     function loadGame() {
       try {
-        const raw = localStorage.getItem('SVVIP_SAVE_V17');
+        const raw = localStorage.getItem('SVVIP_SAVE_V18');
         if (!raw) return false;
         const data = JSON.parse(raw);
         if (!data || !data.country) return false;
         Object.assign(state, data);
         if (!state.regions || !state.regions.length) {
-          const c = getCountryData();
-          buildRegions(c);
+          buildRegions(getCountryData());
         }
         if (!state.factionInfluence) state.factionInfluence = {};
         FACTIONS.forEach(f => state.factionInfluence[f] = state.factionInfluence[f] || 0);
