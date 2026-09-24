@@ -1,0 +1,494 @@
+import {
+  VERSION,
+  SAVE_KEY,
+  YEARS,
+  METRICS,
+  FACTIONS,
+  anchors,
+  countries,
+  routes,
+  ACTIONS,
+  EVENTS
+} from './data.js';
+
+const $ = (id) => document.getElementById(id);
+let state;
+
+function buildLeader() {
+  const p = countries[state.country].leader;
+  state.leader = {
+    name: p[0],
+    charisma: p[1],
+    resolve: p[2],
+    wisdom: p[3],
+    ruthlessness: p[4],
+    reform: p[5],
+    legitimacy: p[6],
+    authority: Math.round((p[1] + p[2] + p[3] + p[6]) / 4)
+  };
+}
+
+function fresh() {
+  const c = countries['大英帝国'];
+  state = {
+    version: VERSION,
+    year: YEARS.start,
+    country: '大英帝国',
+    route: 'history',
+    stats: { ...c.base },
+    faction: Object.fromEntries(FACTIONS.map((x) => [x, 20])),
+    regions: [
+      { name: '核心区', heat: 24 },
+      { name: '工业区', heat: 35 },
+      { name: '边疆区', heat: 42 },
+      { name: '海外区', heat: 28 },
+      { name: '海上航线', heat: 30 }
+    ],
+    logs: ['1830年：新国家在历史分岔口开始执政。'],
+    flags: {},
+    used: false,
+    ended: false,
+    event: null,
+    history: [],
+    achievements: []
+  };
+  apply(routes.history[2]);
+  buildLeader();
+}
+
+function clamp() {
+  METRICS.forEach((k) => {
+    let v = Number(state.stats[k] || 0);
+    if (k === '财政') state.stats[k] = Math.round(v);
+    else if (k === '人口') state.stats[k] = Math.max(0, Math.min(500, v));
+    else state.stats[k] = Math.max(0, Math.min(100, v));
+  });
+
+  state.regions.forEach((r) => {
+    r.heat = Math.max(0, Math.min(100, Math.round(r.heat)));
+  });
+}
+
+function currentRoute() {
+  return routes[state.route] || routes.history;
+}
+
+function apply(o) {
+  Object.entries(o || {}).forEach(([k, v]) => {
+    if (k in state.stats) state.stats[k] += Number(v);
+  });
+  clamp();
+}
+
+function factionChange(o) {
+  Object.entries(o || {}).forEach(([k, v]) => {
+    if (k in state.faction) state.faction[k] = Math.max(0, Math.min(100, state.faction[k] + Number(v)));
+  });
+}
+
+function log(message) {
+  state.logs.unshift(message);
+  state.logs = state.logs.slice(0, 80);
+}
+
+function era(y) {
+  if (y <= 1850) return '工业前夜';
+  if (y <= 1875) return '扩张时代';
+  if (y <= 1900) return '大国博弈';
+  if (y <= 1918) return '总体战时代';
+  if (y <= 1939) return '危机年代';
+  return '重建时代';
+}
+
+function pressure() {
+  const s = state.stats;
+  const avg = state.regions.reduce((sum, r) => sum + r.heat, 0) / state.regions.length;
+  return Math.round(Math.max(0, Math.min(100, (100 - s.稳定) * 0.4 + (100 - s.威望) * 0.12 + avg * 0.38 + (100 - s.社会) * 0.1)));
+}
+
+function advice() {
+  const hot = [...state.regions].sort((a, b) => b.heat - a.heat)[0];
+  const s = state.stats;
+  if (s.财政 < 50) return 'AI判断：财政储备过低，优先行政改革或开放贸易。';
+  if (s.稳定 < 42 || hot.heat > 70) return `AI判断：优先处理${hot.name}热区，先镇压或整编，再恢复社会信任。`;
+  if (s.科技 < 55) return 'AI判断：技术与教育是跨越时代的低风险投资。';
+  if (s.军力 > 85 && s.稳定 < 60) return 'AI判断：军力过强且社会过度压缩，需降低动员强度。';
+  return 'AI判断：局势可控。继续平衡产业、社会与外交，避免单项指标失衡。';
+}
+
+function actionList() {
+  let arr = [...ACTIONS];
+  if (state.route === 'reform') arr.push(['parliament', '扩大议会', 30, '提高制度合法性与社会参与。', { ���定: 8, 社会: 8, 威望: 7, 财政: -20 }]);
+  if (state.route === 'industry') arr.push(['research', '国家科研院', 45, '集中资源突破技术瓶颈。', { 科技: 14, 产业: 7, 财政: -45 }]);
+  if (state.route === 'diplomacy') arr.push(['league', '建立协约体系', 38, '用长期条约降低冲突与贸易风险。', { 影响: 12, 贸易: 10, 财政: -25, 军力: -2 }]);
+  if (state.route === 'revolution') arr.push(['mobilize', '社会动员', 34, '掀起群众政治参与与文艺动员。', { 社会: 11, 稳定: 2, 影响: 7, 财政: -18 }]);
+  if (state.route === 'sovereignty') arr.push(['border', '边境整合', 42, '强化防线，压缩地方割据。', { 军力: 9, 稳定: 6, 财政: -26, 社会: -3 }]);
+  return arr;
+}
+
+function availableEvent() {
+  if (state.year === YEARS.end) return null;
+  const event = EVENTS.find((e) => e.year === state.year && !state.flags[e.id]);
+  if (event) return event;
+
+  const hot = [...state.regions].sort((a, b) => b.heat - a.heat)[0];
+  if (hot && hot.heat > 78 && !state.flags['crisis' + state.year]) {
+    return {
+      id: 'crisis' + state.year,
+      year: state.year,
+      title: '地方危机：' + hot.name,
+      text: '热区正在挑战中央权威，必须立即回应。',
+      choices: [
+        ['派遣调停团', '缓和对立，但行政成本增加。', { 稳定: 4, 社会: 5, 财政: -20 }, { 改革派: 4 }],
+        ['强制整编', '快速恢复秩序，留下长期伤痕。', { 稳定: 8, 社会: -12, 军力: 4 }, { 军方: 6, 民众: -8 }]
+      ]
+    };
+  }
+  return null;
+}
+
+function metricClass(key, value) {
+  if (key === '稳定' || key === '威望') {
+    if (value < 45) return 'bad';
+    if (value > 75) return 'good';
+    return 'warn';
+  }
+  if (value > 75) return 'good';
+  if (value < 35) return 'bad';
+  return '';
+}
+
+function renderGoals() {
+  const s = state.stats;
+  const goals = [
+    ['富强国家', s.经济 >= 80 && s.产业 >= 75],
+    ['技术突破', s.科技 >= 85],
+    ['社会契约', s.社会 >= 80 && s.稳定 >= 65],
+    ['世界影响', s.影响 >= 85 && s.威望 >= 80],
+    ['财政韧性', s.财政 >= 500],
+    ['海陆主导', s.军力 >= 80 && s.贸易 >= 70]
+  ];
+
+  $('goals').innerHTML = goals.map(([name, done]) => `
+    <div class="goal">
+      <span>${name}</span>
+      <b class="${done ? 'done' : ''}">${done ? '已达成' : '进行中'}</b>
+    </div>
+  `).join('');
+}
+
+function renderAudit() {
+  const stability = state.ended ? '终局' : (state.used ? '已行动' : '可行动');
+  $('audit').textContent = `版本 ${VERSION} · 年份边界 ${YEARS.start}-${YEARS.end} · 已处理事件 ${Object.keys(state.flags).length} · 当前${stability} · 关键风险 ${pressure() > 65 ? '高' : '中'} · 存档结构校验通过`;
+}
+
+function renderSummary() {
+  $('summary').innerHTML = `路线：<b>${currentRoute()[0]}</b><br>路线效果：${currentRoute()[1]}<br>综合压力：<b class="${pressure() > 65 ? 'danger' : ''}">${pressure()}</b><br>派系：${FACTIONS.map((f) => `${f} ${state.faction[f]}`).join(' · ')}`;
+}
+
+function renderStats() {
+  $('stats').innerHTML = METRICS.map((k) => {
+    const value = state.stats[k];
+    const max = k === '财政' ? 800 : k === '人口' ? 500 : 100;
+    return `
+      <div class="stat">
+        <span>${k}</span>
+        <div class="bar">
+          <div class="fill ${metricClass(k, value)}" style="width:${Math.min(100, Math.max(0, (value / max) * 100))}%"></div>
+        </div>
+        <b>${value}</b>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderRegions() {
+  $('regions').innerHTML = state.regions.map((r) => `
+    <div class="region">
+      <strong>${r.name}</strong>
+      <span class="heat">热度 ${r.heat}</span>
+      <div class="bar">
+        <div class="fill bad" style="width:${r.heat}%"></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderActions() {
+  $('actions').innerHTML = actionList().map((a, i) => `
+    <button class="action" data-action="${i}" ${state.used || state.ended ? 'disabled' : ''}>
+      <b>${a[1]} · ${a[2]}金</b>
+      <small>${a[3]}</small>
+    </button>
+  `).join('');
+}
+
+function renderLogs() {
+  $('logs').innerHTML = state.logs.map((x) => `<div class="log">${x}</div>`).join('');
+  $('logCount').textContent = `${state.logs.length}条`;
+}
+
+function render() {
+  clamp();
+  $('year').textContent = `${state.year}年 · ${era(state.year)}${state.ended ? ' · 结局' : ''}`;
+  $('nation').value = state.country;
+  $('route').value = state.route;
+  $('anchor').textContent = anchors[state.year] || `${state.year}年：时代在结构性压力中继续前进。`;
+  $('advice').textContent = advice();
+  $('portrait').textContent = countries[state.country].emoji;
+  $('leaderName').textContent = state.leader.name;
+  $('leaderInfo').textContent = `权威 ${state.leader.authority} · 合法性 ${state.leader.legitimacy} · 决断 ${state.leader.resolve}`;
+  $('tags').innerHTML = countries[state.country].tags.map((x) => `<span>${x}</span>`).join('');
+
+  renderStats();
+  renderRegions();
+  renderActions();
+  renderLogs();
+  renderSummary();
+  renderGoals();
+  renderAudit();
+}
+
+function showEvent(event) {
+  state.event = event;
+  $('eventTitle').textContent = event.title;
+  $('eventText').textContent = event.text;
+  $('choices').innerHTML = '';
+
+  event.choices.forEach((choice, i) => {
+    const button = document.createElement('button');
+    button.className = 'choice';
+    button.dataset.choice = i;
+    button.innerHTML = `<b>${choice[0]}</b><span>${choice[1]}</span>`;
+    $('choices').appendChild(button);
+  });
+
+  $('modal').classList.add('open');
+}
+
+function choose(i) {
+  const event = state.event;
+  const choice = event.choices[i];
+  if (!choice) return;
+
+  apply(choice[2]);
+  factionChange(choice[3]);
+  state.flags[event.id] = 1;
+  state.history.push({ year: state.year, type: 'event', id: event.id });
+  log(`${state.year}年：${event.title} → ${choice[0]}：${choice[1]}`);
+  state.event = null;
+  $('modal').classList.remove('open');
+  render();
+}
+
+function performAction(index) {
+  if (state.used || state.ended) return;
+  const action = actionList()[index];
+  if (!action) return;
+
+  if (state.stats.财政 < action[2]) {
+    toast('财政不足，行动未执行。');
+    log(`${state.year}年：财政不足，无法执行“${action[1]}”。`);
+    render();
+    return;
+  }
+
+  apply(action[4]);
+  state.used = true;
+  state.history.push({ year: state.year, type: 'action', id: action[0] });
+
+  const hot = state.regions.reduce((max, r) => (r.heat > max.heat ? r : max), state.regions[0]);
+  hot.heat += (action[0] === 'welfare' || action[0] === 'education' || action[0] === 'mobilize' ? -8 : 2);
+
+  log(`${state.year}年：执行“${action[1]}”。`);
+  render();
+
+  setTimeout(() => {
+    const event = availableEvent();
+    if (event) showEvent(event);
+  }, 120);
+}
+
+function ending() {
+  const s = state.stats;
+  if (s.稳定 < 25) return '国家崩解与革命';
+  if (s.军力 >= 85 && s.影响 >= 80 && s.稳定 >= 65) return '大陆霸权';
+  if (s.科技 >= 85 && s.经济 >= 80 && s.产业 >= 75) return '工业文明先驱';
+  if (s.社会 >= 80 && s.稳定 >= 70) return '社会契约典范';
+  if (s.财政 < 0) return '财政破产';
+  return '在风暴中幸存';
+}
+
+function finish() {
+  state.ended = true;
+  log(`${YEARS.end}年结局：${ending()}。`);
+  render();
+  toast(`历史落幕：${ending()}`);
+}
+
+function nextYear() {
+  if (state.ended || state.event) return;
+  if (state.year >= YEARS.end) {
+    finish();
+    return;
+  }
+
+  state.year += 1;
+  state.used = false;
+  const s = state.stats;
+  s.财政 += Math.max(18, Math.round(24 + s.经济 * 0.35 - s.军力 * 0.16));
+  s.经济 += Math.round((s.产业 - 50) / 18);
+  s.社会 += Math.round((s.稳定 - 55) / 25);
+  s.稳定 -= Math.max(0, Math.round(pressure() / 35 - 1));
+
+  state.regions.forEach((r) => {
+    r.heat += Math.round((100 - s.社会) / 35 - 1);
+  });
+  clamp();
+
+  log(`${state.year}年：新的一年开始。国库 ${s.财政}，压力 ${pressure()}。`);
+  render();
+
+  const event = availableEvent();
+  if (event) setTimeout(() => showEvent(event), 180);
+}
+
+function save(silent = false) {
+  localStorage.setItem(SAVE_KEY, JSON.stringify(state));
+  if (!silent) toast('存档已保存。');
+  $('status').textContent = `最近保存：${new Date().toLocaleString()}`;
+}
+
+function load(silent = false) {
+  try {
+    const saved = JSON.parse(localStorage.getItem(SAVE_KEY));
+    if (!saved || !saved.stats || !countries[saved.country]) throw new Error('invalid');
+
+    state = saved;
+    state.version = VERSION;
+    state.event = null;
+    state.regions = state.regions?.length ? state.regions : [
+      { name: '核心区', heat: 30 },
+      { name: '边疆区', heat: 40 },
+      { name: '海上航线', heat: 32 }
+    ];
+    buildLeader();
+    render();
+    if (!silent) toast('存档已读取。');
+    return true;
+  } catch (error) {
+    if (!silent) toast('没有可用的存档。');
+    return false;
+  }
+}
+
+function toast(text) {
+  const el = $('toast');
+  el.textContent = text;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2200);
+}
+
+function exportSave() {
+  const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = `svvip-${state.year}.json`;
+  link.click();
+  URL.revokeObjectURL(link.href);
+}
+
+function importSave(file) {
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const imported = JSON.parse(reader.result);
+      if (!imported.stats || !countries[imported.country]) throw new Error('invalid');
+      localStorage.setItem(SAVE_KEY, JSON.stringify(imported));
+      load();
+      toast('外部存档导入成功。');
+    } catch (error) {
+      toast('导入失败：存档格式无效。');
+    }
+  };
+  reader.readAsText(file);
+}
+
+function initializeControls() {
+  Object.keys(countries).forEach((name) => $('nation').add(new Option(name, name)));
+  Object.entries(routes).forEach(([key, value]) => $('route').add(new Option(value[0], key)));
+
+  $('nation').onchange = (e) => {
+    state.country = e.target.value;
+    state.stats = { ...countries[state.country].base };
+    state.flags = {};
+    state.year = YEARS.start;
+    state.used = false;
+    state.ended = false;
+    state.logs = [`1830年：切换为${state.country}，新的历史分岔开始。`];
+    state.regions = [
+      { name: '核心区', heat: 24 },
+      { name: '工业区', heat: 35 },
+      { name: '边疆区', heat: 42 },
+      { name: '海外区', heat: 28 },
+      { name: '海上航线', heat: 30 }
+    ];
+    buildLeader();
+    render();
+  };
+
+  $('route').onchange = (e) => {
+    state.route = e.target.value;
+    apply(currentRoute()[2]);
+    log(`选择路线：${currentRoute()[0]}。`);
+    render();
+  };
+
+  $('actions').addEventListener('click', (e) => {
+    const button = e.target.closest('[data-action]');
+    if (button) performAction(Number(button.dataset.action));
+  });
+
+  $('choices').addEventListener('click', (e) => {
+    const button = e.target.closest('[data-choice]');
+    if (button) choose(Number(button.dataset.choice));
+  });
+
+  $('save').onclick = () => save();
+  $('load').onclick = () => load();
+  $('nextYear').onclick = () => nextYear();
+  $('newGame').onclick = () => {
+    if (confirm('开始新局并覆盖当前进度？')) {
+      fresh();
+      render();
+      save(true);
+      toast('新局已开始。');
+    }
+  };
+
+  $('export').onclick = exportSave;
+  $('import').onclick = () => $('file').click();
+  $('file').onchange = (e) => { if (e.target.files[0]) importSave(e.target.files[0]); };
+
+  $('clearSave').onclick = () => {
+    localStorage.removeItem(SAVE_KEY);
+    toast('本地存档已清除。');
+  };
+
+  $('help').onclick = () => toast('选择路线→每年执行一次行动→处理事件→点击“推进年份”或按空格键推进。');
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      $('modal').classList.remove('open');
+      state.event = null;
+    }
+    if (e.key === ' ' && !state.event) {
+      e.preventDefault();
+      nextYear();
+    }
+  });
+}
+
+initializeControls();
+fresh();
+if (!load(true)) render();
