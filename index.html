@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>大时代：五线史诗 v0.1.9</title>
+  <title>大时代：五线史诗 v0.1.10</title>
   <style>
     :root {
       --bg: #08121d;
@@ -101,6 +101,14 @@
     .info-card h3 { margin: 0 0 8px; font-size: .95rem; color: var(--gold); }
     .info-card p { margin: 0; color: var(--muted); line-height: 1.6; font-size: .92rem; }
 
+    .trait-list {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px;
+    }
+    .trait {
+      border: 1px solid rgba(245,209,122,.35); color: var(--gold); padding: 5px 8px; border-radius: 999px;
+      background: rgba(245,209,122,.08); font-size: .75rem; white-space: nowrap;
+    }
+
     .region-grid { display: grid; grid-template-columns: repeat(3, minmax(120px, 1fr)); gap: 10px; }
     .region {
       border-radius: 12px; border: 1px solid var(--line); background: rgba(255,255,255,.02); padding: 10px 8px;
@@ -173,7 +181,7 @@
     <header class="top">
       <div class="brand-wrap">
         <div class="brand">大时代 · 五线史诗</div>
-        <span class="version-tag" id="gameVersion">v0.1.9</span>
+        <span class="version-tag" id="gameVersion">v0.1.10</span>
       </div>
       <div class="topright">
         <div class="year" id="year">1830年 · 工业前夜</div>
@@ -203,6 +211,11 @@
           <div class="info-card">
             <h3>当年锚点</h3>
             <p id="anchor">工业革命与铁路扩张改写国家能力。</p>
+          </div>
+          <div class="info-card">
+            <h3>国策特长</h3>
+            <div class="trait-list" id="traits"></div>
+            <p id="traitDesc" style="margin-top:10px;">国家特长将决定长期增长与关键决策的效果。</p>
           </div>
           <div class="info-card">
             <h3>路线反馈</h3>
@@ -243,7 +256,7 @@
   </div>
 
   <script>
-    const GAME_VERSION = "0.1.9";
+    const GAME_VERSION = "0.1.10";
     const WORLD = {
       years: { start: 1830, end: 1950 },
       anchors: {
@@ -260,6 +273,39 @@
     };
 
     const ALL_METRICS = ["经济", "军力", "科技", "稳定", "财政", "威望", "人口", "影响", "社会", "产业", "贸易", "军需"];
+
+    const COUNTRY_TRAITS = {
+      "大英帝国": {
+        name: "海上霸权",
+        bonus: { 影响: 6, 贸易: 8, 财政: 35 },
+        description: "海外航线、金融网络与海军威慑使其在国际贸易和影响力中有明显优势。"
+      },
+      "清王朝": {
+        name: "超大人口",
+        bonus: { 人口: 30, 社会: 5, 稳定: 2 },
+        description: "庞大人口与农业基础使其具备极强的资源承载能力，但现代化压力也更大。"
+      },
+      "法兰西": {
+        name: "革命文化",
+        bonus: { 威望: 6, 稳定: 4, 科技: 4 },
+        description: "文化输出、制度创新和民族认同让其在政治与舆论层面具有独特优势。"
+      },
+      "德意志": {
+        name: "军工重组",
+        bonus: { 军力: 8, 产业: 7, 科技: 5 },
+        description: "高效工业与军备组织能力能驱动快速扩张与强硬威慑。"
+      },
+      "日本": {
+        name: "转型韧性",
+        bonus: { 产业: 6, 稳定: 5, 贸易: 4 },
+        description: "高度适应外部冲击，能够在资源有限下进行快速现代化改造。"
+      },
+      "美国": {
+        name: "大陆资源",
+        bonus: { 经济: 7, 产业: 8, 财政: 25 },
+        description: "荒地扩张、原材料和制造业基础让其在工业崛起时拥有巨大潜能。"
+      }
+    };
 
     function buildCountryStats(base) {
       return Object.assign({}, base, { 社会: 58, 产业: 55, 贸易: 52, 军需: 60 });
@@ -578,6 +624,21 @@
       return COUNTRIES[STATE.country] || COUNTRIES["大英帝国"];
     }
 
+    function getCountryTraits() {
+      return COUNTRY_TRAITS[STATE.country] || { name: "国策平衡", bonus: {}, description: "该国并无明显的国策优势，需依赖路线抉择来决定成败。" };
+    }
+
+    function applyCountryTraitBonuses() {
+      const trait = getCountryTraits();
+      if (!trait || !trait.bonus) return;
+      for (const key in trait.bonus) {
+        if (STATE.stats[key] !== undefined) {
+          STATE.stats[key] += Number(trait.bonus[key]);
+        }
+      }
+      clampStats();
+    }
+
     function applyRouteBonus() {
       const route = getRouteData();
       if (!route || !route.bonuses) return;
@@ -654,6 +715,7 @@
       STATE.logs = [];
       STATE.actionUsedThisYear = false;
       STATE.stats = createInitialStats(base);
+      applyCountryTraitBonuses();
       applyRouteBonus();
       addLog(`${STATE.country} 于 ${STATE.year} 年起步，路线：${getRouteData().name}。`);
       render();
@@ -732,6 +794,13 @@
       $("routeFeedback").textContent = route.feedback;
     }
 
+    function renderTraits() {
+      const trait = getCountryTraits();
+      const str = trait.name || "国策平衡";
+      $("traits").innerHTML = (COUNTRIES[STATE.country]?.tags || [str]).map(tag => `<span class="trait">${tag}</span>`).join("");
+      $("traitDesc").textContent = `${str}：${trait.description}`;
+    }
+
     function renderRegions() {
       const core = (STATE.stats.影响 + STATE.stats.军力 + STATE.stats.经济 + STATE.stats.产业) / 4;
       const regions = WORLD.regions.map((name, index) => {
@@ -787,6 +856,7 @@
     function render() {
       renderRoute();
       renderStats();
+      renderTraits();
       renderRegions();
       renderActions();
       renderLogs();
@@ -947,6 +1017,7 @@
       const loaded = loadGame();
       if (!loaded) {
         STATE.stats = createInitialStats(getCountryData().stats);
+        applyCountryTraitBonuses();
         applyRouteBonus();
         addLog(`${STATE.country} 于 ${STATE.year} 年起步，路线：${getRouteData().name}。`);
       }
