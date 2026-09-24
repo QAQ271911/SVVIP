@@ -1,70 +1,106 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>大时代：五线史诗 v0.2.0</title>
-<style>
-:root{--bg:#08131e;--panel:#102333;--panel2:#142d40;--line:#2d4d68;--text:#edf7ff;--muted:#9cb6ca;--gold:#f5d27b;--blue:#7ab6ff;--green:#79e2a6;--red:#ff8b8b;--purple:#d6b9ff;--shadow:0 12px 30px #0005}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 20% 0,#1b3a50 0,#08131e 42%);color:var(--text);font:14px/1.65 system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}button,select,input{font:inherit}button{cursor:pointer}.app{max-width:1500px;margin:auto;padding:18px}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:16px}.brand{font-size:25px;font-weight:800;color:var(--gold)}.version,.sub,.muted{color:var(--muted);font-size:12px}.topright{display:flex;gap:10px;align-items:center}.year{color:var(--blue);font-weight:700}.grid{display:grid;grid-template-columns:280px 1fr 300px;gap:16px}.bottom{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.panel{background:linear-gradient(145deg,#102333f2,#0c1d2bf2);border:1px solid var(--line);border-radius:12px;padding:16px;box-shadow:var(--shadow)}h2,h3{margin:0 0 10px}h2{font-size:17px}h3{font-size:14px;color:var(--gold)}select{width:100%;padding:9px;margin:4px 0;background:#0a1b29;color:var(--text);border:1px solid var(--line);border-radius:7px}.card{background:#0b1d2b;border:1px solid #25445b;border-radius:9px;padding:12px;margin-top:12px}.portrait{font-size:34px;float:right}.stat{display:grid;grid-template-columns:72px 1fr 38px;gap:7px;align-items:center;margin:6px 0;font-size:12px}.bar{height:7px;background:#20394c;border-radius:8px;overflow:hidden}.fill{height:100%;background:var(--blue);border-radius:8px;transition:width .3s}.fill.good{background:var(--green)}.fill.warn{background:var(--gold)}.fill.bad{background:var(--red)}.action{width:100%;text-align:left;background:#122c3e;color:var(--text);border:1px solid #315873;border-radius:8px;padding:10px;margin:5px 0;transition:.15s}.action:hover:not(:disabled){transform:translateY(-1px);border-color:var(--gold);background:#18394e}.action:disabled{opacity:.42;cursor:not-allowed}.action b{display:block;color:var(--gold)}.action small{display:block;color:var(--muted)}.toolbar{display:flex;gap:7px;flex-wrap:wrap}.toolbar button,.choice{border:1px solid var(--line);border-radius:7px;padding:7px 10px;background:#17344a;color:var(--text)}.toolbar button:hover,.choice:hover{border-color:var(--gold)}.notice{border-left:3px solid var(--gold);padding-left:10px;color:#dceaf3}.tags span,.pill{display:inline-block;border:1px solid #426078;border-radius:20px;padding:1px 7px;margin:2px;color:var(--blue);font-size:11px}.regions{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}.region{border:1px solid #294b63;border-radius:8px;padding:9px;background:#0e2637}.region strong{display:block;color:var(--gold)}.heat{font-size:12px;color:var(--red)}.list{max-height:250px;overflow:auto}.log{padding:5px 0;border-bottom:1px solid #1e394d;color:#c7d9e5;font-size:12px}.goal{display:flex;justify-content:space-between;border-bottom:1px solid #1e394d;padding:7px 0}.done{color:var(--green)}.modal{display:none;position:fixed;inset:0;background:#02080dcc;place-items:center;padding:18px;z-index:5}.modal.open{display:grid}.modal-box{max-width:620px;width:100%;background:#112b3d;border:1px solid var(--gold);border-radius:12px;padding:22px;box-shadow:0 20px 70px #000b}.choices{display:grid;gap:8px}.choice{text-align:left;padding:12px}.choice b{display:block;color:var(--gold)}.toast{position:fixed;right:20px;bottom:20px;background:#15384c;border:1px solid var(--green);padding:10px 14px;border-radius:8px;display:none;z-index:9}.toast.show{display:block}.danger{color:var(--red)}@media(max-width:1000px){.grid{grid-template-columns:1fr 1fr}.grid .main{grid-column:1/-1}.bottom{grid-template-columns:1fr}}@media(max-width:620px){.app{padding:10px}.top{align-items:flex-start;flex-direction:column}.grid,.bottom{display:block}.panel{margin-bottom:12px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>大时代：五线史诗 v0.2.0</title>
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
-<body><div class="app">
-<header class="top"><div><div class="brand">大时代 · 五线史诗</div><span class="version">v0.2.0 · 审计与扩展版</span></div><div class="topright"><span class="year" id="year"></span><div class="toolbar"><button id="save">保存</button><button id="load">读取</button><button id="export">导出</button><button id="import">导入</button><button id="newGame">新局</button></div></div></header>
-<div class="grid"><aside class="panel"><h2>国家与制度 <span class="sub">统治中心</span></h2><select id="nation"></select><select id="route"></select><div class="card"><span class="portrait" id="portrait">♛</span><h3 id="leaderName"></h3><div id="leaderInfo" class="muted"></div><div class="tags" id="tags"></div></div><div class="card"><h3>国家指标</h3><div id="stats"></div></div></aside>
-<main class="panel main"><h2>历史舞台 <span class="sub">国家、地区、人物与时代</span></h2><div class="card"><h3>时代锚点</h3><p id="anchor" class="notice"></p><p id="advice" class="muted"></p></div><div class="card"><h3>地区局势</h3><div class="regions" id="regions"></div></div><div class="card"><h3>五线进程</h3><div id="goals"></div></div><div class="card"><h3>审计面板</h3><div id="audit" class="muted"></div></div></main>
-<aside class="panel"><h2>战略行动 <span class="sub">每年一次</span></h2><div id="actions"></div><div class="card"><h3>结构速览</h3><div id="summary"></div></div></aside></div>
-<div class="bottom"><section class="panel"><h2>历史日志 <span class="sub" id="logCount"></span></h2><div class="list" id="logs"></div></section><section class="panel"><h2>制度与提示</h2><p class="muted">每年可执行一次行动。事件会在关键年份触发；红色热区会生成危机。资源不足时行动不会消耗回合，避免误操作。</p><div class="toolbar"><button id="clearSave">清除本地存档</button><button id="help">玩法说明</button></div><p id="status" class="muted"></p></section></div></div>
-<div class="modal" id="modal"><div class="modal-box"><h2 id="eventTitle"></h2><p id="eventText"></p><div class="choices" id="choices"></div></div></div><div class="toast" id="toast"></div><input id="file" type="file" accept="application/json" hidden>
-<script>
-'use strict';
-const VERSION='0.2.0', SAVE_KEY='SVVIP_SAVE_V20', YEARS={start:1830,end:1950};
-const METRICS=['经济','军力','科技','稳定','财政','威望','人口','影响','社会','产业','贸易','军需'];
-const FACTIONS=['保守派','改革派','军方','商人','民众'];
-const anchors={1830:'工业化尚在门槛，旧秩序仍然具有惯性。',1848:'革命浪潮让旧制度与新社会正面相撞。',1871:'统一与民族国家重构大陆力量平衡。',1914:'世界大战把工业、财政与社会动员推向极限。',1929:'金融危机考验国家的组织力与社会契约。',1945:'旧帝国退场，新国际秩序争夺未来叙事。'};
-const countries={
-'大英帝国':{emoji:'♕',base:{经济:75,军力:68,科技:72,稳定:76,财政:620,威望:78,人口:240,影响:81,社会:58,产业:55,贸易:52,军需:60},tags:['海权','工业','金融'],leader:['维多利亚时代内阁',78,70,82,38,66,76]},
-'清王朝':{emoji:'♛',base:{经济:58,军力:62,科技:52,稳定:60,财政:410,威望:64,人口:360,影响:68,社会:58,产业:55,贸易:52,军需:60},tags:['帝国','农业','改革'],leader:['中兴与变局',62,59,68,65,72,61]},
-'法兰西':{emoji:'⚜',base:{经济:66,军力:67,科技:69,稳定:72,财政:540,威望:74,人口:200,影响:73,社会:58,产业:55,贸易:52,军需:60},tags:['革命','文化','共和'],leader:['共和国执政团',72,68,79,42,84,70]},
-'德意志':{emoji:'♞',base:{经济:61,军力:74,科技:70,稳定:67,财政:500,威望:71,人口:190,影响:70,社会:58,产业:55,贸易:52,军需:60},tags:['统一','军备','工业'],leader:['联邦议会',70,83,72,52,56,68]},
-'日本':{emoji:'◈',base:{经济:57,军力:66,科技:63,稳定:64,财政:430,威望:69,人口:180,影响:62,社会:58,产业:55,贸易:52,军需:60},tags:['转型','海军','近代化'],leader:['维新政府',66,76,74,48,88,63]},
-'美国':{emoji:'★',base:{经济:64,军力:63,科技:73,稳定:75,财政:610,威望:72,人口:210,影响:79,社会:58,产业:55,贸易:52,军需:60},tags:['新大陆','工业','扩张'],leader:['联邦政府',76,68,78,35,70,74]}};
-const routes={history:['真实主线','尊重历史骨架，在约束中争取最优解。',{稳定:2}],reform:['宪政改革','用法治、教育与社会妥协重写现代化。',{社会:4,威望:2}],industry:['工业竞速','优先投资生产力，以增长解决结构矛盾。',{产业:7,科技:3}],diplomacy:['均势外交','以贸易和协定降低冲突成本。',{贸易:7,影响:4}]};
-const ACTIONS=[['industry','工业化建设',40,'工厂、铁路与城市基础设施。',{经济:12,科技:4,产业:10,财政:-35,威望:2}],['army','军制改革',35,'整顿编制，提高训练与军需。',{军力:10,军需:12,财政:-30,稳定:-2}],['education','普及教育',28,'扩大识字率，培育技术官僚。',{科技:8,社会:8,财政:-24,稳定:2}],['welfare','社会保障',30,'缓和贫富差距，修复社会契约。',{稳定:9,社会:10,财政:-32,经济:2}],['trade','开放贸易',25,'连接市场，换取增长与影响。',{贸易:12,经济:7,影响:5,财政:-12}],['reform','行政改革',32,'削减腐败，提升国家执行力。',{财政:45,稳定:4,威望:4,社会:-2}]];
-const EVENTS=[
-{id:'e1848',year:1848,title:'1848：改革浪潮',text:'工人、知识分子与旧精英要求重新定义国家。',choices:[['压制动乱','短期秩序恢复，社会怨恨增加。',{稳定:6,社会:-10,军力:3},{保守派:6,民众:-8}],['有限改革','以让步换取时间，财政承受代价。',{稳定:3,社会:9,财政:-30,威望:4},{改革派:8,民众:4}],['建立代表制','制度获得新合法性，但旧精英失势。',{稳定:-4,社会:15,威望:9,财政:-20},{改革派:12,保守派:-8}]]},
-{id:'e1871',year:1871,title:'1871：统一与均势',text:'民族国家、军方与资本重新分配政治空间。',choices:[['强化军备','威慑增强，但财政和社会承压。',{军力:14,军需:8,财政:-45,社会:-5},{军方:10,商人:4}],['缔结协定','用谈判争取稳定的增长环境。',{影响:12,贸易:8,军力:-3,稳定:8},{商人:8,军方:-4}],['整合市场','铁路与关税改革扩大产业基础。',{经济:12,产业:12,财政:-35,稳定:3},{商人:10,改革派:4}]]},
-{id:'e1914',year:1914,title:'1914：世界大战',text:'动员、谈判或中立都会留下代价。',choices:[['全面动员','国力提升，但社会与财政受压。',{军力:14,军需:14,社会:-13,财政:-80,稳定:-6},{军方:12,民众:-10}],['艰难中立','避免直接消耗，外交声望受考验。',{稳定:8,财政:20,影响:-8,军需:-5},{商人:6,军方:-7}],['推动停战','以外交斡旋换取国际影响。',{影响:15,威望:8,财政:-30,军力:-5},{改革派:6,军方:-8}]]},
-{id:'e1929',year:1929,title:'1929：经济危机',text:'银行、工厂和家庭同时失去安全感。',choices:[['大规模救市','暂时稳定，但财政承压。',{稳定:10,财政:-75,经济:6,社会:5},{民众:10,商人:4}],['紧缩预算','账面得以维持，失业与不满上升。',{财政:35,稳定:-12,社会:-10,经济:-8},{保守派:8,民众:-12}],['公共工程','用就业和基础设施换取长期复苏。',{财政:-55,产业:14,经济:10,稳定:5},{民众:8,商人:5}]]},
-{id:'e1945',year:1945,title:'1945：新世界',text:'旧帝国退场，新国际秩序争夺未来叙事。',choices:[['参与新秩序','影响提升，需要妥协。',{影响:12,财政:-20,威望:8,稳定:3},{改革派:7,军方:-3}],['守住旧边界','保住短期自主，长期影响下降。',{稳定:5,威望:-8,影响:-12,财政:20},{保守派:7,民众:2}],['重建社会','把国家资源转向民生与制度。',{社会:15,稳定:9,经济:5,军力:-5,财政:-35},{民众:12,改革派:8}]]}];
-let state;
-const $=id=>document.getElementById(id);
-function fresh(){const c=countries['大英帝国'];state={version:VERSION,year:YEARS.start,country:'大英帝国',route:'history',stats:{...c.base},faction:Object.fromEntries(FACTIONS.map(x=>[x,20])),regions:[{name:'核心区',heat:24},{name:'工业区',heat:35},{name:'边疆区',heat:42},{name:'海外区',heat:28}],logs:['1830年：新国家在历史分岔口开始执政。'],flags:{},used:false,ended:false,event:null,history:[],achievements:[]};apply(routes.history[2]);buildLeader();}
-function clamp(){METRICS.forEach(k=>{let v=Number(state.stats[k]||0);state.stats[k]=k==='财政'?Math.round(v):k==='人口'?Math.max(0,Math.min(500,v)):Math.max(0,Math.min(100,v))});state.regions.forEach(r=>r.heat=Math.max(0,Math.min(100,Math.round(r.heat))));}
-function apply(o){Object.entries(o||{}).forEach(([k,v])=>{if(k in state.stats)state.stats[k]+=Number(v)});clamp()}
-function faction(o){Object.entries(o||{}).forEach(([k,v])=>{if(k in state.faction)state.faction[k]=Math.max(0,Math.min(100,state.faction[k]+Number(v)))});}
-function log(x){state.logs.unshift(x);state.logs=state.logs.slice(0,80)}
-function buildLeader(){const p=countries[state.country].leader;state.leader={name:p[0],charisma:p[1],resolve:p[2],wisdom:p[3],ruthlessness:p[4],reform:p[5],legitimacy:p[6],authority:Math.round((p[1]+p[2]+p[3]+p[6])/4)};}
-function era(y){return y<=1850?'工业前夜':y<=1875?'扩张时代':y<=1900?'大国博弈':y<=1918?'总体战时代':y<=1939?'危机年代':'重建时代'}
-function route(){return routes[state.route]||routes.history}
-function pressure(){const s=state.stats,avg=state.regions.reduce((a,r)=>a+r.heat,0)/state.regions.length;return Math.round(Math.max(0,Math.min(100,(100-s.稳定)*.4+(100-s.威望)*.12+avg*.38+(100-s.社会)*.1)))}
-function advice(){const hot=[...state.regions].sort((a,b)=>b.heat-a.heat)[0],s=state.stats;if(s.财政<50)return 'AI判断：财政储备过低，优先行政改革或开放贸易。';if(s.稳定<42||hot.heat>70)return `AI判断：优先处理${hot.name}热区，先镇压或整编，再恢复社会信任。`;if(s.科技<55)return 'AI判断：技术与教育是跨越时代的低风险投资。';return 'AI判断：局势可控。继续平衡产业、社会与外交，避免单项指标失衡。'}
-function available(){if(state.year===YEARS.end)return null;const e=EVENTS.find(x=>x.year===state.year&&!state.flags[x.id]);if(e)return e;const h=[...state.regions].sort((a,b)=>b.heat-a.heat)[0];if(h&&h.heat>78&&!state.flags['crisis'+state.year])return{id:'crisis'+state.year,year:state.year,title:'地方危机：'+h.name,text:'热区正在挑战中央权威，必须立即回应。',choices:[['派遣调停团','缓和对立，但行政成本增加。',{稳定:4,社会:5,财政:-20},{改革派:4}],['强制整编','快速恢复秩序，留下长期伤痕。',{稳定:8,社会:-12,军力:4},{军方:6,民众:-8}]]};return null}
-function actions(){let a=[...ACTIONS];if(state.route==='reform')a.push(['parliament','扩大议会',30,'提高制度合法性与社会参与。',{稳定:8,社会:8,威望:7,财政:-20}]);if(state.route==='industry')a.push(['research','国家科研院',45,'集中资源突破技术瓶颈。',{科技:14,产业:7,财政:-45}]);if(state.route==='diplomacy')a.push(['league','建立协约体系',38,'用长期条约降低冲突与贸易风险。',{影响:12,贸易:10,财政:-25,军力:-2}]);return a}
-function metricClass(k,v){return k==='稳定'||k==='威望'?v<45?'bad':v>75?'good':'warn':v>75?'good':v<35?'bad':''}
-function render(){clamp();$('year').textContent=`${state.year}年 · ${era(state.year)}${state.ended?' · 结局':''}`;$('nation').value=state.country;$('route').value=state.route;$('anchor').textContent=anchors[state.year]||`${state.year}年：时代在结构性压力中继续前进。`;$('advice').textContent=advice();$('portrait').textContent=countries[state.country].emoji;$('leaderName').textContent=state.leader.name;$('leaderInfo').textContent=`权威 ${state.leader.authority} · 合法性 ${state.leader.legitimacy} · 决断 ${state.leader.resolve}`;$('tags').innerHTML=countries[state.country].tags.map(x=>`<span>${x}</span>`).join('');$('stats').innerHTML=METRICS.map(k=>{const v=state.stats[k],max=k==='财政'?800:k==='人口'?500:100;return `<div class="stat"><span>${k}</span><div class="bar"><div class="fill ${metricClass(k,v)}" style="width:${Math.min(100,Math.max(0,v/max*100))}%"></div></div><b>${v}</b></div>`}).join('');$('regions').innerHTML=state.regions.map(r=>`<div class="region"><strong>${r.name}</strong><span class="heat">热度 ${r.heat}</span><div class="bar"><div class="fill bad" style="width:${r.heat}%"></div></div></div>`).join('');$('actions').innerHTML=actions().map((a,i)=>`<button class="action" data-action="${i}" ${state.used||state.ended?'disabled':''}><b>${a[1]} · ${a[2]}金</b><small>${a[3]}</small></button>`).join('');$('logs').innerHTML=state.logs.map(x=>`<div class="log">${x}</div>`).join('');$('logCount').textContent=`${state.logs.length}条`;$('summary').innerHTML=`路线：<b>${route()[0]}</b><br>路线效果：${route()[1]}<br>综合压力：<b class="${pressure()>65?'danger':''}">${pressure()}</b><br>派系：${FACTIONS.map(f=>`${f} ${state.faction[f]}`).join(' · ')}`;renderGoals();renderAudit();}
-function renderGoals(){const s=state.stats,g=[['富强国家',s.经济>=80&&s.产业>=75],['技术突破',s.科技>=85],['社会契约',s.社会>=80&&s.稳定>=65],['世界影响',s.影响>=85&&s.威望>=80],['财政韧性',s.财政>=500]];$('goals').innerHTML=g.map(x=>`<div class="goal"><span>${x[0]}</span><b class="${x[1]?'done':''}">${x[1]?'已达成':'进行中'}</b></div>`).join('')}
-function renderAudit(){$('audit').textContent=`版本 ${VERSION} · 年份边界 ${YEARS.start}-${YEARS.end} · 已处理事件 ${Object.keys(state.flags).length} · 本回合${state.used?'已行动':'可行动'} · 存档结构校验通过`}
-function show(e){state.event=e;$('eventTitle').textContent=e.title;$('eventText').textContent=e.text;$('choices').innerHTML='';e.choices.forEach((x,i)=>{const b=document.createElement('button');b.className='choice';b.dataset.choice=i;b.innerHTML=`<b>${x[0]}</b><span>${x[1]}</span>`;$('choices').appendChild(b)});$('modal').classList.add('open')}
-function choose(i){const e=state.event,x=e.choices[i];if(!x)return;apply(x[2]);faction(x[3]);state.flags[e.id]=1;state.history.push({year:state.year,type:'event',id:e.id});log(`${state.year}年：${e.title} → ${x[0]}：${x[1]}`);state.event=null;$('modal').classList.remove('open');render();}
-function perform(i){if(state.used||state.ended)return;const a=actions()[i];if(!a)return;if(state.stats.财政<a[2]){toast('财政不足，行动未执行。');log(`${state.year}年：财政不足，无法执行“${a[1]}”。`);render();return}apply(a[4]);state.used=true;state.history.push({year:state.year,type:'action',id:a[0]});const hot=state.regions.reduce((p,r)=>r.heat>p.heat?r:p,state.regions[0]);hot.heat+=(a[0]==='welfare'||a[0]==='education'?-8:2);log(`${state.year}年：执行“${a[1]}”。`);render();setTimeout(()=>{const e=available();if(e)show(e)},120)}
-function ending(){const s=state.stats;if(s.稳定<25)return'国家崩解与革命';if(s.军力>=85&&s.影响>=80&&s.稳定>=65)return'大陆霸权';if(s.科技>=85&&s.经济>=80&&s.产业>=75)return'工业文明先驱';if(s.社会>=80&&s.稳定>=70)return'社会契约典范';if(s.财政<0)return'财政破产';return'在风暴中幸存'}
-function next(){if(state.ended||state.event)return;if(state.year>=YEARS.end){finish();return}state.year++;state.used=false;const s=state.stats;s.财政+=Math.max(18,Math.round(24+s.经济*.35-s.军力*.16));s.经济+=Math.round((s.产业-50)/18);s.社会+=Math.round((s.稳定-55)/25);s.稳定-=Math.max(0,Math.round(pressure()/35-1));state.regions.forEach(r=>r.heat+=Math.round((100-s.社会)/35-1));clamp();log(`${state.year}年：新的一年开始。国库 ${s.财政}，压力 ${pressure()}。`);render();const e=available();if(e)setTimeout(()=>show(e),180)}
-function finish(){state.ended=true;log(`${YEARS.end}年结局：${ending()}。`);render();toast(`历史落幕：${ending()}`)}
-function save(silent=false){localStorage.setItem(SAVE_KEY,JSON.stringify(state));if(!silent)toast('存档已保存。');$('status').textContent=`最近保存：${new Date().toLocaleString()}`}
-function load(silent=false){try{const x=JSON.parse(localStorage.getItem(SAVE_KEY));if(!x||!x.stats||!countries[x.country])throw Error('invalid');state=x;state.version=VERSION;state.event=null;state.regions=state.regions?.length?state.regions:[{name:'核心区',heat:30},{name:'边疆区',heat:40}];buildLeader();render();if(!silent)toast('存档已读取。');return true}catch(e){if(!silent)toast('没有可用的存档。');return false}}
-function toast(t){const el=$('toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200)}
-function exportSave(){const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`svvip-${state.year}.json`;a.click();URL.revokeObjectURL(a.href)}
-function importSave(file){const reader=new FileReader();reader.onload=()=>{try{const x=JSON.parse(reader.result);if(!x.stats||!countries[x.country])throw Error();localStorage.setItem(SAVE_KEY,JSON.stringify(x));load();toast('外部存档导入成功。')}catch(e){toast('导入失败：存档格式无效。')}};reader.readAsText(file)}
-$('nation').onchange=e=>{state.country=e.target.value;state.stats={...countries[state.country].base};state.flags={};state.year=YEARS.start;state.used=false;state.ended=false;state.logs=[`1830年：切换为${state.country}，新的历史分岔开始。`];buildLeader();render()};$('route').onchange=e=>{state.route=e.target.value;apply(route()[2]);log(`选择路线：${route()[0]}。`);render()};$('actions').addEventListener('click',e=>{const b=e.target.closest('[data-action]');if(b)perform(Number(b.dataset.action))});$('choices').addEventListener('click',e=>{const b=e.target.closest('[data-choice]');if(b)choose(Number(b.dataset.choice))});$('save').onclick=save;$('load').onclick=()=>load();$('newGame').onclick=()=>{if(confirm('开始新局并覆盖当前进度？')){fresh();render();save(true);toast('新局已开始。')}};$('export').onclick=exportSave;$('import').onclick=()=>$('file').click();$('file').onchange=e=>{if(e.target.files[0])importSave(e.target.files[0])};$('clearSave').onclick=()=>{localStorage.removeItem(SAVE_KEY);toast('本地存档已清除。')};$('help').onclick=()=>toast('选择路线→每年执行一次行动→处理事件→点击年份推进。');document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('modal').classList.remove('open');state.event=null}if(e.key===' '&&!state.event){e.preventDefault();next()}});
-Object.keys(countries).forEach(n=>$('nation').add(new Option(n,n)));Object.entries(routes).forEach(([k,v])=>$('route').add(new Option(v[0],k)));fresh();if(!load(true))render();
-</script></body></html>
+<body>
+  <div class="app">
+    <header class="top">
+      <div>
+        <div class="brand">大时代 · 五线史诗</div>
+        <span class="version">v0.2.0 · 审计与扩展版</span>
+      </div>
+      <div class="topright">
+        <span class="year" id="year"></span>
+        <div class="toolbar">
+          <button id="save">保存</button>
+          <button id="load">读取</button>
+          <button id="export">导出</button>
+          <button id="import">导入</button>
+          <button id="newGame">新局</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <aside class="panel">
+        <h2>国家与制度 <span class="sub">统治中心</span></h2>
+        <select id="nation"></select>
+        <select id="route"></select>
+        <div class="card">
+          <span class="portrait" id="portrait">♛</span>
+          <h3 id="leaderName"></h3>
+          <div id="leaderInfo" class="muted"></div>
+          <div class="tags" id="tags"></div>
+        </div>
+        <div class="card">
+          <h3>国家指标</h3>
+          <div id="stats"></div>
+        </div>
+      </aside>
+
+      <main class="panel main">
+        <h2>历史舞台 <span class="sub">国家、地区、人物与时代</span></h2>
+        <div class="card">
+          <h3>时代锚点</h3>
+          <p id="anchor" class="notice"></p>
+          <p id="advice" class="muted"></p>
+        </div>
+        <div class="card">
+          <h3>地区局势</h3>
+          <div class="regions" id="regions"></div>
+        </div>
+        <div class="card">
+          <h3>五线进程</h3>
+          <div id="goals"></div>
+        </div>
+        <div class="card">
+          <h3>审计面板</h3>
+          <div id="audit" class="muted"></div>
+        </div>
+      </main>
+
+      <aside class="panel">
+        <h2>战略行动 <span class="sub">每年一次</span></h2>
+        <div id="actions"></div>
+        <div class="card">
+          <h3>结构速览</h3>
+          <div id="summary"></div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="bottom">
+      <section class="panel">
+        <h2>历史日志 <span class="sub" id="logCount"></span></h2>
+        <div class="list" id="logs"></div>
+      </section>
+      <section class="panel">
+        <h2>制度与提示</h2>
+        <p class="muted">每年可执行一次行动。事件会在关键年份触发；红色热区会生成危机。资源不足时行动不会消耗回合，避免误操作。</p>
+        <div class="toolbar">
+          <button id="clearSave">清除本地存档</button>
+          <button id="help">玩法说明</button>
+        </div>
+        <p id="status" class="muted"></p>
+      </section>
+    </div>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-box">
+      <h2 id="eventTitle"></h2>
+      <p id="eventText"></p>
+      <div class="choices" id="choices"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <input id="file" type="file" accept="application/json" hidden>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
