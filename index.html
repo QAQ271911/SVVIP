@@ -1,19 +1,19 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>大时代：五线史诗 v0.1.14</title>
-<style>
-:root{--bg:#08121d;--panel:#102131;--line:#2b4d69;--text:#edf7ff;--muted:#9eb8cd;--gold:#f5d17a;--blue:#6ebaff;--green:#79e2a6;--red:#ff8888;--purple:#d3b1ff;--shadow:rgba(0,0,0,.35)}
-*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:"Microsoft YaHei","PingFang SC",sans-serif}body{min-height:100vh}.app{max-width:1460px;margin:0 auto;padding:22px 18px 40px}.top,.panel{background:rgba(16,33,49,.97);border:1px solid var(--line);border-radius:18px;box-shadow:0 14px 22px var(--shadow)}.top{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px 20px;margin-bottom:18px}.brand{font-size:1.7rem;font-weight:700;color:var(--gold)}.version{display:inline-block;margin-left:8px;padding:5px 9px;border:1px solid rgba(245,209,122,.4);border-radius:999px;color:var(--gold);font-size:.75rem}.topright{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.year{padding:9px 13px;border:1px solid rgba(110,186,255,.35);border-radius:10px;background:rgba(110,186,255,.12)}.btn,.choice,.action{color:var(--text);background:rgba(255,255,255,.04);border-radius:10px;border:1px solid var(--line);cursor:pointer;font-weight:700}.btn{padding:10px 15px}.btn.main{background:linear-gradient(180deg,#8f6a1a,#654a0a);border-color:rgba(245,209,122,.5)}.grid{display:grid;grid-template-columns:1.05fr 1.7fr 1.2fr;gap:18px;margin-bottom:18px}.panel{padding:16px}.panel h2{margin:0 0 12px;font-size:1.08rem;display:flex;justify-content:space-between;gap:8px}.sub{font-size:.8rem;color:var(--muted)}select{width:100%;padding:10px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:10px;color:var(--text);margin-bottom:10px}.card,.metric,.region,.goal,.log,.mini{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:11px}.card{margin-bottom:10px}.card h3{margin:0 0 7px;color:var(--gold);font-size:.94rem}.card p{margin:0;color:var(--muted);line-height:1.55;font-size:.9rem}.stats{display:grid;grid-template-columns:1fr 1fr;gap:9px}.metric .head{display:flex;justify-content:space-between;color:var(--muted);font-size:.78rem;margin-bottom:6px}.bar{height:7px;border-radius:999px;background:rgba(255,255,255,.06);overflow:hidden}.bar i{display:block;height:100%;border-radius:inherit}.tags{display:flex;gap:7px;flex-wrap:wrap}.tag{padding:5px 8px;border-radius:999px;background:rgba(245,209,122,.1);border:1px solid rgba(245,209,122,.35);color:var(--gold);font-size:.75rem}.mini-list{display:grid;gap:8px}.mini{font-size:.82rem;color:var(--muted);line-height:1.5}.regions{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.region{text-align:center}.region b{display:block;font-size:1.05rem;margin-top:5px}.actions{display:grid;gap:9px}.action{text-align:left;padding:11px}.action:hover,.choice:hover{border-color:rgba(110,186,255,.7)}.action-head{display:flex;justify-content:space-between;margin-bottom:5px}.cost{color:var(--gold);font-size:.78rem}.bottom{display:grid;grid-template-columns:1.4fr 1fr;gap:18px}.list{display:grid;gap:8px;max-height:340px;overflow:auto}.log{font-size:.88rem;line-height:1.5;border-left:3px solid var(--blue)}.goals{display:grid;gap:8px}.goal{display:flex;justify-content:space-between;gap:8px}.chip{padding:4px 8px;border-radius:999px;font-size:.72rem;white-space:nowrap}.done{background:var(--green);color:#06140e}.todo{background:rgba(255,255,255,.06)}.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(1,5,10,.75);z-index:3}.modal.show{display:flex}.modal-box{width:min(720px,calc(100vw - 28px));padding:20px;background:#0d1c2a;border:1px solid var(--line);border-radius:18px}.modal h2{margin:0 0 10px;color:var(--gold)}.modal p{color:var(--muted);line-height:1.7}.choices{display:grid;gap:10px}.choice{text-align:left;padding:12px}.choice b,.choice small{display:block}.choice b{margin-bottom:4px}@media(max-width:1100px){.grid,.bottom{grid-template-columns:1fr}}@media(max-width:600px){.top{align-items:flex-start;flex-direction:column}.regions{grid-template-columns:repeat(2,1fr)}}</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>大时代：五线史诗 v0.1.15</title>
+  <style>
+    :root{--bg:#08121d;--panel:#102131;--line:#2b4d69;--text:#edf7ff;--muted:#9eb8cd;--gold:#f5d17a;--blue:#6ebaff;--green:#79e2a6;--red:#ff8888;--purple:#d3b1ff;--shadow:rgba(0,0,0,.35)}
+    *{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:"Microsoft YaHei","PingFang SC",sans-serif}body{min-height:100vh}.app{max-width:1460px;margin:0 auto;padding:22px 18px 40px}.top,.panel{background:rgba(16,33,49,.97);border:1px solid var(--line);border-radius:18px;box-shadow:0 14px 22px var(--shadow)}.top{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px 20px;margin-bottom:18px}.brand{font-size:1.7rem;font-weight:700;color:var(--gold)}.version{display:inline-block;margin-left:8px;padding:5px 9px;border:1px solid rgba(245,209,122,.4);border-radius:999px;color:var(--gold);font-size:.75rem}.topright{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.year{padding:9px 13px;border:1px solid rgba(110,186,255,.35);border-radius:10px;background:rgba(110,186,255,.12)}.btn,.choice,.action{color:var(--text);background:rgba(255,255,255,.04);border-radius:10px;border:1px solid var(--line);cursor:pointer;font-weight:700}.btn{padding:10px 15px}.btn.main{background:linear-gradient(180deg,#8f6a1a,#654a0a);border-color:rgba(245,209,122,.5)}.grid{display:grid;grid-template-columns:1.05fr 1.7fr 1.2fr;gap:18px;margin-bottom:18px}.panel{padding:16px}.panel h2{margin:0 0 12px;font-size:1.08rem;display:flex;justify-content:space-between;gap:8px}.sub{font-size:.8rem;color:var(--muted)}select{width:100%;padding:10px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:10px;color:var(--text);margin-bottom:10px}.card,.metric,.region,.goal,.log,.mini{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:11px}.card{margin-bottom:10px}.card h3{margin:0 0 7px;color:var(--gold);font-size:.94rem}.card p{margin:0;color:var(--muted);line-height:1.55;font-size:.9rem}.stats{display:grid;grid-template-columns:1fr 1fr;gap:9px}.metric .head{display:flex;justify-content:space-between;color:var(--muted);font-size:.78rem;margin-bottom:6px}.bar{height:7px;border-radius:999px;background:rgba(255,255,255,.06);overflow:hidden}.bar i{display:block;height:100%;border-radius:inherit}.tags{display:flex;gap:7px;flex-wrap:wrap}.tag{padding:5px 8px;border-radius:999px;background:rgba(245,209,122,.1);border:1px solid rgba(245,209,122,.35);color:var(--gold);font-size:.75rem}.mini-list{display:grid;gap:8px}.mini{font-size:.82rem;color:var(--muted);line-height:1.5}.regions{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.region{text-align:center}.region b{display:block;font-size:1.05rem;margin-top:5px}.actions{display:grid;gap:9px}.action{text-align:left;padding:11px}.action:hover,.choice:hover{border-color:rgba(110,186,255,.7)}.action-head{display:flex;justify-content:space-between;margin-bottom:5px}.cost{color:var(--gold);font-size:.78rem}.bottom{display:grid;grid-template-columns:1.4fr 1fr;gap:18px}.list{display:grid;gap:8px;max-height:340px;overflow:auto}.log{font-size:.88rem;line-height:1.5;border-left:3px solid var(--blue)}.goals{display:grid;gap:8px}.goal{display:flex;justify-content:space-between;gap:8px}.chip{padding:4px 8px;border-radius:999px;font-size:.72rem;white-space:nowrap}.done{background:var(--green);color:#06140e}.todo{background:rgba(255,255,255,.06)}.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(1,5,10,.75);z-index:3}.modal.show{display:flex}.modal-box{width:min(720px,calc(100vw - 28px));padding:20px;background:#0d1c2a;border:1px solid var(--line);border-radius:18px}.modal h2{margin:0 0 10px;color:var(--gold)}.modal p{color:var(--muted);line-height:1.7}.choices{display:grid;gap:10px}.choice{text-align:left;padding:12px}.choice b,.choice small{display:block}.choice b{margin-bottom:4px}@media(max-width:1100px){.grid,.bottom{grid-template-columns:1fr}}@media(max-width:600px){.top{align-items:flex-start;flex-direction:column}.regions{grid-template-columns:repeat(2,1fr)}}</style>
 </head>
 <body>
 <div class="app">
   <header class="top">
     <div>
       <span class="brand">大时代 · 五线史诗</span>
-      <span class="version">v0.1.14</span>
+      <span class="version">v0.1.15</span>
     </div>
     <div class="topright">
       <span class="year" id="year"></span>
@@ -41,7 +41,7 @@
     </aside>
 
     <main class="panel">
-      <h2>历史舞台 <span class="sub">角色、政党与事件链</span></h2>
+      <h2>历史舞台 <span class="sub">最高领导人、政党与事件链</span></h2>
       <div class="card">
         <h3>时代锚点</h3>
         <p id="anchor"></p>
@@ -52,8 +52,12 @@
         <p id="traitDesc" style="margin-top:9px"></p>
       </div>
       <div class="card">
-        <h3>政党与角色</h3>
+        <h3>统治集团与威胁</h3>
         <p id="narrative"></p>
+      </div>
+      <div class="card">
+        <h3>AI辅助决策</h3>
+        <p id="aiAdvisor"></p>
       </div>
       <div class="card">
         <h3>地区格局</h3>
@@ -88,7 +92,7 @@
 </div>
 
 <script>
-const VERSION = '0.1.14';
+const VERSION = '0.1.15';
 const YEARS = { start: 1830, end: 1950 };
 const METRICS = ['经济','军力','科技','稳定','财政','威望','人口','影响','社会','产业','贸易','军需'];
 const FACTIONS = ['保守派','改革派','军方','商业派','外交派','工党','地方派'];
@@ -124,7 +128,9 @@ const ACTIONS = [
   { id:'industry', name:'工业化建设', cost:40, desc:'工厂、铁路与城市基础设施。', effect:{经济:12,科技:4,产业:10,财政:-35,威望:2} },
   { id:'army', name:'军制改革', cost:35, desc:'整顿编制，提高训练与后勤。', effect:{军力:9,稳定:3,军需:8,财政:-25} },
   { id:'education', name:'教育改革', cost:25, desc:'扩展学校体系与科教投入。', effect:{科技:6,稳定:4,社会:5,财政:-15,威望:2} },
-  { id:'diplomacy', name:'外交扩展', cost:30, desc:'建立协作网络与贸易机会。', effect:{影响:8,贸易:4,威望:3,财政:-18} }
+  { id:'diplomacy', name:'外交扩展', cost:30, desc:'建立协作网络与贸易机会。', effect:{影响:8,贸易:4,威望:3,财政:-18} },
+  { id:'control', name:'镇压叛乱', cost:28, desc:'派遣军警与地方官加强治安，压制起义。', effect:{稳定:8,军力:4,财政:-18,社会:-5} },
+  { id:'security', name:'强化统治合法性', cost:24, desc:'提高宣传、安抚与行政执行效率。', effect:{稳定:6,威望:4,财政:-12,社会:3} }
 ];
 
 const ROUTE_ACTIONS = {
@@ -141,6 +147,11 @@ const GLOBAL_EVENTS = [
   { id:'1914_world_war', year:1914, title:'1914：世界大战', text:'动员、谈判或中立都会留下代价。你的制度能承受总动员吗？', choices:[{name:'全面动员', effect:{军力:12,军需:12,稳定:-8,社会:-6,财政:-30}, result:'战争机器启动，但每个家庭都开始支付代价。', faction:'军方', influence:{军方:18,工党:-12,商业派:-8}},{name:'高压外交', effect:{影响:6,稳定:5,威望:2,财政:-12}, result:'暂时避免全面冲突，外交官赢得了时间。', faction:'外交派', influence:{外交派:12,军方:-4,保守派:4}}] },
   { id:'1929_credit_crash', year:1929, title:'1929：经济危机', text:'银行、工厂和家庭同时失去安全感。救市意味着债务，紧缩意味着失业。', choices:[{name:'大规模救市', effect:{财政:-26,稳定:4,经济:5,产业:5,社会:6}, result:'财政承压，但社会相信政府仍会承担责任。', faction:'改革派', influence:{改革派:12,保守派:-8,工党:10}},{name:'坚持紧缩', effect:{财政:10,稳定:-5,经济:-6,贸易:-8,社会:-8}, result:'账面得到修复，政治信任却迅速流失。', faction:'保守派', influence:{保守派:12,改革派:-10,工党:-8}}] },
   { id:'1945_new_world', year:1945, title:'1945：新世界', text:'战争结束，帝国、民族国家与新国际组织争夺未来叙事。', choices:[{name:'参与新秩序', effect:{影响:10,稳定:6,贸易:5,财政:-14}, result:'国家在新秩序中获得发言权。', faction:'外交派', influence:{外交派:14,军方:-8,商业派:6}},{name:'保持强硬威慑', effect:{军力:9,军需:7,稳定:-4,财政:-20}, result:'安全感提高，但旧式权力政治仍在延续。', faction:'军方', influence:{军方:15,外交派:-6,商业派:-4}}] }
+];
+
+const CRISIS_EVENTS = [
+  { id:'rebellion_wave', title:'叛乱浪潮', text:'地方势力、农民起义与军阀联合正在逼近首都。你必须决定如何维持统治。', condition: (s) => s.stats.稳定 < 45 || s.stats.社会 < 38, choices:[{name:'以武力镇压', effect:{稳定:10,军力:8,财政:-20,社会:-10}, result:'短期恢复秩序，代价是人民的忍耐边界被压缩。', faction:'军方', influence:{军方:18,工党:-10,地方派:-8}},{name:'派出赦免与整编', effect:{稳定:7,社会:9,财政:-12,威望:6}, result:'叛乱被缓和，统治合法性得到修复。', faction:'改革派', influence:{改革派:16,军方:-6,地方派:8}},{name:'借助地方自治缓冲', effect:{稳定:5,影响:4,财政:-8,贸易:-4}, result:'控制被分散，可降低冲突强度，但中央权威减弱。', faction:'地方派', influence:{地方派:16,军方:-3,保守派:5}}] },
+  { id:'secession_pressure', title:'地方割据', text:'边疆和地方军阀已开始以主权名义争夺资源与治权。', condition: (s) => s.stats.影响 < 50 || s.stats.财政 < 200, choices:[{name:'派兵统一', effect:{军力:10,稳定:-4,财政:-18,影响:4}, result:'地方势力被压下去，但成本高昂。', faction:'军方', influence:{军方:16,地方派:-12,外交派:-4}},{name:'协商自治', effect:{稳定:6,威望:5,财政:-8,影响:7}, result:'地方秩序暂时稳定，中央掌控更缓和。', faction:'外交派', influence:{外交派:14,地方派:9,军方:-5}},{name:'动员全国舆论', effect:{威望:7,稳定:5,财政:-10,社会:-2}, result:'舆论扭转了局势，但情绪很难完全控制。', faction:'工党', influence:{工党:12,地方派:-6,保守派:-3}}] }
 ];
 
 const COUNTRY_EVENTS = {
@@ -161,7 +172,7 @@ const COUNTRY_EVENTS = {
     { id:'germany_continent_1914', year:1914, title:'大陆霸权之争', text:'全欧地图被重新对齐，联盟博弈变成了国家命运。', choices:[{name:'形成同盟', effect:{影响:8,军力:9,财政:-18,稳定:2}, result:'外交框架更加清晰，联盟的保护更强。', faction:'外交派', influence:{外交派:13,军方:4,商业派:6}},{name:'单边扩张', effect:{军力:11,威望:4,稳定:-7,财政:-24}, result:'战力提升，但邻国关系恶化。', faction:'军方', influence:{军方:18,外交派:-8,商业派:-5}}] }
   ],
   '日本': [
-    { id:'japan_meiji_1880', year:1880, title:'维新第二轮', text:'新政派要求从工业和海军转向更大规模国力重组。', choices:[{name:'推进海军优先', effect:{军力:9,影响:7,贸易:4,财政:-18}, result:'国防和影响力同时增长。', faction:'军方', influence:{军方:15,商业派:-2,外交派:5}},{name:'推进工业与教育', effect:{科技:8,经济:9,产业:8,稳定:5,财政:-15}, result:'日本式现代化加速，长期增长明显。', faction:'改革派', influence:{改革派:15,军方:-4,商业派:6}}] },
+    { id:'japan_meiji_1880', year:1880, title:'维新第二轮', text:'新政派要求从工业和海军转向更大规模国力重组。', choices:[{name:'推进海军优先', effect:{军力:9,影响:7,贸易:4,财政:-18}, result:'国防和影响力同���增长。', faction:'军方', influence:{军方:15,商业派:-2,外交派:5}},{name:'推进工业与教育', effect:{科技:8,经济:9,产业:8,稳定:5,财政:-15}, result:'日本式现代化加速，长期增长明显。', faction:'改革派', influence:{改革派:15,军方:-4,商业派:6}}] },
     { id:'japan_rearmament_1937', year:1937, title:'国家再动员', text:'冲突与安保危机重新塑造政权加速。', choices:[{name:'全国动员', effect:{军力:13,军需:12,稳定:-6,财政:-22}, result:'国防准备完善，但社会代价高昂。', faction:'军方', influence:{军方:18,工党:-10,商业派:-5}},{name:'克制发展', effect:{稳定:7,经济:6,社会:5,财政:-10}, result:'社会稳定改善，军事节奏更慢。', faction:'改革派', influence:{改革派:12,军方:-7,工党:8}}] }
   ],
   '美国': [
@@ -170,55 +181,16 @@ const COUNTRY_EVENTS = {
   ]
 };
 
-const state = {
-  year:1830,
-  country:'大英帝国',
-  route:'history',
-  stats:{},
-  logs:[],
-  used:false,
-  ended:false,
-  event:null,
-  flags:{},
-  factionInfluence:{},
-  characters:[],
-  timeline:[]
-};
+const state = { year:1830, country:'大英帝国', route:'history', stats:{}, logs:[], used:false, ended:false, event:null, flags:{}, factionInfluence:{}, characters:[], timeline:[], aiAdvice:'', leaderTitle:'国家最高领导人' };
 
 const $ = (id) => document.getElementById(id);
 
-function clamp() {
-  METRICS.forEach(k => {
-    state.stats[k] = Number(state.stats[k] || 0);
-    if (k === '财政') state.stats[k] = Math.round(state.stats[k]);
-    else if (k === '人口') state.stats[k] = Math.max(1, Math.round(state.stats[k]));
-    else state.stats[k] = Math.max(0, Math.min(100, Math.round(state.stats[k])));
-  });
-}
-
-function apply(obj) {
-  Object.keys(obj).forEach(k => {
-    if (k in state.stats) state.stats[k] = (state.stats[k] || 0) + obj[k];
-  });
-  clamp();
-}
-
-function setFactionInfluence(overrides) {
-  FACTIONS.forEach(f => { if (!state.factionInfluence[f]) state.factionInfluence[f] = 0; });
-  Object.keys(overrides || {}).forEach(f => { state.factionInfluence[f] = (state.factionInfluence[f] || 0) + overrides[f]; });
-}
-
+function clamp() { METRICS.forEach(k => { state.stats[k] = Number(state.stats[k] || 0); if (k === '财政') state.stats[k] = Math.round(state.stats[k]); else if (k === '人口') state.stats[k] = Math.max(1, Math.round(state.stats[k])); else state.stats[k] = Math.max(0, Math.min(100, Math.round(state.stats[k]))); }); }
+function apply(obj) { Object.keys(obj).forEach(k => { if (k in state.stats) state.stats[k] = (state.stats[k] || 0) + obj[k]; }); clamp(); }
+function setFactionInfluence(overrides) { FACTIONS.forEach(f => { if (!state.factionInfluence[f]) state.factionInfluence[f] = 0; }); Object.keys(overrides || {}).forEach(f => { state.factionInfluence[f] = (state.factionInfluence[f] || 0) + overrides[f]; }); }
 function getCountryData(){ return countries[state.country]; }
 function getRouteData(){ return routes[state.route]; }
-function getEraName(year){
-  if (year <= 1850) return '工业前夜';
-  if (year <= 1875) return '扩张时代';
-  if (year <= 1900) return '大国博弈';
-  if (year <= 1918) return '世界大战';
-  if (year <= 1930) return '重组时代';
-  if (year <= 1945) return '全球冲突';
-  return '战后秩序';
-}
+function getEraName(year){ if (year <= 1850) return '工业前夜'; if (year <= 1875) return '扩张时代'; if (year <= 1900) return '大国博弈'; if (year <= 1918) return '世界大战'; if (year <= 1930) return '重组时代'; if (year <= 1945) return '全球冲突'; return '战后秩序'; }
 function log(msg){ state.logs.unshift(msg); state.logs = state.logs.slice(0, 40); }
 
 function getFactionSummary() {
@@ -228,12 +200,23 @@ function getFactionSummary() {
   return `${leader}当前最强。` + arr.slice(0,3).map(x => `${x.name}:${x.value}`).join(' / ');
 }
 
+function buildAIAdvice() {
+  const s = state.stats;
+  if (s.稳定 < 40 || s.社会 < 38) return 'AI判断：国内存在明显不稳定，首要任务是镇压叛乱并巩固统治合法性。';
+  if (s.财政 < 180) return 'AI判断：财政压力偏高，优先压缩扩张、保护核心工业与统治基础。';
+  if (s.军力 < 60 && s.稳定 > 55) return 'AI判断：军事威慑不足，建议加强军制改革、关键铁路与边境防御。';
+  if (s.科技 < 65) return 'AI判断：知识与技术薄弱，教育改革与工业建设优先级最高。';
+  if (s.影响 < 55) return 'AI判断：国际影响不足，建议优先推进外交扩展与海上/陆上网络。';
+  return 'AI判断：当前处于相对稳固期，建议强化制度、稳固财政与维持经济与军备平衡。';
+}
+
 function buildMiniInfo() {
   const c = getCountryData();
   const arr = [
+    `最高领导人：${state.leaderTitle}`,
     `政治气候：${c.mood}`,
     `关键议题：${state.route === 'reform' ? '宪政与全民参与' : state.route === 'federation' ? '海权与贸易' : state.route === 'industrial' ? '技术与重工业' : state.route === 'equilibrium' ? '军备与地缘' : '稳定与现实主义'}`,
-    `主导派系：${getFactionSummary()}`,
+    `统治集团：${getFactionSummary()}`,
     `关键人物：${c.leaders.join('、')}`
   ];
   $('miniList').innerHTML = arr.map(x => `<div class="mini">${x}</div>`).join('');
@@ -241,7 +224,9 @@ function buildMiniInfo() {
 
 function getAvailableEvents() {
   const pool = [...GLOBAL_EVENTS, ...(COUNTRY_EVENTS[state.country] || [])];
-  return pool.filter(event => event.year === state.year && (!event.requires || event.requires(state))); 
+  const events = pool.filter(event => event.year === state.year);
+  const crisis = CRISIS_EVENTS.filter(ev => !state.flags[ev.id] && ev.condition(state));
+  return [...events, ...crisis];
 }
 
 function renderStatus() {
@@ -256,7 +241,9 @@ function renderStatus() {
   $('anchor').textContent = anchors[state.year] || '结构性变化正在累积，下一次选择可能改变时代。';
   $('traits').innerHTML = c.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
   $('traitDesc').textContent = c.trait;
-  $('narrative').textContent = `${getFactionSummary()} 关键人物：${c.leaders.join('、')}。${state.year < 1875 ? '旧秩序与现代化的冲突仍是主线。' : state.year < 1914 ? '政党、军方和产业集团正在争夺国家方向。' : '战争与危机使每个政治选择都带有不可逆的代价。'}`;
+  $('narrative').textContent = `作为${state.leaderTitle}，你必须维持中央权威、平衡统治集团，并在威胁与危机中保住国家命脉。当前：${getFactionSummary()}。${state.year < 1875 ? '旧秩序与现代化的冲突仍是主线。' : state.year < 1914 ? '政党、军方和产业集团正在争夺国家方向。' : '战争与危机使每个政治选择都带有不可逆的代价。'}`;
+  state.aiAdvice = buildAIAdvice();
+  $('aiAdvisor').textContent = state.aiAdvice;
 
   $('stats').innerHTML = METRICS.map(k => {
     const value = Number(state.stats[k] || 0);
@@ -270,7 +257,6 @@ function renderStatus() {
     const v = Math.round(Math.min(100, Math.max(10, core * (0.72 + i * 0.08))));
     return `<div class="region"><span class="muted">${n}</span><b>${v}</b></div>`;
   }).join('');
-
   buildMiniInfo();
 }
 
@@ -285,21 +271,11 @@ function renderActions() {
   document.querySelectorAll('.action').forEach(btn => btn.onclick = () => performAction(Number(btn.dataset.i)));
 }
 
-function renderLogs() {
-  $('logs').innerHTML = (state.logs.length ? state.logs : ['暂无历史记录。']).map(x => `<div class="log">${x}</div>`).join('');
-}
-
+function renderLogs() { $('logs').innerHTML = (state.logs.length ? state.logs : ['暂无历史记录。']).map(x => `<div class="log">${x}</div>`).join(''); }
 function renderGoals() {
-  const goals = [
-    ['跨越时代', state.year >= 1950],
-    ['制度稳定', state.stats.稳定 >= 70],
-    ['工业化', state.stats.科技 >= 80 && state.stats.产业 >= 75],
-    ['国际影响', state.stats.影响 >= 80],
-    ['财政生存', state.stats.财政 >= 0]
-  ];
+  const goals = [ ['跨越时代', state.year >= 1950], ['制度稳定', state.stats.稳定 >= 70], ['工业化', state.stats.科技 >= 80 && state.stats.产业 >= 75], ['国际影响', state.stats.影响 >= 80], ['财政生存', state.stats.财政 >= 0] ];
   $('goals').innerHTML = goals.map(([text, done]) => `<div class="goal"><span>${text}</span><span class="chip ${done ? 'done' : 'todo'}">${done ? '已达成' : '待达成'}</span></div>`).join('');
 }
-
 function render() { renderStatus(); renderActions(); renderLogs(); renderGoals(); }
 
 function resetGame() {
@@ -316,7 +292,7 @@ function resetGame() {
   FACTIONS.forEach(f => state.factionInfluence[f] = 0);
   apply(c.bias);
   apply(getRouteData().bonus);
-  log(`${state.country} 于 1830 年起步，路线：${getRouteData().name}。`);
+  log(`${state.country} 于 1830 年起步，路线：${getRouteData().name}。你作为最高领导人承担国家命运。`);
   state.timeline.push({year:1830, text:`${state.country}启动历程。路线：${getRouteData().name}`});
   render();
 }
@@ -347,16 +323,12 @@ function chooseEvent(index){
   render();
 }
 
-function performAction(index) {
+function performAction(index){
   if (state.used || state.ended) return;
   const actions = [...ACTIONS, ...(ROUTE_ACTIONS[state.route] || [])];
   const a = actions[index];
   if (!a) return;
-  if (state.stats.财政 < a.cost) {
-    log(`${state.year}年：财政不足，无法执行“${a.name}”。`);
-    render();
-    return;
-  }
+  if (state.stats.财政 < a.cost) { log(`${state.year}年：财政不足，无法执行“${a.name}”。`); render(); return; }
   apply({财政:-a.cost, ...a.effect});
   state.used = true;
   state.timeline.push({year: state.year, text:`执行${a.name}`});
@@ -375,12 +347,7 @@ function checkEnding(){
   return '未决结局';
 }
 
-function finishGame(){
-  const final = checkEnding();
-  log(`1950年结局：${final}。`);
-  state.ended = true;
-  render();
-}
+function finishGame(){ const final = checkEnding(); log(`1950年结局：${final}。`); state.ended = true; render(); }
 
 function progressYear(){
   if (state.ended) return;
@@ -399,25 +366,21 @@ function progressYear(){
   if (s.社会 < 35) { s.稳定 -= 5; log(`${state.year}年：社会不安开始扩散。`); }
   clamp();
 
-  const events = getAvailableEvents();
-  if (events.length) {
-    log(`${state.year}年：${events[0].title}正在发生。`);
-    showEventModal(events[0]);
+  const available = getAvailableEvents();
+  if (available.length) {
+    const event = available[0];
+    log(`${state.year}年：${event.title}正在发生。`);
+    showEventModal(event);
   }
 
   if (state.year >= YEARS.end) finishGame();
   render();
 }
 
-function saveGame(){
-  localStorage.setItem('SVVIP_SAVE_V14', JSON.stringify(state));
-  log('游戏已保存。');
-  render();
-}
-
+function saveGame(){ localStorage.setItem('SVVIP_SAVE_V15', JSON.stringify(state)); log('游戏已保存。'); render(); }
 function loadGame(){
   try {
-    const raw = localStorage.getItem('SVVIP_SAVE_V14');
+    const raw = localStorage.getItem('SVVIP_SAVE_V15');
     if (!raw) return false;
     const data = JSON.parse(raw);
     if (!data) return false;
