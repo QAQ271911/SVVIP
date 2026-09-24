@@ -7,21 +7,21 @@
   <style>
     :root {
       --bg-1: #07131d;
-      --bg-2: #0d1b2a;
-      --panel: rgba(17, 27, 39, 0.9);
-      --panel-2: rgba(21, 35, 48, 0.92);
-      --panel-3: rgba(12, 21, 30, 0.95);
-      --line: rgba(144, 190, 255, 0.22);
-      --line-strong: rgba(153, 204, 255, 0.45);
+      --bg-2: #0e1d2c;
+      --panel: rgba(16, 27, 38, 0.92);
+      --panel-strong: rgba(12, 22, 31, 0.96);
+      --card: rgba(24, 39, 53, 0.9);
+      --line: rgba(149, 192, 255, 0.22);
+      --line-strong: rgba(149, 192, 255, 0.46);
       --text: #edf7ff;
-      --muted: #9ab4ca;
-      --gold: #f6d27a;
-      --green: #73e5a5;
-      --blue: #73b6ff;
-      --red: #ff8d8d;
-      --orange: #ffbf76;
-      --purple: #d8b4ff;
-      --shadow: 0 24px 50px rgba(0, 0, 0, 0.4);
+      --muted: #9bb5ca;
+      --gold: #f7d27d;
+      --green: #76e6a4;
+      --blue: #72b9ff;
+      --red: #ff8c8c;
+      --orange: #ffbb73;
+      --purple: #d6b8ff;
+      --shadow: 0 24px 52px rgba(0, 0, 0, 0.42);
     }
 
     * { box-sizing: border-box; }
@@ -30,14 +30,14 @@
       margin: 0;
       min-height: 100%;
       background:
-        radial-gradient(circle at top, rgba(61, 112, 175, 0.28), transparent 22%),
+        radial-gradient(circle at top, rgba(71, 118, 180, 0.25), transparent 23%),
         linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
       color: var(--text);
       font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif;
     }
 
     body {
-      padding: 18px;
+      padding: 20px;
     }
 
     button, select {
@@ -47,21 +47,21 @@
     .app {
       max-width: 1500px;
       margin: 0 auto;
-      border-radius: 22px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
+      background: rgba(10, 18, 25, 0.9);
       border: 1px solid var(--line);
-      background: rgba(8, 14, 20, 0.86);
+      box-shadow: var(--shadow);
+      border-radius: 22px;
+      overflow: hidden;
     }
 
     .topbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 24px;
-      background: rgba(10, 20, 29, 0.95);
+      gap: 16px;
+      padding: 18px 24px;
+      background: rgba(9, 17, 24, 0.96);
       border-bottom: 1px solid var(--line);
-      gap: 14px;
     }
 
     .brand-wrap {
@@ -74,19 +74,19 @@
       width: 42px;
       height: 42px;
       border-radius: 12px;
-      background: linear-gradient(135deg, rgba(246, 210, 122, 0.25), rgba(115, 182, 255, 0.18));
-      border: 1px solid var(--line);
       display: grid;
       place-items: center;
-      font-size: 1.3rem;
+      background: linear-gradient(135deg, rgba(247, 210, 125, 0.24), rgba(114, 185, 255, 0.18));
+      border: 1px solid var(--line);
       color: var(--gold);
-      box-shadow: inset 0 0 18px rgba(255,255,255,0.05);
+      font-weight: 700;
+      font-size: 1.25rem;
     }
 
     .brand {
-      font-size: 1.3rem;
-      letter-spacing: 0.12em;
+      font-size: 1.26rem;
       font-weight: 700;
+      letter-spacing: 0.12em;
       color: var(--gold);
       text-transform: uppercase;
     }
@@ -101,77 +101,84 @@
     .year-pill {
       min-width: 180px;
       text-align: center;
-      background: linear-gradient(135deg, rgba(26, 46, 64, 0.9), rgba(14, 25, 35, 0.9));
       border: 1px solid var(--line);
       border-radius: 999px;
+      background: linear-gradient(135deg, rgba(28, 48, 63, 0.9), rgba(14, 24, 35, 0.9));
       padding: 10px 18px;
       font-weight: 700;
       color: var(--text);
     }
 
     .btn {
-      border: 1px solid rgba(255,255,255,0.16);
-      background: linear-gradient(135deg, rgba(115, 182, 255, 0.14), rgba(62, 90, 155, 0.16));
+      border: 1px solid rgba(255,255,255,0.14);
+      background: linear-gradient(135deg, rgba(114, 185, 255, 0.15), rgba(48, 81, 131, 0.17));
       color: var(--text);
       border-radius: 12px;
       padding: 10px 16px;
-      font-weight: 700;
       cursor: pointer;
+      font-weight: 700;
       transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
     .btn:hover {
       transform: translateY(-1px);
       border-color: var(--line-strong);
-      box-shadow: 0 12px 20px rgba(32, 57, 86, 0.28);
+      box-shadow: 0 12px 20px rgba(20, 42, 60, 0.25);
     }
 
     .btn.warn {
-      background: linear-gradient(135deg, rgba(255, 176, 88, 0.18), rgba(155, 112, 46, 0.18));
+      background: linear-gradient(135deg, rgba(255, 187, 115, 0.16), rgba(155, 111, 48, 0.18));
     }
 
     .btn.danger {
-      background: linear-gradient(135deg, rgba(255, 125, 125, 0.18), rgba(151, 58, 58, 0.18));
+      background: linear-gradient(135deg, rgba(255, 140, 140, 0.14), rgba(137, 58, 58, 0.18));
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
     }
 
     .layout {
       display: grid;
-      grid-template-columns: 290px minmax(0,1fr) 340px;
+      grid-template-columns: 290px minmax(0, 1fr) 350px;
       background: rgba(11, 18, 25, 0.9);
     }
 
     .panel {
-      background: rgba(16, 26, 37, 0.7);
+      background: rgba(16, 25, 36, 0.72);
       border: 1px solid var(--line);
       border-radius: 18px;
-      margin: 16px;
       padding: 18px 16px;
-      min-height: 180px;
+      margin: 16px;
+      min-height: 200px;
     }
 
     .panel h3 {
       margin: 0 0 14px 0;
       color: var(--gold);
-      letter-spacing: 0.08em;
       font-size: 1rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
     .panel h3 .sub {
       color: var(--muted);
-      letter-spacing: 0;
       font-size: 0.74rem;
+      letter-spacing: 0;
+      margin-left: 8px;
       text-transform: none;
-      margin-left: 6px;
     }
 
     .country-select {
       width: 100%;
-      padding: 10px 12px;
-      border-radius: 12px;
+      background: rgba(8, 16, 23, 0.9);
       border: 1px solid var(--line);
-      background: rgba(9, 18, 25, 0.9);
+      border-radius: 12px;
       color: var(--text);
+      padding: 10px 12px;
       margin-bottom: 12px;
     }
 
@@ -179,7 +186,6 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
-      margin-bottom: 12px;
     }
 
     .stat-box {
@@ -187,98 +193,90 @@
       border: 1px solid var(--line);
       border-radius: 12px;
       padding: 10px 12px;
-      min-height: 76px;
+      min-height: 78px;
     }
 
     .stat-box .label {
       display: block;
-      font-size: 0.72rem;
       color: var(--muted);
+      font-size: 0.72rem;
       letter-spacing: 0.06em;
-      margin-bottom: 8px;
       text-transform: uppercase;
+      margin-bottom: 7px;
     }
 
     .stat-box .value {
       font-size: 1.08rem;
       font-weight: 700;
-      color: var(--text);
       word-break: break-word;
     }
 
     .resource-bars {
       display: grid;
       gap: 12px;
-      margin-top: 4px;
+      margin-top: 14px;
     }
 
     .bar-row {
       display: grid;
-      grid-template-columns: 48px 1fr 32px;
+      grid-template-columns: 52px 1fr 32px;
       align-items: center;
       gap: 8px;
-      color: var(--muted);
       font-size: 0.78rem;
+      color: var(--muted);
     }
 
     .bar {
       position: relative;
-      height: 10px;
       width: 100%;
+      height: 10px;
+      background: rgba(255,255,255,0.06);
       border-radius: 999px;
       overflow: hidden;
-      background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.08);
     }
 
     .bar > span {
-      position: absolute;
-      inset: 0 auto 0 0;
       display: block;
-      width: 50%;
+      height: 100%;
       border-radius: inherit;
       background: linear-gradient(90deg, var(--green), var(--blue));
-      box-shadow: 0 0 18px rgba(115, 182, 255, 0.42);
+      box-shadow: 0 0 20px rgba(114,185,255,0.3);
     }
 
     .warning {
       margin-top: 14px;
-      background: rgba(255,191,118,0.08);
-      border: 1px solid rgba(255,191,118,0.28);
-      border-radius: 12px;
       color: var(--orange);
+      background: rgba(255, 187, 115, 0.08);
+      border: 1px solid rgba(255, 187, 115, 0.28);
+      border-radius: 12px;
+      padding: 10px 12px;
       line-height: 1.6;
       font-size: 0.8rem;
-      padding: 10px 12px;
-    }
-
-    .world-panel {
-      display: grid;
-      gap: 14px;
     }
 
     .view-tabs {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .tab {
       border: 1px solid var(--line);
       border-radius: 10px;
+      padding: 8px 12px;
       background: rgba(255,255,255,0.02);
       color: var(--muted);
-      padding: 8px 12px;
       cursor: pointer;
       transition: all 0.2s ease;
       font-size: 0.82rem;
     }
 
     .tab.active {
+      background: rgba(114, 185, 255, 0.12);
+      border-color: rgba(114, 185, 255, 0.5);
       color: var(--text);
-      border-color: rgba(115,182,255,0.5);
-      background: rgba(115,182,255,0.12);
     }
 
     .view {
@@ -312,8 +310,8 @@
       display: inline-block;
       padding: 4px 8px;
       border-radius: 999px;
-      border: 1px solid rgba(115, 229, 165, 0.3);
-      background: rgba(115, 229, 165, 0.08);
+      background: rgba(118, 230, 164, 0.1);
+      border: 1px solid rgba(118, 230, 164, 0.28);
       color: var(--green);
       font-size: 0.68rem;
       letter-spacing: 0.04em;
@@ -321,15 +319,15 @@
     }
 
     .region-badge.warn {
-      border-color: rgba(255,191,118,0.3);
-      background: rgba(255,191,118,0.08);
+      background: rgba(255, 187, 115, 0.08);
+      border-color: rgba(255, 187, 115, 0.28);
       color: var(--orange);
     }
 
     .region-meta {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       color: var(--muted);
       font-size: 0.74rem;
       margin-top: 8px;
@@ -339,8 +337,8 @@
       display: inline-block;
       padding: 4px 7px;
       border-radius: 999px;
-      background: rgba(115, 182, 255, 0.12);
-      border: 1px solid rgba(115,182,255,0.24);
+      background: rgba(114, 185, 255, 0.12);
+      border: 1px solid rgba(114, 185, 255, 0.28);
       color: var(--blue);
       font-size: 0.7rem;
       font-weight: 700;
@@ -363,13 +361,24 @@
       display: block;
       color: var(--muted);
       font-size: 0.72rem;
-      margin-bottom: 8px;
       letter-spacing: 0.04em;
+      margin-bottom: 8px;
     }
 
     .mini-card .value {
-      font-size: 1.1rem;
+      font-size: 1.08rem;
       font-weight: 700;
+    }
+
+    .summary-detail {
+      margin-top: 10px;
+      line-height: 1.7;
+      color: var(--muted);
+      font-size: 0.82rem;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
     }
 
     .actions-list {
@@ -379,12 +388,12 @@
 
     .action-btn {
       width: 100%;
-      text-align: left;
       border: 1px solid var(--line);
       border-radius: 12px;
       background: rgba(255,255,255,0.02);
       color: var(--text);
       padding: 12px 14px;
+      text-align: left;
       cursor: pointer;
       transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     }
@@ -392,15 +401,15 @@
     .action-btn:hover {
       transform: translateY(-1px);
       border-color: var(--line-strong);
-      box-shadow: 0 12px 15px rgba(28, 48, 67, 0.12);
+      box-shadow: 0 12px 18px rgba(18, 35, 48, 0.18);
     }
 
     .action-btn .head {
       display: flex;
-      align-items: center;
       justify-content: space-between;
       gap: 8px;
       margin-bottom: 4px;
+      align-items: center;
     }
 
     .action-btn strong {
@@ -409,27 +418,23 @@
 
     .action-btn .cost {
       color: var(--gold);
-      font-weight: 700;
       font-size: 0.72rem;
+      font-weight: 700;
       white-space: nowrap;
     }
 
     .action-btn span {
-      display: block;
       color: var(--muted);
       font-size: 0.75rem;
       line-height: 1.6;
+      display: block;
     }
 
     .bottom-grid {
       display: grid;
       grid-template-columns: 1.5fr 1fr;
-      background: rgba(11, 18, 25, 0.9);
       border-top: 1px solid var(--line);
-    }
-
-    .log-box, .side-box {
-      min-height: 280px;
+      background: rgba(11, 18, 25, 0.9);
     }
 
     .event-list,
@@ -437,7 +442,7 @@
     .achievement-list {
       display: grid;
       gap: 10px;
-      max-height: 252px;
+      max-height: 260px;
       overflow: auto;
       padding-right: 4px;
     }
@@ -449,7 +454,7 @@
       border: 1px solid var(--line);
       border-radius: 12px;
       padding: 10px 12px;
-      line-height: 1.62;
+      line-height: 1.6;
     }
 
     .event-item {
@@ -470,8 +475,8 @@
 
     .objective-item.done,
     .achievement-item.done {
-      border-color: rgba(115, 229, 165, 0.4);
-      background: rgba(115, 229, 165, 0.06);
+      background: rgba(118, 230, 164, 0.06);
+      border-color: rgba(118, 230, 164, 0.32);
       color: var(--green);
     }
 
@@ -480,16 +485,16 @@
     }
 
     .empty {
-      color: var(--muted);
       text-align: center;
+      color: var(--muted);
       padding: 28px 14px;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
     }
 
     .modal {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.62);
+      background: rgba(0, 0, 0, 0.65);
       display: none;
       align-items: center;
       justify-content: center;
@@ -517,7 +522,7 @@
     }
 
     .modal-card p {
-      margin: 0 0 16px 0;
+      margin: 0 0 15px 0;
       color: var(--muted);
       line-height: 1.7;
     }
@@ -529,11 +534,11 @@
 
     .choice-btn {
       width: 100%;
-      text-align: left;
-      background: rgba(255,255,255,0.02);
       border: 1px solid var(--line);
       border-radius: 12px;
+      background: rgba(255,255,255,0.02);
       color: var(--text);
+      text-align: left;
       padding: 12px 14px;
       cursor: pointer;
       transition: border-color 0.2s ease, background 0.2s ease;
@@ -541,7 +546,7 @@
 
     .choice-btn:hover {
       border-color: var(--line-strong);
-      background: rgba(115,182,255,0.08);
+      background: rgba(114, 185, 255, 0.08);
     }
 
     .choice-btn strong {
@@ -551,8 +556,8 @@
     }
 
     .choice-btn small {
-      color: var(--muted);
       display: block;
+      color: var(--muted);
       line-height: 1.5;
     }
 
@@ -585,14 +590,9 @@
         padding: 14px 12px;
       }
 
-      .brand {
-        letter-spacing: 0.08em;
-        font-size: 1.08rem;
-      }
-
-      .region-grid,
+      .stats-grid,
       .summary-grid,
-      .stats-grid {
+      .region-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -616,7 +616,7 @@
     <div class="layout">
       <aside class="panel">
         <h3>国家概览 <span class="sub">执掌时代潮流</span></h3>
-        <select id="nationSelect" class="country-select" aria-label="选择国家"></select>
+        <select id="nationSelect" class="country-select" aria-label="国家选择"></select>
 
         <div class="stats-grid">
           <div class="stat-box">
@@ -664,13 +664,13 @@
       </aside>
 
       <main class="panel">
-        <h3>世界局势 <span class="sub">各地区的权力正在变动</span></h3>
+        <h3>世界局势 <span class="sub">各地区格局正在变化</span></h3>
 
         <div class="view-tabs">
-          <button class="tab active" data-view="worldView">世界视图</button>
-          <button class="tab" data-view="warView">战争与和平</button>
-          <button class="tab" data-view="dipView">外交</button>
-          <button class="tab" data-view="policyView">内政</button>
+          <button class="tab active" data-target="worldView">世界视图</button>
+          <button class="tab" data-target="warView">战争与和平</button>
+          <button class="tab" data-target="dipView">外交</button>
+          <button class="tab" data-target="policyView">内政</button>
         </div>
 
         <div class="view active" id="worldView">
@@ -688,10 +688,7 @@
               <div class="value" id="warCapacity">0</div>
             </div>
           </div>
-          <div class="mini-card" style="margin-top:10px;">
-            <span class="label">国防判断</span>
-            <div style="color: var(--muted); line-height:1.7; font-size:0.82rem;" id="warSummary"></div>
-          </div>
+          <div class="summary-detail" id="warSummary"></div>
         </div>
 
         <div class="view" id="dipView">
@@ -705,10 +702,7 @@
               <div class="value" id="diplomacyValue">0</div>
             </div>
           </div>
-          <div class="mini-card" style="margin-top:10px;">
-            <span class="label">外交判断</span>
-            <div style="color: var(--muted); line-height:1.7; font-size:0.82rem;" id="dipSummary"></div>
-          </div>
+          <div class="summary-detail" id="dipSummary"></div>
         </div>
 
         <div class="view" id="policyView">
@@ -722,10 +716,7 @@
               <div class="value" id="scienceSummary">0</div>
             </div>
           </div>
-          <div class="mini-card" style="margin-top:10px;">
-            <span class="label">治理判断</span>
-            <div style="color: var(--muted); line-height:1.7; font-size:0.82rem;" id="policySummary"></div>
-          </div>
+          <div class="summary-detail" id="policySummary"></div>
         </div>
       </main>
 
@@ -736,16 +727,16 @@
     </div>
 
     <div class="bottom-grid">
-      <section class="panel log-box">
-        <h3>历史日志 <span class="sub">你的选择将改变这段历史</span></h3>
+      <section class="panel">
+        <h3>历史日志 <span class="sub">你的战略将写进这段时代</span></h3>
         <div class="event-list" id="eventList"></div>
       </section>
 
-      <section class="panel side-box">
+      <section class="panel">
         <h3>目标与成就</h3>
         <div class="objective-list" id="objectiveList"></div>
-        <div style="margin-top:18px;">
-          <h3 style="margin-bottom:10px;">成就</h3>
+        <div style="margin-top: 18px;">
+          <h3 style="margin-bottom: 10px;">成就</h3>
           <div class="achievement-list" id="achievementList"></div>
         </div>
       </section>
@@ -772,18 +763,18 @@
     };
 
     const regions = [
-      { name: "欧洲", emphasis: "主导" },
-      { name: "东亚", emphasis: "关键" },
-      { name: "南亚", emphasis: "敏感" },
-      { name: "中东", emphasis: "争夺" },
-      { name: "非洲", emphasis: "扩张" },
-      { name: "美洲", emphasis: "新机遇" }
+      { name: "欧洲", status: "主导" },
+      { name: "东亚", status: "关键" },
+      { name: "南亚", status: "敏感" },
+      { name: "中东", status: "争夺" },
+      { name: "非洲", status: "扩张" },
+      { name: "美洲", status: "新机遇" }
     ];
 
-    const randomEvents = [
+    const eventPool = [
       {
         title: "工业运动兴起",
-        text: "工厂与城市正在吸引大量劳动力，技术进步带来繁荣，也带来新的社会矛盾。",
+        text: "工厂与城市正在吸引大量劳动力，技术进步带来繁荣，但也制造新的社会矛盾。",
         choices: [
           { name: "改善劳动条件", desc: "稳定 +8，财政 -25", apply: s => { s.stability += 8; s.treasury -= 25; } },
           { name: "强硬压制", desc: "军力 +5，稳定 -6，威望 -3", apply: s => { s.military += 5; s.stability -= 6; s.prestige -= 3; } }
@@ -791,7 +782,7 @@
       },
       {
         title: "科学门类突破",
-        text: "新的技术路线正在改变能源、交通和生产的方式。",
+        text: "新的技术路线正在改变能源、交通和生产方式。",
         choices: [
           { name: "大力资助", desc: "科技 +10，财政 -35", apply: s => { s.science += 10; s.treasury -= 35; } },
           { name: "稳步推进", desc: "科技 +3，财政 +10", apply: s => { s.science += 3; s.treasury += 10; } }
@@ -807,71 +798,31 @@
       },
       {
         title: "贸易繁荣",
-        text: "港口、航线和内陆贸易���联通提升了商业活力。",
+        text: "港口、航线和内陆贸易网络联通提升了商业活力。",
         choices: [
           { name: "扩大投资", desc: "经济 +9，财政 +25", apply: s => { s.economy += 9; s.treasury += 25; } },
           { name: "储备资金", desc: "财政 +55，经济 +2", apply: s => { s.treasury += 55; s.economy += 2; } }
+        ]
+      },
+      {
+        title: "行政改革浪潮",
+        text: "地方治理和教育体制出现新的改革思路。",
+        choices: [
+          { name: "全力推进", desc: "稳定 +10，财政 -20，科技 +4", apply: s => { s.stability += 10; s.treasury -= 20; s.science += 4; } },
+          { name: "维持现状", desc: "稳定 +2，财政 +15", apply: s => { s.stability += 2; s.treasury += 15; } }
         ]
       }
     ];
 
     const actionDefs = [
-      {
-        id: "industrialize",
-        title: "工业化建设",
-        description: "修建工厂、铁路和城市基础设施，推动制造业扩张。",
-        cost: 40,
-        apply: s => { s.economy += 12; s.science += 4; s.treasury -= 35; s.prestige += 3; s.stability += 1; }
-      },
-      {
-        id: "army",
-        title: "军制改革",
-        description: "整顿编制、训练和后勤体系，提高军队作战效能。",
-        cost: 35,
-        apply: s => { s.military += 13; s.treasury -= 30; s.stability -= 2; s.prestige += 3; }
-      },
-      {
-        id: "research",
-        title: "科学教育",
-        description: "扩充学校、实验室和科研基础，加速技术突破。",
-        cost: 30,
-        apply: s => { s.science += 13; s.economy += 3; s.treasury -= 28; s.prestige += 5; }
-      },
-      {
-        id: "diplomacy",
-        title: "外交联络",
-        description: "争取友邦、国际会议与协定，扩大影响力与威望。",
-        cost: 25,
-        apply: s => { s.prestige += 10; s.influence += 10; s.treasury -= 22; s.stability += 2; }
-      },
-      {
-        id: "reform",
-        title: "政治改革",
-        description: "改善制度、民生和行政效率，稳住内政秩序。",
-        cost: 20,
-        apply: s => { s.stability += 12; s.economy += 5; s.treasury -= 18; s.prestige += 3; }
-      },
-      {
-        id: "expansion",
-        title: "海外拓展",
-        description: "控制贸易航线和资源地带，为国家打开全球空间。",
-        cost: 45,
-        apply: s => { s.influence += 13; s.treasury -= 40; s.military += 4; s.prestige += 5; s.stability -= 3; }
-      },
-      {
-        id: "infrastructure",
-        title: "基础设施",
-        description: "修建港口、道路和城市网络，让地区互联互通。",
-        cost: 35,
-        apply: s => { s.economy += 9; s.population += 8; s.influence += 5; s.treasury -= 30; }
-      },
-      {
-        id: "mobilization",
-        title: "战时动员",
-        description: "储备军需、扩展后勤和战备制度，应对外部冲击。",
-        cost: 50,
-        apply: s => { s.military += 17; s.treasury -= 48; s.stability -= 5; s.prestige += 3; }
-      }
+      { id: "industrialize", title: "工业化建设", description: "修建工厂、铁路和城市基础设施，推动制造业扩张。", cost: 40, apply: s => { s.economy += 12; s.science += 4; s.treasury -= 35; s.prestige += 3; s.stability += 1; } },
+      { id: "army", title: "军制改革", description: "整顿编制、训练和后勤体系，提高军队作战效能。", cost: 35, apply: s => { s.military += 13; s.treasury -= 30; s.stability -= 2; s.prestige += 3; } },
+      { id: "research", title: "科学教育", description: "扩充学校、实验室和科研基础，加速技术突破。", cost: 30, apply: s => { s.science += 13; s.economy += 3; s.treasury -= 28; s.prestige += 5; } },
+      { id: "diplomacy", title: "外交联络", description: "争取友邦、国际会议与协定，扩大影响力与威望。", cost: 25, apply: s => { s.prestige += 10; s.influence += 10; s.treasury -= 22; s.stability += 2; } },
+      { id: "reform", title: "政治改革", description: "改善制度、民生和行政效率，稳住内政秩序。", cost: 20, apply: s => { s.stability += 12; s.economy += 5; s.treasury -= 18; s.prestige += 3; } },
+      { id: "expansion", title: "海外拓展", description: "控制贸易航线和资源地带，为国家打开全球空间。", cost: 45, apply: s => { s.influence += 13; s.treasury -= 40; s.military += 4; s.prestige += 5; s.stability -= 3; } },
+      { id: "infrastructure", title: "基础设施", description: "修建港口、道路和城市网络，让地区互联互通。", cost: 35, apply: s => { s.economy += 9; s.population += 8; s.influence += 5; s.treasury -= 30; } },
+      { id: "mobilization", title: "战时动员", description: "储备军需、扩展后勤和战备制度，应对外部冲击。", cost: 50, apply: s => { s.military += 17; s.treasury -= 48; s.stability -= 5; s.prestige += 3; } }
     ];
 
     const state = {
@@ -893,7 +844,7 @@
     const $ = (id) => document.getElementById(id);
 
     function clamp(value, min = 0, max = 100) {
-      return Math.min(max, Math.max(min, value));
+      return Math.min(max, Math.max(min, Math.round(value)));
     }
 
     function getEraLabel(year) {
@@ -939,12 +890,13 @@
       state.population = base.population;
       state.influence = base.influence;
       state.ended = false;
+      state.achievements = {};
       state.history = [
         `1830年：你成为${nationName}的领导者。`,
         `时代背景：${base.era}`
       ];
-      state.achievements = {};
       normalizeState();
+      $("nextTurnBtn").disabled = false;
       render();
     }
 
@@ -958,28 +910,28 @@
       const grid = $("regionGrid");
       const core = (state.influence + state.military + state.economy) / 3;
       grid.innerHTML = regions.map((region, index) => {
-        const score = clamp(Math.round(core * (0.7 + index * 0.07)), 20, 99);
-        const emphasis = score > 75 ? "主导" : score > 60 ? "关键" : score > 45 ? "平衡" : "脆弱";
+        const score = clamp(core * (0.7 + index * 0.08), 20, 99);
+        const level = score > 75 ? "主导" : score > 60 ? "关键" : score > 45 ? "平衡" : "脆弱";
         return `
           <div class="region-card">
             <h4>${region.name}</h4>
-            <div class="region-badge ${score < 45 ? "warn" : ""}">${emphasis}</div>
+            <div class="region-badge ${score < 45 ? "warn" : ""}">${level}</div>
             <div class="region-meta">
               <span>战略态势</span>
               <span class="tag">${score}%</span>
             </div>
             <div class="region-meta">
               <span>地区影响</span>
-              <strong>${Math.min(100, clamp(30 + index * 8 + Math.round(state.influence / 4)))}</strong>
+              <strong>${Math.min(100, clamp(30 + index * 8 + Math.round(state.influence / 4), 0, 100))}</strong>
             </div>
           </div>
         `;
       }).join("");
     }
 
-    function renderActionButtons() {
-      const actionsList = $("actionsList");
-      actionsList.innerHTML = actionDefs.map(action => `
+    function renderActions() {
+      const list = $("actionsList");
+      list.innerHTML = actionDefs.map(action => `
         <button class="action-btn" data-action="${action.id}">
           <div class="head">
             <strong>${action.title}</strong>
@@ -989,7 +941,7 @@
         </button>
       `).join("");
 
-      actionsList.querySelectorAll(".action-btn").forEach(btn => {
+      list.querySelectorAll(".action-btn").forEach(btn => {
         btn.addEventListener("click", () => {
           if (state.ended) return;
           const action = actionDefs.find(item => item.id === btn.dataset.action);
@@ -1052,8 +1004,7 @@
           : "治理压力较大，改革与社会安定应优先于冒险扩张。";
     }
 
-    function renderGoals() {
-      const list = $("objectiveList");
+    function renderObjectives() {
       const power = computePower();
       const goals = [
         { text: `在${state.year}年之前保持稳定与竞争力，争取以强国姿态跨越时代。`, done: state.year >= 1950 },
@@ -1063,7 +1014,7 @@
         { text: `国际影响力达到80以上，确保地缘支配力持续增长。`, done: state.influence >= 80 }
       ];
 
-      list.innerHTML = goals.map(goal => `
+      $("objectiveList").innerHTML = goals.map(goal => `
         <div class="objective-item ${goal.done ? "done" : ""}">
           <strong>${goal.done ? "已达成" : "进行中"}</strong>：${goal.text}
         </div>
@@ -1096,7 +1047,7 @@
     function render() {
       renderStats();
       renderRegionCards();
-      renderGoals();
+      renderObjectives();
       renderAchievements();
       renderLog();
     }
@@ -1111,8 +1062,8 @@
       action.apply(state);
       normalizeState();
       pushHistory(`${state.year}年：执行“${action.title}”，国家战略方向出现新变化。`);
-      render();
       maybeUnlockMilestones();
+      render();
     }
 
     function maybeUnlockMilestones() {
@@ -1122,7 +1073,7 @@
       }
       if (state.science >= 85 && !state.achievements.science) {
         state.achievements.science = true;
-        pushHistory(`${state.year}年：科研能力提升到世界级水准。`);
+        pushHistory(`${state.year}年：科研能力提升到世界级水平。`);
       }
       if (state.stability <= 10 && !state.achievements.crisis) {
         state.achievements.crisis = true;
@@ -1135,7 +1086,7 @@
     }
 
     function triggerRandomEvent() {
-      const event = randomEvents[Math.floor(Math.random() * randomEvents.length)];
+      const event = eventPool[Math.floor(Math.random() * eventPool.length)];
       const modal = $("eventModal");
       const title = $("modalTitle");
       const text = $("modalText");
@@ -1160,10 +1111,32 @@
           normalizeState();
           pushHistory(`${state.year}年：在“${event.title}”中选择“${chosen.name}”，结果影响了国家命运。`);
           modal.classList.remove("active");
-          render();
           maybeUnlockMilestones();
+          render();
         });
       });
+    }
+
+    function finalizeGame() {
+      state.ended = true;
+      const power = computePower();
+      const summary = power >= 260 && state.stability >= 55
+        ? `你将${state.nation}塑造成一个拥有强大工业、坚实国防和深远国际影响力的时代巨擘。`
+        : power >= 200
+          ? `你在这段历史中留下了不可忽视的痕迹，国家虽未达到巅峰，却已成为时代的重要力量。`
+          : `时代浪潮过于强大，你未能在这场历史风暴中站稳脚跟，但你的选择仍然载入史书。`;
+      pushHistory(`时代终章：${summary}`);
+      render();
+      $("nextTurnBtn").disabled = true;
+    }
+
+    function checkEnding() {
+      const power = computePower();
+      const victory = power >= 260 && state.stability >= 55;
+      const nearWin = power >= 200 && state.stability >= 40;
+      if (state.year >= 1950 || (!victory && !nearWin && state.stability <= 12)) {
+        finalizeGame();
+      }
     }
 
     function advanceYear() {
@@ -1181,23 +1154,19 @@
       state.military += 1;
       state.influence += 1;
 
-      if (state.year >= 1914 && state.year <= 1918) {
-        if (state.military > 60) {
-          state.treasury -= 55;
-          state.stability -= 8;
-          pushHistory(`${state.year}年：世界大战阴影笼罩，资源消耗与社会压力持续上升。`);
-        }
+      if (state.year >= 1914 && state.year <= 1918 && state.military > 60) {
+        state.treasury -= 55;
+        state.stability -= 8;
+        pushHistory(`${state.year}年：世界大战阴影笼罩，资源消耗与社会压力持续上升。`);
       }
 
-      if (state.year >= 1939 && state.year <= 1945) {
-        if (state.military > 65) {
-          state.treasury -= 60;
-          state.stability -= 10;
-          pushHistory(`${state.year}年：二战冲击再度震动全球，国家必须重新平衡安全与发展。`);
-        }
+      if (state.year >= 1939 && state.year <= 1945 && state.military > 65) {
+        state.treasury -= 60;
+        state.stability -= 10;
+        pushHistory(`${state.year}年：二战冲击再度震动全球，国家必须重新平衡安全与发展。`);
       }
 
-      if (Math.random() < 0.5) {
+      if (Math.random() < 0.55) {
         triggerRandomEvent();
       } else {
         pushHistory(`${state.year}年：时代风云变幻，国家的战略选择正在改变未来。`);
@@ -1218,45 +1187,27 @@
       render();
     }
 
-    function checkEnding() {
-      const power = computePower();
-      const victory = power >= 260 && state.stability >= 55;
-      const nearWin = power >= 200 && state.stability >= 40;
-
-      if (state.year >= 1950 || (!victory && !nearWin && state.stability <= 12)) {
-        finalizeGame();
-      }
-    }
-
-    function finalizeGame() {
-      state.ended = true;
-      const power = computePower();
-      const summary = power >= 260 && state.stability >= 55
-        ? `你将${state.nation}塑造成一个拥有强大工业、坚实国防和深远国际影响力的时代巨擘。`
-        : power >= 200
-          ? `你在这段历史中留下了不可忽视的痕迹，国家虽未达到巅峰，却已成为时代的重要力量。`
-          : `时代浪潮过于强大，你未能在这场历史风暴中站稳脚跟，但这段经历仍然足以载入史书。`;
-      pushHistory(`时代终章：${summary}`);
-      render();
-      $("nextTurnBtn").disabled = true;
-    }
-
     function saveGame() {
-      localStorage.setItem("SVVIP_HISTORY_SAVE", JSON.stringify(state));
-      pushHistory(`${state.year}年：存档成功，历史进程已保存在本地。`);
-      render();
+      try {
+        localStorage.setItem("SVVIP_HISTORY_SAVE", JSON.stringify(state));
+        pushHistory(`${state.year}年：存档成功，历史进程已保存在本地。`);
+        render();
+      } catch (error) {
+        console.warn("存档失败", error);
+        pushHistory(`${state.year}年：存档失败，当前环境不支持本地存储。`);
+        render();
+      }
     }
 
     function resetGame() {
       if (!window.confirm("确定要放弃当前历史并重新开始吗？")) return;
-      const current = $("nationSelect").value;
-      applyNation(current);
+      const currentNation = $("nationSelect").value;
+      applyNation(currentNation);
       $("nextTurnBtn").disabled = false;
     }
 
     document.getElementById("nationSelect").addEventListener("change", (e) => {
       applyNation(e.target.value);
-      $("nextTurnBtn").disabled = false;
     });
 
     document.getElementById("nextTurnBtn").addEventListener("click", advanceYear);
@@ -1266,9 +1217,9 @@
     document.querySelectorAll(".tab").forEach(tab => {
       tab.addEventListener("click", () => {
         document.querySelectorAll(".tab").forEach(item => item.classList.remove("active"));
-        document.querySelectorAll(".view").forEach(view => view.classList.remove("active"));
+        document.querySelectorAll(".view").forEach(item => item.classList.remove("active"));
         tab.classList.add("active");
-        const target = document.getElementById(tab.dataset.view);
+        const target = document.getElementById(tab.dataset.target);
         if (target) target.classList.add("active");
       });
     });
@@ -1284,6 +1235,7 @@
           $("nationSelect").value = state.nation;
           normalizeState();
           render();
+          renderActions();
           return;
         }
       } catch (error) {
@@ -1292,7 +1244,7 @@
     }
 
     applyNation(state.nation);
-    renderActionButtons();
+    renderActions();
     render();
   </script>
 </body>
